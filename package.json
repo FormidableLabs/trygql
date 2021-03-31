@@ -1,0 +1,53 @@
+{
+  "name": "trygql.dev",
+  "version": "0.0.0",
+  "private": true,
+  "source": "api/index.ts",
+  "main": "dist/api/index.js",
+  "license": "MIT",
+  "repository": "https://github.com/kitten/trygql.dev",
+  "bugs": {
+    "url": "https://github.com/kitten/trygql.dev/issues"
+  },
+  "scripts": {
+    "start": "node dist/api/index.js",
+    "dev": "ts-node-dev --transpile-only --no-notify api/index.ts",
+    "build": "tsc"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "lint-staged": {
+    "*.{md,json,js,ts}": "prettier --write"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged --quiet --relative"
+    }
+  },
+  "dependencies": {
+    "@keyv/redis": "^2.1.2",
+    "fastify": "^3.14.1",
+    "fastify-cors": "^5.2.0",
+    "got": "^11.8.2",
+    "graphql": "^15.5.0",
+    "graphql-scalars": "^1.9.0",
+    "keyv": "^4.0.3",
+    "mercurius": "^7.3.2",
+    "nexus": "^1.0.0",
+    "semver": "^7.3.5",
+    "under-pressure": "^5.6.0"
+  },
+  "devDependencies": {
+    "@types/keyv__redis": "^1.3.1",
+    "@types/node": "^14.14.37",
+    "@types/semver": "^7.3.4",
+    "@vercel/ncc": "^0.27.0",
+    "husky": "^4.3.8",
+    "lint-staged": "^10.5.4",
+    "prettier": "^2.2.1",
+    "ts-node-dev": "^1.1.6",
+    "typescript": "^4.2.3"
+  }
+}
