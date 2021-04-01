@@ -1,7 +1,7 @@
 import Keyv from 'keyv';
 import KeyvRedis from '@keyv/redis';
 
-const isProduction = process.env.NODE_ENV !== 'development';
+const isProduction = process.env.NODE_ENV === 'production';
 const redisUrl = process.env.FLY_REDIS_CACHE_URL;
 
 let redis: KeyvRedis;
