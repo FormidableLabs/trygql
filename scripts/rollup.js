@@ -28,6 +28,10 @@ export default {
         { find: /^semver$/, replacement: tryResolve('semver') },
         { find: /^nexus$/, replacement: tryResolve('nexus') },
         { find: /^tiny-lru$/, replacement: tryResolve('tiny-lru') },
+        {
+          find: /^fast-json-stringify$/,
+          replacement: tryResolve('fast-json-stringify'),
+        },
 
         {
           find: /^bufferutil$/,
@@ -112,44 +116,46 @@ export default {
       },
     }),
   ],
-  output: {
-    chunkFileNames: 'out-[hash].js',
-    entryFileNames: 'out.js',
-    dir: path.join(__dirname, '../dist/'),
-    sourcemap: false,
-    compact: true,
-    freeze: false,
-    interop: false,
-    namespaceToStringTag: false,
-    externalLiveBindings: false,
-    preferConst: true,
-    format: 'cjs',
-    plugins: [
-      {
-        name: 'minify',
-        renderChunk(code) {
-          const result = terser.minify(code, {
-            ecma: 2019,
-            module: true,
-            compress: {
-              toplevel: true,
-            },
-            mangle: {
-              eval: true,
-            },
-            sourceMap: false,
-            output: {
-              comments: false,
-              inline_script: false,
+  output: [
+    {
+      chunkFileNames: 'out-[hash].js',
+      entryFileNames: 'out.js',
+      dir: path.join(__dirname, '../dist/'),
+      sourcemap: false,
+      compact: true,
+      freeze: false,
+      interop: false,
+      namespaceToStringTag: false,
+      externalLiveBindings: false,
+      preferConst: true,
+      format: 'cjs',
+      plugins: [
+        {
+          name: 'minify',
+          renderChunk(code) {
+            const result = terser.minify(code, {
               ecma: 2019,
-            },
-          });
-          return result.code || null;
+              module: true,
+              compress: {
+                toplevel: true,
+              },
+              mangle: {
+                eval: true,
+              },
+              sourceMap: false,
+              output: {
+                comments: false,
+                inline_script: false,
+                ecma: 2019,
+              },
+            });
+            return result.code || null;
+          },
         },
+      ],
+      interop(id) {
+        return nodeBuiltins.has(id) ? 'default' : 'defaultOnly';
       },
-    ],
-    interop(id) {
-      return nodeBuiltins.has(id) ? 'default' : 'defaultOnly';
     },
-  },
+  ],
 };
