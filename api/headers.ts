@@ -14,12 +14,10 @@ const vary = (reply: FastifyReply, field: string) => {
 const headersPlugin: FastifyPluginCallback = (instance, _, next) => {
   instance.addHook('onRequest', (_req, reply, next) => {
     reply
-      .header('Referrer-Policy', 'origin')
-      .header(
-        'Strict-Transport-Security',
-        'max-age=15552000; includeSubDomains'
-      )
-      .header('Access-Control-Allow-Origin', '*');
+      .header('referrer-policy', 'origin')
+      .header('strict-transport-security', 'max-age=15552000')
+      .header('fly-region', process.env.FLY_REGION || 'local')
+      .header('access-control-allow-origin', '*');
 
     return next();
   });
