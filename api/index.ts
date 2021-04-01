@@ -18,11 +18,4 @@ app.get('/health', (_req, res) => {
   res.code(200).send({ statusCode: 200, status: 'ok' });
 });
 
-(async () => {
-  try {
-    await app.listen(process.env.PORT || 8080, '0.0.0.0');
-  } catch (error) {
-    app.log.error(error);
-    process.exit(1);
-  }
-})();
+app.listen(process.env.PORT || 8080, '0.0.0.0');

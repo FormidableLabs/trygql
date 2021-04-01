@@ -7,6 +7,7 @@ import * as types from './schema';
 
 const schema = makeSchema({
   types,
+  shouldGenerateArtifacts: process.env.NODE_ENV === 'development',
   plugins: [declarativeWrappingPlugin()],
   prettierConfig: {
     singleQuote: true,
