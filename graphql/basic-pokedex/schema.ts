@@ -1,16 +1,10 @@
 import { nonNull, idArg, intArg, objectType, enumType } from 'nexus';
-import { RawType, RawPokemon, pokemonList, pokemonById } from './data/pokemons';
-
-export { RawType, RawPokemon };
+import { pokemonList, pokemonById } from './data/pokemons';
 
 export const PokemonType = enumType({
   name: 'PokemonType',
   description:
     'Elemental property associated with either a Pokémon or one of their moves.',
-  sourceType: {
-    module: __filename,
-    export: 'RawType',
-  },
   members: [
     'Grass',
     'Poison',
@@ -72,10 +66,6 @@ export const PokemonAttackConnection = objectType({
 
 export const Pokemon = objectType({
   name: 'Pokemon',
-  sourceType: {
-    module: __filename,
-    export: 'RawPokemon',
-  },
   definition(t) {
     t.id('id', { nullable: false });
     t.string('name', { nullable: false });

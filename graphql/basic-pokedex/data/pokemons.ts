@@ -1,6 +1,6 @@
 import data from './pokemon-data.json';
 
-export type RawType =
+export type PokemonType =
   | 'Grass'
   | 'Poison'
   | 'Fire'
@@ -20,11 +20,11 @@ export type RawType =
   | 'Dragon'
   | 'Dark';
 
-export type RawPokemon = typeof data[0];
+export type Pokemon = typeof data[0];
 
-export const pokemonList: RawPokemon[] = data;
+export const pokemonList: Pokemon[] = data;
 
-export const pokemonById: Map<string, RawPokemon> = pokemonList.reduce(
+export const pokemonById: Map<string, Pokemon> = pokemonList.reduce(
   (map, pokemon) => {
     if (pokemon.id) map.set(pokemon.id, pokemon);
     return map;

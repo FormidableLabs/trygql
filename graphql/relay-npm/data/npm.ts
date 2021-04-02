@@ -6,18 +6,18 @@ import { getCacheForPrefix } from './cache';
 const REGISTRY_URL = 'https://registry.npmjs.org';
 const cache = getCacheForPrefix('npm');
 
-export interface NpmUser {
+export interface User {
   name: string;
   email?: string;
   url?: string;
 }
 
-export interface NpmExternal {
+export interface External {
   type?: string;
   url: string;
 }
 
-export interface NpmDistributable {
+export interface Distributable {
   shasum: string;
   tarball: string;
   integrity?: string;
@@ -26,20 +26,20 @@ export interface NpmDistributable {
   'npm-signature'?: string;
 }
 
-export interface NpmMetadata {
+export interface Metadata {
   _id: string;
   name: string;
-  maintainers: NpmUser[];
+  maintainers: User[];
   description?: string;
   license?: string;
-  repository?: NpmExternal;
-  bugs?: NpmExternal;
+  repository?: External;
+  bugs?: External;
 }
 
-export interface NpmVersion extends NpmMetadata {
+export interface Version extends Metadata {
   _shasum: string;
-  _npmUser: NpmUser;
-  dist: NpmDistributable;
+  _npmUser: User;
+  dist: Distributable;
   version: string;
   licenseText?: string;
   peerDependencies?: Record<string, string>;
@@ -50,16 +50,16 @@ export interface NpmVersion extends NpmMetadata {
   module?: string;
 }
 
-export interface NpmPackage extends NpmMetadata {
+export interface Package extends Metadata {
   _rev: string;
   'dist-tags': Record<string, string>;
   readme: string;
   readmeFilename: string;
   time: { created: string; modified: string; [tag: string]: string };
-  versions: Record<string, NpmVersion>;
+  versions: Record<string, Version>;
 }
 
-export const getPackage = async (name: string): Promise<NpmPackage | null> => {
+export const getPackage = async (name: string): Promise<Package | null> => {
   try {
     return await got.get(`${REGISTRY_URL}/${name}`, { cache }).json();
   } catch (error) {
@@ -68,17 +68,17 @@ export const getPackage = async (name: string): Promise<NpmPackage | null> => {
   }
 };
 
-interface NpmSearchPackageEdge {
+interface SearchPackageEdge {
   name: string;
   version: string;
   description?: string;
   keywords?: string[];
   date: string;
-  publisher: NpmUser;
-  maintainers: NpmUser[];
+  publisher: User;
+  maintainers: User[];
 }
 
-interface NpmSearchScore {
+interface SearchScore {
   final: number;
   detail: {
     quality: number;
@@ -87,14 +87,14 @@ interface NpmSearchScore {
   };
 }
 
-interface NpmSearchResult {
-  package: NpmSearchPackageEdge;
-  score: NpmSearchScore;
+interface SearchResult {
+  package: SearchPackageEdge;
+  score: SearchScore;
   searchScore: number;
 }
 
-interface NpmSearchPage {
-  objects: NpmSearchResult[];
+interface SearchPage {
+  objects: SearchResult[];
   total: number;
 }
 
@@ -102,10 +102,10 @@ export const searchPackage = async (args: {
   query: string;
   first: number;
   after?: string | null | undefined;
-}): Promise<(NpmPackage | null)[]> => {
+}): Promise<(Package | null)[]> => {
   const from = args.after ? parseInt(args.after, 10) : 0;
 
-  const result: NpmSearchPage = await got
+  const result: SearchPage = await got
     .get(`${REGISTRY_URL}/-/v1/search`, {
       searchParams: {
         text: args.query,
@@ -121,9 +121,9 @@ export const searchPackage = async (args: {
 };
 
 export const resolveVersion = (
-  packument: NpmPackage,
+  packument: Package,
   selector: string
-): NpmVersion | null => {
+): Version | null => {
   let version: string | null = null;
   let range: string | null = null;
   if (!selector || selector === 'latest') {

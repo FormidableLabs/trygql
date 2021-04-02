@@ -3,15 +3,7 @@
  * Do not make changes to this file directly
  */
 
-import {
-  NpmUser,
-  NpmExternal,
-  NpmMetadata,
-  NpmDistributable,
-  UnpkgFile,
-  NpmVersion,
-  NpmPackage,
-} from './../schema';
+import * as npm from './../data/npm';
 import { core, connectionPluginCore } from 'nexus';
 declare global {
   interface NexusGenCustomInputMethods<TypeName extends string> {
@@ -93,10 +85,18 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenObjects {
-  Distributable: NpmDistributable;
-  External: NpmExternal;
-  File: UnpkgFile;
-  Package: NpmPackage;
+  Distributable: npm.Distributable;
+  External: npm.External;
+  File: {
+    // root type
+    contentType?: string | null; // String
+    integrity?: string | null; // String
+    lastModified?: NexusGenScalars['DateTime'] | null; // DateTime
+    path: string; // String!
+    size?: number | null; // Int
+    url?: NexusGenScalars['URL'] | null; // URL
+  };
+  Package: npm.Package;
   PackageConnection: {
     // root type
     edges?: Array<NexusGenRootTypes['PackageEdge'] | null> | null; // [PackageEdge]
@@ -121,12 +121,12 @@ export interface NexusGenObjects {
     tag: string; // String!
     version: string; // String!
   };
-  User: NpmUser;
-  Version: NpmVersion;
+  User: npm.User;
+  Version: npm.Version;
 }
 
 export interface NexusGenInterfaces {
-  Metadata: NpmMetadata;
+  Metadata: npm.Metadata;
   Node: NexusGenRootTypes['Package'] | NexusGenRootTypes['Version'];
 }
 

@@ -8,6 +8,7 @@
   "scripts": {
     "start": "node dist/out.js",
     "dev": "ts-node-dev --transpile-only --no-notify api/index.ts",
+    "check": "tsc --noEmit",
     "build": "rollup -c scripts/rollup.js"
   },
   "prettier": {

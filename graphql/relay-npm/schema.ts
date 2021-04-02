@@ -14,29 +14,8 @@ import {
   objectType,
 } from 'nexus';
 
-import {
-  NpmUser,
-  NpmExternal,
-  NpmDistributable,
-  NpmMetadata,
-  NpmPackage,
-  NpmVersion,
-  getPackage,
-  searchPackage,
-  resolveVersion,
-} from './data/npm';
-
-import { UnpkgFile, getFiles } from './data/unpkg';
-
-export {
-  NpmUser,
-  NpmExternal,
-  NpmDistributable,
-  NpmMetadata,
-  NpmPackage,
-  NpmVersion,
-  UnpkgFile,
-};
+import { getPackage, searchPackage, resolveVersion } from './data/npm';
+import { getFiles } from './data/unpkg';
 
 export const DateTime = asNexusMethod(GraphQLDateTime, 'dateTime');
 export const EmailAddress = asNexusMethod(GraphQLEmailAddress, 'email');
@@ -48,17 +27,16 @@ export const Node = interfaceType({
   name: 'Node',
   resolveType: (source) => ('_rev' in source ? 'Package' : 'Version'),
   definition(t) {
-    t.id('id', { required: true });
+    t.id('id', {
+      required: true,
+      resolve: (source) => source._id,
+    });
   },
 });
 
 export const User = objectType({
   name: 'User',
   description: 'User registered on the npm registry.',
-  sourceType: {
-    module: __filename,
-    export: 'NpmUser',
-  },
   definition(t) {
     t.string('name', { required: true });
     t.email('email');
@@ -69,10 +47,6 @@ export const User = objectType({
 export const External = objectType({
   name: 'External',
   description: 'Reference to a repository or website',
-  sourceType: {
-    module: __filename,
-    export: 'NpmExternal',
-  },
   definition(t) {
     t.string('type');
     t.url('url', { required: true });
@@ -82,10 +56,6 @@ export const External = objectType({
 export const Metadata = interfaceType({
   name: 'Metadata',
   resolveType: (source) => ('_rev' in source ? 'Package' : 'Version'),
-  sourceType: {
-    module: __filename,
-    export: 'NpmMetadata',
-  },
   definition(t) {
     t.id('id', {
       required: true,
@@ -113,27 +83,22 @@ export const Tag = objectType({
 export const Distributable = objectType({
   name: 'Distributable',
   description: 'Information about an artifact of a version',
-  sourceType: {
-    module: __filename,
-    export: 'NpmDistributable',
-  },
   definition(t) {
     t.string('shasum', { required: true });
     t.url('tarball', { required: true });
     t.string('integrity');
     t.int('fileCount');
     t.int('unpackagedSize');
-    t.string('npmSignature', { resolve: (source) => source['npm-signature'] });
+
+    t.string('npmSignature', {
+      resolve: (source) => source['npm-signature'] || null,
+    });
   },
 });
 
 export const File = objectType({
   name: 'File',
   description: 'File in the distributable as provided by unpkg.com.',
-  sourceType: {
-    module: __filename,
-    export: 'UnpkgFile',
-  },
   definition(t) {
     t.string('path', { required: true });
     t.string('contentType');
@@ -147,10 +112,6 @@ export const File = objectType({
 export const Version = objectType({
   name: 'Version',
   description: 'Published version for an npm package.',
-  sourceType: {
-    module: __filename,
-    export: 'NpmVersion',
-  },
   definition(t) {
     t.implements(Node);
     t.implements(Metadata);
@@ -186,10 +147,6 @@ export const Version = objectType({
 export const Package = objectType({
   name: 'Package',
   description: 'Metadata for an npm package.',
-  sourceType: {
-    module: __filename,
-    export: 'NpmPackage',
-  },
   definition(t) {
     t.implements(Node);
     t.implements(Metadata);

@@ -3,7 +3,7 @@
  * Do not make changes to this file directly
  */
 
-import { RawType, RawPokemon } from './../schema';
+import * as pokemons from './../data/pokemons';
 
 declare global {
   interface NexusGen extends NexusGenTypes {}
@@ -12,7 +12,7 @@ declare global {
 export interface NexusGenInputs {}
 
 export interface NexusGenEnums {
-  PokemonType: RawType;
+  PokemonType: pokemons.PokemonType;
 }
 
 export interface NexusGenScalars {
@@ -40,7 +40,7 @@ export interface NexusGenObjects {
     amount?: number | null; // Int
     name?: string | null; // String
   };
-  Pokemon: RawPokemon;
+  Pokemon: pokemons.Pokemon;
   PokemonDimension: {
     // root type
     maximum?: string | null; // String

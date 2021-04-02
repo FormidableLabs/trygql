@@ -15,6 +15,18 @@ const schema = makeSchema({
     singleQuote: true,
     trailingComma: 'es5',
   },
+  sourceTypes: {
+    modules: [
+      {
+        module: path.join(__dirname, 'data/npm.ts'),
+        alias: 'npm',
+      },
+      {
+        module: path.join(__dirname, 'data/unpkg.ts'),
+        alias: 'unpkg',
+      },
+    ],
+  },
   outputs: {
     schema: path.join(__dirname, '__generated/schema.gen.graphql'),
     typegen: path.join(__dirname, '__generated/nexus.gen.ts'),
