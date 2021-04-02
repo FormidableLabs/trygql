@@ -2,9 +2,10 @@ import Fastify from 'fastify';
 
 import underPressure from 'under-pressure';
 import headers from './headers';
-import basicPokedex from './basic-pokedex';
-import intermittentColors from './intermittent-colors';
-import relayNpm from './relay-npm';
+
+import basicPokedex from '@trygql/basic-pokedex';
+import intermittentColors from '@trygql/intermittent-colors';
+import relayNpm from '@trygql/relay-npm';
 
 const app = Fastify();
 

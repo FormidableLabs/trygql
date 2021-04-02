@@ -3,7 +3,7 @@
  * Do not make changes to this file directly
  */
 
-import { RawType, RawPokemon } from './schema';
+import { RawType, RawPokemon } from './../schema';
 
 declare global {
   interface NexusGen extends NexusGenTypes {}

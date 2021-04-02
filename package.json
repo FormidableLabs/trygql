@@ -1,14 +1,10 @@
 {
   "name": "trygql.dev",
-  "version": "0.0.0",
   "private": true,
-  "source": "api/index.ts",
-  "main": "dist/api/index.js",
-  "license": "MIT",
-  "repository": "https://github.com/kitten/trygql.dev",
-  "bugs": {
-    "url": "https://github.com/kitten/trygql.dev/issues"
-  },
+  "workspaces": [
+    "api",
+    "graphql/*"
+  ],
   "scripts": {
     "start": "node dist/out.js",
     "dev": "ts-node-dev --transpile-only --no-notify api/index.ts",
@@ -25,20 +21,6 @@
     "hooks": {
       "pre-commit": "lint-staged --quiet --relative"
     }
-  },
-  "dependencies": {
-    "@keyv/redis": "^2.1.2",
-    "fastify": "^3.14.1",
-    "fastify-plugin": "^3.0.0",
-    "got": "^11.8.2",
-    "graphql": "^15.5.0",
-    "graphql-scalars": "^1.9.0",
-    "keyv": "^4.0.3",
-    "mercurius": "^7.3.2",
-    "nexus": "^1.0.0",
-    "semver": "^7.3.5",
-    "under-pressure": "^5.6.0",
-    "vary": "^1.1.2"
   },
   "devDependencies": {
     "@rollup/plugin-alias": "^3.1.2",

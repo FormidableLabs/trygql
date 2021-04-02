@@ -11,7 +11,7 @@ import {
   UnpkgFile,
   NpmVersion,
   NpmPackage,
-} from './schema';
+} from './../schema';
 import { core, connectionPluginCore } from 'nexus';
 declare global {
   interface NexusGenCustomInputMethods<TypeName extends string> {

@@ -3,23 +3,9 @@
     "id": "001",
     "name": "Bulbasaur",
     "classification": "Seed Pokémon",
-    "types": [
-      "Grass",
-      "Poison"
-    ],
-    "resistant": [
-      "Water",
-      "Electric",
-      "Grass",
-      "Fighting",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Fire",
-      "Ice",
-      "Flying",
-      "Psychic"
-    ],
+    "types": ["Grass", "Poison"],
+    "resistant": ["Water", "Electric", "Grass", "Fighting", "Fairy"],
+    "weaknesses": ["Fire", "Ice", "Flying", "Psychic"],
     "weight": {
       "minimum": "6.04kg",
       "maximum": "7.76kg"
@@ -81,23 +67,9 @@
     "id": "002",
     "name": "Ivysaur",
     "classification": "Seed Pokémon",
-    "types": [
-      "Grass",
-      "Poison"
-    ],
-    "resistant": [
-      "Water",
-      "Electric",
-      "Grass",
-      "Fighting",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Fire",
-      "Ice",
-      "Flying",
-      "Psychic"
-    ],
+    "types": ["Grass", "Poison"],
+    "resistant": ["Water", "Electric", "Grass", "Fighting", "Fairy"],
+    "weaknesses": ["Fire", "Ice", "Flying", "Psychic"],
     "weight": {
       "minimum": "11.38kg",
       "maximum": "14.63kg"
@@ -161,23 +133,9 @@
     "id": "003",
     "name": "Venusaur",
     "classification": "Seed Pokémon",
-    "types": [
-      "Grass",
-      "Poison"
-    ],
-    "resistant": [
-      "Water",
-      "Electric",
-      "Grass",
-      "Fighting",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Fire",
-      "Ice",
-      "Flying",
-      "Psychic"
-    ],
+    "types": ["Grass", "Poison"],
+    "resistant": ["Water", "Electric", "Grass", "Fighting", "Fairy"],
+    "weaknesses": ["Fire", "Ice", "Flying", "Psychic"],
     "weight": {
       "minimum": "87.5kg",
       "maximum": "112.5kg"
@@ -235,22 +193,9 @@
     "id": "004",
     "name": "Charmander",
     "classification": "Lizard Pokémon",
-    "types": [
-      "Fire"
-    ],
-    "resistant": [
-      "Fire",
-      "Grass",
-      "Ice",
-      "Bug",
-      "Steel",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Water",
-      "Ground",
-      "Rock"
-    ],
+    "types": ["Fire"],
+    "resistant": ["Fire", "Grass", "Ice", "Bug", "Steel", "Fairy"],
+    "weaknesses": ["Water", "Ground", "Rock"],
     "weight": {
       "minimum": "7.44kg",
       "maximum": "9.56kg"
@@ -312,22 +257,9 @@
     "id": "005",
     "name": "Charmeleon",
     "classification": "Flame Pokémon",
-    "types": [
-      "Fire"
-    ],
-    "resistant": [
-      "Fire",
-      "Grass",
-      "Ice",
-      "Bug",
-      "Steel",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Water",
-      "Ground",
-      "Rock"
-    ],
+    "types": ["Fire"],
+    "resistant": ["Fire", "Grass", "Ice", "Bug", "Steel", "Fairy"],
+    "weaknesses": ["Water", "Ground", "Rock"],
     "weight": {
       "minimum": "16.63kg",
       "maximum": "21.38kg"
@@ -391,23 +323,9 @@
     "id": "006",
     "name": "Charizard",
     "classification": "Flame Pokémon",
-    "types": [
-      "Fire",
-      "Flying"
-    ],
-    "resistant": [
-      "Fire",
-      "Grass",
-      "Fighting",
-      "Bug",
-      "Steel",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Water",
-      "Electric",
-      "Rock"
-    ],
+    "types": ["Fire", "Flying"],
+    "resistant": ["Fire", "Grass", "Fighting", "Bug", "Steel", "Fairy"],
+    "weaknesses": ["Water", "Electric", "Rock"],
     "weight": {
       "minimum": "79.19kg",
       "maximum": "101.81kg"
@@ -465,19 +383,9 @@
     "id": "007",
     "name": "Squirtle",
     "classification": "Tiny Turtle Pokémon",
-    "types": [
-      "Water"
-    ],
-    "resistant": [
-      "Fire",
-      "Water",
-      "Ice",
-      "Steel"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Grass"
-    ],
+    "types": ["Water"],
+    "resistant": ["Fire", "Water", "Ice", "Steel"],
+    "weaknesses": ["Electric", "Grass"],
     "weight": {
       "minimum": "7.88kg",
       "maximum": "10.13kg"
@@ -539,19 +447,9 @@
     "id": "008",
     "name": "Wartortle",
     "classification": "Turtle Pokémon",
-    "types": [
-      "Water"
-    ],
-    "resistant": [
-      "Fire",
-      "Water",
-      "Ice",
-      "Steel"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Grass"
-    ],
+    "types": ["Water"],
+    "resistant": ["Fire", "Water", "Ice", "Steel"],
+    "weaknesses": ["Electric", "Grass"],
     "weight": {
       "minimum": "19.69kg",
       "maximum": "25.31kg"
@@ -620,19 +518,9 @@
     "id": "009",
     "name": "Blastoise",
     "classification": "Shellfish Pokémon",
-    "types": [
-      "Water"
-    ],
-    "resistant": [
-      "Fire",
-      "Water",
-      "Ice",
-      "Steel"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Grass"
-    ],
+    "types": ["Water"],
+    "resistant": ["Fire", "Water", "Ice", "Steel"],
+    "weaknesses": ["Electric", "Grass"],
     "weight": {
       "minimum": "74.81kg",
       "maximum": "96.19kg"
@@ -695,19 +583,9 @@
     "id": "010",
     "name": "Caterpie",
     "classification": "Worm Pokémon",
-    "types": [
-      "Bug"
-    ],
-    "resistant": [
-      "Grass",
-      "Fighting",
-      "Ground"
-    ],
-    "weaknesses": [
-      "Fire",
-      "Flying",
-      "Rock"
-    ],
+    "types": ["Bug"],
+    "resistant": ["Grass", "Fighting", "Ground"],
+    "weaknesses": ["Fire", "Flying", "Rock"],
     "weight": {
       "minimum": "2.54kg",
       "maximum": "3.26kg"
@@ -759,19 +637,9 @@
     "id": "011",
     "name": "Metapod",
     "classification": "Cocoon Pokémon",
-    "types": [
-      "Bug"
-    ],
-    "resistant": [
-      "Grass",
-      "Fighting",
-      "Ground"
-    ],
-    "weaknesses": [
-      "Fire",
-      "Flying",
-      "Rock"
-    ],
+    "types": ["Bug"],
+    "resistant": ["Grass", "Fighting", "Ground"],
+    "weaknesses": ["Fire", "Flying", "Rock"],
     "weight": {
       "minimum": "8.66kg",
       "maximum": "11.14kg"
@@ -825,23 +693,9 @@
     "id": "012",
     "name": "Butterfree",
     "classification": "Butterfly Pokémon",
-    "types": [
-      "Bug",
-      "Flying"
-    ],
-    "resistant": [
-      "Grass",
-      "Fighting",
-      "Ground",
-      "Bug"
-    ],
-    "weaknesses": [
-      "Fire",
-      "Electric",
-      "Ice",
-      "Flying",
-      "Rock"
-    ],
+    "types": ["Bug", "Flying"],
+    "resistant": ["Grass", "Fighting", "Ground", "Bug"],
+    "weaknesses": ["Fire", "Electric", "Ice", "Flying", "Rock"],
     "weight": {
       "minimum": "28kg",
       "maximum": "36kg"
@@ -899,23 +753,9 @@
     "id": "013",
     "name": "Weedle",
     "classification": "Hairy Pokémon",
-    "types": [
-      "Bug",
-      "Poison"
-    ],
-    "resistant": [
-      "Grass",
-      "Fighting",
-      "Poison",
-      "Bug",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Fire",
-      "Flying",
-      "Psychic",
-      "Rock"
-    ],
+    "types": ["Bug", "Poison"],
+    "resistant": ["Grass", "Fighting", "Poison", "Bug", "Fairy"],
+    "weaknesses": ["Fire", "Flying", "Psychic", "Rock"],
     "weight": {
       "minimum": "2.8kg",
       "maximum": "3.6kg"
@@ -967,23 +807,9 @@
     "id": "014",
     "name": "Kakuna",
     "classification": "Cocoon Pokémon",
-    "types": [
-      "Bug",
-      "Poison"
-    ],
-    "resistant": [
-      "Grass",
-      "Fighting",
-      "Poison",
-      "Bug",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Fire",
-      "Flying",
-      "Psychic",
-      "Rock"
-    ],
+    "types": ["Bug", "Poison"],
+    "resistant": ["Grass", "Fighting", "Poison", "Bug", "Fairy"],
+    "weaknesses": ["Fire", "Flying", "Psychic", "Rock"],
     "weight": {
       "minimum": "8.75kg",
       "maximum": "11.25kg"
@@ -1037,23 +863,9 @@
     "id": "015",
     "name": "Beedrill",
     "classification": "Poison Bee Pokémon",
-    "types": [
-      "Bug",
-      "Poison"
-    ],
-    "resistant": [
-      "Grass",
-      "Fighting",
-      "Poison",
-      "Bug",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Fire",
-      "Flying",
-      "Psychic",
-      "Rock"
-    ],
+    "types": ["Bug", "Poison"],
+    "resistant": ["Grass", "Fighting", "Poison", "Bug", "Fairy"],
+    "weaknesses": ["Fire", "Flying", "Psychic", "Rock"],
     "weight": {
       "minimum": "25.81kg",
       "maximum": "33.19kg"
@@ -1111,21 +923,9 @@
     "id": "016",
     "name": "Pidgey",
     "classification": "Tiny Bird Pokémon",
-    "types": [
-      "Normal",
-      "Flying"
-    ],
-    "resistant": [
-      "Grass",
-      "Ground",
-      "Bug",
-      "Ghost"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Ice",
-      "Rock"
-    ],
+    "types": ["Normal", "Flying"],
+    "resistant": ["Grass", "Ground", "Bug", "Ghost"],
+    "weaknesses": ["Electric", "Ice", "Rock"],
     "weight": {
       "minimum": "1.57kg",
       "maximum": "2.02kg"
@@ -1187,21 +987,9 @@
     "id": "017",
     "name": "Pidgeotto",
     "classification": "Bird Pokémon",
-    "types": [
-      "Normal",
-      "Flying"
-    ],
-    "resistant": [
-      "Grass",
-      "Ground",
-      "Bug",
-      "Ghost"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Ice",
-      "Rock"
-    ],
+    "types": ["Normal", "Flying"],
+    "resistant": ["Grass", "Ground", "Bug", "Ghost"],
+    "weaknesses": ["Electric", "Ice", "Rock"],
     "weight": {
       "minimum": "26.25kg",
       "maximum": "33.75kg"
@@ -1265,21 +1053,9 @@
     "id": "018",
     "name": "Pidgeot",
     "classification": "Bird Pokémon",
-    "types": [
-      "Normal",
-      "Flying"
-    ],
-    "resistant": [
-      "Grass",
-      "Ground",
-      "Bug",
-      "Ghost"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Ice",
-      "Rock"
-    ],
+    "types": ["Normal", "Flying"],
+    "resistant": ["Grass", "Ground", "Bug", "Ghost"],
+    "weaknesses": ["Electric", "Ice", "Rock"],
     "weight": {
       "minimum": "34.56kg",
       "maximum": "44.44kg"
@@ -1337,15 +1113,9 @@
     "id": "019",
     "name": "Rattata",
     "classification": "Mouse Pokémon",
-    "types": [
-      "Normal"
-    ],
-    "resistant": [
-      "Ghost"
-    ],
-    "weaknesses": [
-      "Fighting"
-    ],
+    "types": ["Normal"],
+    "resistant": ["Ghost"],
+    "weaknesses": ["Fighting"],
     "weight": {
       "minimum": "3.06kg",
       "maximum": "3.94kg"
@@ -1403,15 +1173,9 @@
     "id": "020",
     "name": "Raticate",
     "classification": "Mouse Pokémon",
-    "types": [
-      "Normal"
-    ],
-    "resistant": [
-      "Ghost"
-    ],
-    "weaknesses": [
-      "Fighting"
-    ],
+    "types": ["Normal"],
+    "resistant": ["Ghost"],
+    "weaknesses": ["Fighting"],
     "weight": {
       "minimum": "16.19kg",
       "maximum": "20.81kg"
@@ -1465,21 +1229,9 @@
     "id": "021",
     "name": "Spearow",
     "classification": "Tiny Bird Pokémon",
-    "types": [
-      "Normal",
-      "Flying"
-    ],
-    "resistant": [
-      "Grass",
-      "Ground",
-      "Bug",
-      "Ghost"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Ice",
-      "Rock"
-    ],
+    "types": ["Normal", "Flying"],
+    "resistant": ["Grass", "Ground", "Bug", "Ghost"],
+    "weaknesses": ["Electric", "Ice", "Rock"],
     "weight": {
       "minimum": "1.75kg",
       "maximum": "2.25kg"
@@ -1537,21 +1289,9 @@
     "id": "022",
     "name": "Fearow",
     "classification": "Beak Pokémon",
-    "types": [
-      "Normal",
-      "Flying"
-    ],
-    "resistant": [
-      "Grass",
-      "Ground",
-      "Bug",
-      "Ghost"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Ice",
-      "Rock"
-    ],
+    "types": ["Normal", "Flying"],
+    "resistant": ["Grass", "Ground", "Bug", "Ghost"],
+    "weaknesses": ["Electric", "Ice", "Rock"],
     "weight": {
       "minimum": "33.25kg",
       "maximum": "42.75kg"
@@ -1605,20 +1345,9 @@
     "id": "023",
     "name": "Ekans",
     "classification": "Snake Pokémon",
-    "types": [
-      "Poison"
-    ],
-    "resistant": [
-      "Grass",
-      "Fighting",
-      "Poison",
-      "Bug",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Ground",
-      "Psychic"
-    ],
+    "types": ["Poison"],
+    "resistant": ["Grass", "Fighting", "Poison", "Bug", "Fairy"],
+    "weaknesses": ["Ground", "Psychic"],
     "weight": {
       "minimum": "6.04kg",
       "maximum": "7.76kg"
@@ -1676,20 +1405,9 @@
     "id": "024",
     "name": "Arbok",
     "classification": "Cobra Pokémon",
-    "types": [
-      "Poison"
-    ],
-    "resistant": [
-      "Grass",
-      "Fighting",
-      "Poison",
-      "Bug",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Ground",
-      "Psychic"
-    ],
+    "types": ["Poison"],
+    "resistant": ["Grass", "Fighting", "Poison", "Bug", "Fairy"],
+    "weaknesses": ["Ground", "Psychic"],
     "weight": {
       "minimum": "56.88kg",
       "maximum": "73.13kg"
@@ -1743,17 +1461,9 @@
     "id": "025",
     "name": "Pikachu",
     "classification": "Mouse Pokémon",
-    "types": [
-      "Electric"
-    ],
-    "resistant": [
-      "Electric",
-      "Flying",
-      "Steel"
-    ],
-    "weaknesses": [
-      "Ground"
-    ],
+    "types": ["Electric"],
+    "resistant": ["Electric", "Flying", "Steel"],
+    "weaknesses": ["Ground"],
     "weight": {
       "minimum": "5.25kg",
       "maximum": "6.75kg"
@@ -1811,17 +1521,9 @@
     "id": "026",
     "name": "Raichu",
     "classification": "Mouse Pokémon",
-    "types": [
-      "Electric"
-    ],
-    "resistant": [
-      "Electric",
-      "Flying",
-      "Steel"
-    ],
-    "weaknesses": [
-      "Ground"
-    ],
+    "types": ["Electric"],
+    "resistant": ["Electric", "Flying", "Steel"],
+    "weaknesses": ["Ground"],
     "weight": {
       "minimum": "26.25kg",
       "maximum": "33.75kg"
@@ -1875,19 +1577,9 @@
     "id": "027",
     "name": "Sandshrew",
     "classification": "Mouse Pokémon",
-    "types": [
-      "Ground"
-    ],
-    "resistant": [
-      "Electric",
-      "Poison",
-      "Rock"
-    ],
-    "weaknesses": [
-      "Water",
-      "Grass",
-      "Ice"
-    ],
+    "types": ["Ground"],
+    "resistant": ["Electric", "Poison", "Rock"],
+    "weaknesses": ["Water", "Grass", "Ice"],
     "weight": {
       "minimum": "10.5kg",
       "maximum": "13.5kg"
@@ -1945,19 +1637,9 @@
     "id": "028",
     "name": "Sandslash",
     "classification": "Mouse Pokémon",
-    "types": [
-      "Ground"
-    ],
-    "resistant": [
-      "Electric",
-      "Poison",
-      "Rock"
-    ],
-    "weaknesses": [
-      "Water",
-      "Grass",
-      "Ice"
-    ],
+    "types": ["Ground"],
+    "resistant": ["Electric", "Poison", "Rock"],
+    "weaknesses": ["Water", "Grass", "Ice"],
     "weight": {
       "minimum": "25.81kg",
       "maximum": "33.19kg"
@@ -2011,20 +1693,9 @@
     "id": "029",
     "name": "Nidoran-F",
     "classification": "Poison Pin Pokémon",
-    "types": [
-      "Poison"
-    ],
-    "resistant": [
-      "Grass",
-      "Fighting",
-      "Poison",
-      "Bug",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Ground",
-      "Psychic"
-    ],
+    "types": ["Poison"],
+    "resistant": ["Grass", "Fighting", "Poison", "Bug", "Fairy"],
+    "weaknesses": ["Ground", "Psychic"],
     "weight": {
       "minimum": "6.13kg",
       "maximum": "7.88kg"
@@ -2086,20 +1757,9 @@
     "id": "030",
     "name": "Nidorina",
     "classification": "Poison Pin Pokémon",
-    "types": [
-      "Poison"
-    ],
-    "resistant": [
-      "Grass",
-      "Fighting",
-      "Poison",
-      "Bug",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Ground",
-      "Psychic"
-    ],
+    "types": ["Poison"],
+    "resistant": ["Grass", "Fighting", "Poison", "Bug", "Fairy"],
+    "weaknesses": ["Ground", "Psychic"],
     "weight": {
       "minimum": "17.5kg",
       "maximum": "22.5kg"
@@ -2163,24 +1823,9 @@
     "id": "031",
     "name": "Nidoqueen",
     "classification": "Drill Pokémon",
-    "types": [
-      "Poison",
-      "Ground"
-    ],
-    "resistant": [
-      "Electric",
-      "Fighting",
-      "Poison",
-      "Bug",
-      "Rock",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Water",
-      "Ice",
-      "Ground",
-      "Psychic"
-    ],
+    "types": ["Poison", "Ground"],
+    "resistant": ["Electric", "Fighting", "Poison", "Bug", "Rock", "Fairy"],
+    "weaknesses": ["Water", "Ice", "Ground", "Psychic"],
     "weight": {
       "minimum": "52.5kg",
       "maximum": "67.5kg"
@@ -2238,20 +1883,9 @@
     "id": "032",
     "name": "Nidoran-M",
     "classification": "Poison Pin Pokémon",
-    "types": [
-      "Poison"
-    ],
-    "resistant": [
-      "Grass",
-      "Fighting",
-      "Poison",
-      "Bug",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Ground",
-      "Psychic"
-    ],
+    "types": ["Poison"],
+    "resistant": ["Grass", "Fighting", "Poison", "Bug", "Fairy"],
+    "weaknesses": ["Ground", "Psychic"],
     "weight": {
       "minimum": "7.88kg",
       "maximum": "10.13kg"
@@ -2313,20 +1947,9 @@
     "id": "033",
     "name": "Nidorino",
     "classification": "Poison Pin Pokémon",
-    "types": [
-      "Poison"
-    ],
-    "resistant": [
-      "Grass",
-      "Fighting",
-      "Poison",
-      "Bug",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Ground",
-      "Psychic"
-    ],
+    "types": ["Poison"],
+    "resistant": ["Grass", "Fighting", "Poison", "Bug", "Fairy"],
+    "weaknesses": ["Ground", "Psychic"],
     "weight": {
       "minimum": "17.06kg",
       "maximum": "21.94kg"
@@ -2390,24 +2013,9 @@
     "id": "034",
     "name": "Nidoking",
     "classification": "Drill Pokémon",
-    "types": [
-      "Poison",
-      "Ground"
-    ],
-    "resistant": [
-      "Electric",
-      "Fighting",
-      "Poison",
-      "Bug",
-      "Rock",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Water",
-      "Ice",
-      "Ground",
-      "Psychic"
-    ],
+    "types": ["Poison", "Ground"],
+    "resistant": ["Electric", "Fighting", "Poison", "Bug", "Rock", "Fairy"],
+    "weaknesses": ["Water", "Ice", "Ground", "Psychic"],
     "weight": {
       "minimum": "54.25kg",
       "maximum": "69.75kg"
@@ -2465,19 +2073,9 @@
     "id": "035",
     "name": "Clefairy",
     "classification": "Fairy Pokémon",
-    "types": [
-      "Fairy"
-    ],
-    "resistant": [
-      "Fighting",
-      "Bug",
-      "Dragon",
-      "Dark"
-    ],
-    "weaknesses": [
-      "Poison",
-      "Steel"
-    ],
+    "types": ["Fairy"],
+    "resistant": ["Fighting", "Bug", "Dragon", "Dark"],
+    "weaknesses": ["Poison", "Steel"],
     "weight": {
       "minimum": "6.56kg",
       "maximum": "8.44kg"
@@ -2535,19 +2133,9 @@
     "id": "036",
     "name": "Clefable",
     "classification": "Fairy Pokémon",
-    "types": [
-      "Fairy"
-    ],
-    "resistant": [
-      "Fighting",
-      "Bug",
-      "Dragon",
-      "Dark"
-    ],
-    "weaknesses": [
-      "Poison",
-      "Steel"
-    ],
+    "types": ["Fairy"],
+    "resistant": ["Fighting", "Bug", "Dragon", "Dark"],
+    "weaknesses": ["Poison", "Steel"],
     "weight": {
       "minimum": "35kg",
       "maximum": "45kg"
@@ -2601,22 +2189,9 @@
     "id": "037",
     "name": "Vulpix",
     "classification": "Fox Pokémon",
-    "types": [
-      "Fire"
-    ],
-    "resistant": [
-      "Fire",
-      "Grass",
-      "Ice",
-      "Bug",
-      "Steel",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Water",
-      "Ground",
-      "Rock"
-    ],
+    "types": ["Fire"],
+    "resistant": ["Fire", "Grass", "Ice", "Bug", "Steel", "Fairy"],
+    "weaknesses": ["Water", "Ground", "Rock"],
     "weight": {
       "minimum": "8.66kg",
       "maximum": "11.14kg"
@@ -2674,22 +2249,9 @@
     "id": "038",
     "name": "Ninetales",
     "classification": "Fox Pokémon",
-    "types": [
-      "Fire"
-    ],
-    "resistant": [
-      "Fire",
-      "Grass",
-      "Ice",
-      "Bug",
-      "Steel",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Water",
-      "Ground",
-      "Rock"
-    ],
+    "types": ["Fire"],
+    "resistant": ["Fire", "Grass", "Ice", "Bug", "Steel", "Fairy"],
+    "weaknesses": ["Water", "Ground", "Rock"],
     "weight": {
       "minimum": "17.41kg",
       "maximum": "22.39kg"
@@ -2743,20 +2305,9 @@
     "id": "039",
     "name": "Jigglypuff",
     "classification": "Balloon Pokémon",
-    "types": [
-      "Normal",
-      "Fairy"
-    ],
-    "resistant": [
-      "Bug",
-      "Ghost",
-      "Dragon",
-      "Dark"
-    ],
-    "weaknesses": [
-      "Poison",
-      "Steel"
-    ],
+    "types": ["Normal", "Fairy"],
+    "resistant": ["Bug", "Ghost", "Dragon", "Dark"],
+    "weaknesses": ["Poison", "Steel"],
     "weight": {
       "minimum": "4.81kg",
       "maximum": "6.19kg"
@@ -2814,20 +2365,9 @@
     "id": "040",
     "name": "Wigglytuff",
     "classification": "Balloon Pokémon",
-    "types": [
-      "Normal",
-      "Fairy"
-    ],
-    "resistant": [
-      "Bug",
-      "Ghost",
-      "Dragon",
-      "Dark"
-    ],
-    "weaknesses": [
-      "Poison",
-      "Steel"
-    ],
+    "types": ["Normal", "Fairy"],
+    "resistant": ["Bug", "Ghost", "Dragon", "Dark"],
+    "weaknesses": ["Poison", "Steel"],
     "weight": {
       "minimum": "10.5kg",
       "maximum": "13.5kg"
@@ -2881,23 +2421,9 @@
     "id": "041",
     "name": "Zubat",
     "classification": "Bat Pokémon",
-    "types": [
-      "Poison",
-      "Flying"
-    ],
-    "resistant": [
-      "Grass",
-      "Fighting",
-      "Poison",
-      "Bug",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Ice",
-      "Psychic",
-      "Rock"
-    ],
+    "types": ["Poison", "Flying"],
+    "resistant": ["Grass", "Fighting", "Poison", "Bug", "Fairy"],
+    "weaknesses": ["Electric", "Ice", "Psychic", "Rock"],
     "weight": {
       "minimum": "6.56kg",
       "maximum": "8.44kg"
@@ -2955,23 +2481,9 @@
     "id": "042",
     "name": "Golbat",
     "classification": "Bat Pokémon",
-    "types": [
-      "Poison",
-      "Flying"
-    ],
-    "resistant": [
-      "Grass",
-      "Fighting",
-      "Poison",
-      "Bug",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Ice",
-      "Psychic",
-      "Rock"
-    ],
+    "types": ["Poison", "Flying"],
+    "resistant": ["Grass", "Fighting", "Poison", "Bug", "Fairy"],
+    "weaknesses": ["Electric", "Ice", "Psychic", "Rock"],
     "weight": {
       "minimum": "48.13kg",
       "maximum": "61.88kg"
@@ -3025,23 +2537,9 @@
     "id": "043",
     "name": "Oddish",
     "classification": "Weed Pokémon",
-    "types": [
-      "Grass",
-      "Poison"
-    ],
-    "resistant": [
-      "Water",
-      "Electric",
-      "Grass",
-      "Fighting",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Fire",
-      "Ice",
-      "Flying",
-      "Psychic"
-    ],
+    "types": ["Grass", "Poison"],
+    "resistant": ["Water", "Electric", "Grass", "Fighting", "Fairy"],
+    "weaknesses": ["Fire", "Ice", "Flying", "Psychic"],
     "weight": {
       "minimum": "4.73kg",
       "maximum": "6.08kg"
@@ -3103,23 +2601,9 @@
     "id": "044",
     "name": "Gloom",
     "classification": "Weed Pokémon",
-    "types": [
-      "Grass",
-      "Poison"
-    ],
-    "resistant": [
-      "Water",
-      "Electric",
-      "Grass",
-      "Fighting",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Fire",
-      "Ice",
-      "Flying",
-      "Psychic"
-    ],
+    "types": ["Grass", "Poison"],
+    "resistant": ["Water", "Electric", "Grass", "Fighting", "Fairy"],
+    "weaknesses": ["Fire", "Ice", "Flying", "Psychic"],
     "weight": {
       "minimum": "7.53kg",
       "maximum": "9.68kg"
@@ -3183,23 +2667,9 @@
     "id": "045",
     "name": "Vileplume",
     "classification": "Flower Pokémon",
-    "types": [
-      "Grass",
-      "Poison"
-    ],
-    "resistant": [
-      "Water",
-      "Electric",
-      "Grass",
-      "Fighting",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Fire",
-      "Ice",
-      "Flying",
-      "Psychic"
-    ],
+    "types": ["Grass", "Poison"],
+    "resistant": ["Water", "Electric", "Grass", "Fighting", "Fairy"],
+    "weaknesses": ["Fire", "Ice", "Flying", "Psychic"],
     "weight": {
       "minimum": "16.28kg",
       "maximum": "20.93kg"
@@ -3257,25 +2727,9 @@
     "id": "046",
     "name": "Paras",
     "classification": "Mushroom Pokémon",
-    "types": [
-      "Bug",
-      "Grass"
-    ],
-    "resistant": [
-      "Water",
-      "Electric",
-      "Grass",
-      "Fighting",
-      "Ground"
-    ],
-    "weaknesses": [
-      "Fire",
-      "Ice",
-      "Poison",
-      "Flying",
-      "Bug",
-      "Rock"
-    ],
+    "types": ["Bug", "Grass"],
+    "resistant": ["Water", "Electric", "Grass", "Fighting", "Ground"],
+    "weaknesses": ["Fire", "Ice", "Poison", "Flying", "Bug", "Rock"],
     "weight": {
       "minimum": "4.73kg",
       "maximum": "6.08kg"
@@ -3333,25 +2787,9 @@
     "id": "047",
     "name": "Parasect",
     "classification": "Mushroom Pokémon",
-    "types": [
-      "Bug",
-      "Grass"
-    ],
-    "resistant": [
-      "Water",
-      "Electric",
-      "Grass",
-      "Fighting",
-      "Ground"
-    ],
-    "weaknesses": [
-      "Fire",
-      "Ice",
-      "Poison",
-      "Flying",
-      "Bug",
-      "Rock"
-    ],
+    "types": ["Bug", "Grass"],
+    "resistant": ["Water", "Electric", "Grass", "Fighting", "Ground"],
+    "weaknesses": ["Fire", "Ice", "Poison", "Flying", "Bug", "Rock"],
     "weight": {
       "minimum": "25.81kg",
       "maximum": "33.19kg"
@@ -3405,23 +2843,9 @@
     "id": "048",
     "name": "Venonat",
     "classification": "Insect Pokémon",
-    "types": [
-      "Bug",
-      "Poison"
-    ],
-    "resistant": [
-      "Grass",
-      "Fighting",
-      "Poison",
-      "Bug",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Fire",
-      "Flying",
-      "Psychic",
-      "Rock"
-    ],
+    "types": ["Bug", "Poison"],
+    "resistant": ["Grass", "Fighting", "Poison", "Bug", "Fairy"],
+    "weaknesses": ["Fire", "Flying", "Psychic", "Rock"],
     "weight": {
       "minimum": "26.25kg",
       "maximum": "33.75kg"
@@ -3479,23 +2903,9 @@
     "id": "049",
     "name": "Venomoth",
     "classification": "Poison Moth Pokémon",
-    "types": [
-      "Bug",
-      "Poison"
-    ],
-    "resistant": [
-      "Grass",
-      "Fighting",
-      "Poison",
-      "Bug",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Fire",
-      "Flying",
-      "Psychic",
-      "Rock"
-    ],
+    "types": ["Bug", "Poison"],
+    "resistant": ["Grass", "Fighting", "Poison", "Bug", "Fairy"],
+    "weaknesses": ["Fire", "Flying", "Psychic", "Rock"],
     "weight": {
       "minimum": "10.94kg",
       "maximum": "14.06kg"
@@ -3549,19 +2959,9 @@
     "id": "050",
     "name": "Diglett",
     "classification": "Mole Pokémon",
-    "types": [
-      "Ground"
-    ],
-    "resistant": [
-      "Electric",
-      "Poison",
-      "Rock"
-    ],
-    "weaknesses": [
-      "Water",
-      "Grass",
-      "Ice"
-    ],
+    "types": ["Ground"],
+    "resistant": ["Electric", "Poison", "Rock"],
+    "weaknesses": ["Water", "Grass", "Ice"],
     "weight": {
       "minimum": "0.7kg",
       "maximum": "0.9kg"
@@ -3619,19 +3019,9 @@
     "id": "051",
     "name": "Dugtrio",
     "classification": "Mole Pokémon",
-    "types": [
-      "Ground"
-    ],
-    "resistant": [
-      "Electric",
-      "Poison",
-      "Rock"
-    ],
-    "weaknesses": [
-      "Water",
-      "Grass",
-      "Ice"
-    ],
+    "types": ["Ground"],
+    "resistant": ["Electric", "Poison", "Rock"],
+    "weaknesses": ["Water", "Grass", "Ice"],
     "weight": {
       "minimum": "29.14kg",
       "maximum": "37.46kg"
@@ -3685,15 +3075,9 @@
     "id": "052",
     "name": "Meowth",
     "classification": "Scratch Cat Pokémon",
-    "types": [
-      "Normal"
-    ],
-    "resistant": [
-      "Ghost"
-    ],
-    "weaknesses": [
-      "Fighting"
-    ],
+    "types": ["Normal"],
+    "resistant": ["Ghost"],
+    "weaknesses": ["Fighting"],
     "weight": {
       "minimum": "3.67kg",
       "maximum": "4.72kg"
@@ -3751,15 +3135,9 @@
     "id": "053",
     "name": "Persian",
     "classification": "Classy Cat Pokémon",
-    "types": [
-      "Normal"
-    ],
-    "resistant": [
-      "Ghost"
-    ],
-    "weaknesses": [
-      "Fighting"
-    ],
+    "types": ["Normal"],
+    "resistant": ["Ghost"],
+    "weaknesses": ["Fighting"],
     "weight": {
       "minimum": "28kg",
       "maximum": "36kg"
@@ -3813,19 +3191,9 @@
     "id": "054",
     "name": "Psyduck",
     "classification": "Duck Pokémon",
-    "types": [
-      "Water"
-    ],
-    "resistant": [
-      "Fire",
-      "Water",
-      "Ice",
-      "Steel"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Grass"
-    ],
+    "types": ["Water"],
+    "resistant": ["Fire", "Water", "Ice", "Steel"],
+    "weaknesses": ["Electric", "Grass"],
     "weight": {
       "minimum": "17.15kg",
       "maximum": "22.05kg"
@@ -3883,19 +3251,9 @@
     "id": "055",
     "name": "Golduck",
     "classification": "Duck Pokémon",
-    "types": [
-      "Water"
-    ],
-    "resistant": [
-      "Fire",
-      "Water",
-      "Ice",
-      "Steel"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Grass"
-    ],
+    "types": ["Water"],
+    "resistant": ["Fire", "Water", "Ice", "Steel"],
+    "weaknesses": ["Electric", "Grass"],
     "weight": {
       "minimum": "67.02kg",
       "maximum": "86.17kg"
@@ -3954,19 +3312,9 @@
     "id": "056",
     "name": "Mankey",
     "classification": "Pig Monkey Pokémon",
-    "types": [
-      "Fighting"
-    ],
-    "resistant": [
-      "Bug",
-      "Rock",
-      "Dark"
-    ],
-    "weaknesses": [
-      "Flying",
-      "Psychic",
-      "Fairy"
-    ],
+    "types": ["Fighting"],
+    "resistant": ["Bug", "Rock", "Dark"],
+    "weaknesses": ["Flying", "Psychic", "Fairy"],
     "weight": {
       "minimum": "24.5kg",
       "maximum": "31.5kg"
@@ -4024,19 +3372,9 @@
     "id": "057",
     "name": "Primeape",
     "classification": "Pig Monkey Pokémon",
-    "types": [
-      "Fighting"
-    ],
-    "resistant": [
-      "Bug",
-      "Rock",
-      "Dark"
-    ],
-    "weaknesses": [
-      "Flying",
-      "Psychic",
-      "Fairy"
-    ],
+    "types": ["Fighting"],
+    "resistant": ["Bug", "Rock", "Dark"],
+    "weaknesses": ["Flying", "Psychic", "Fairy"],
     "weight": {
       "minimum": "28kg",
       "maximum": "36kg"
@@ -4090,22 +3428,9 @@
     "id": "058",
     "name": "Growlithe",
     "classification": "Puppy Pokémon",
-    "types": [
-      "Fire"
-    ],
-    "resistant": [
-      "Fire",
-      "Grass",
-      "Ice",
-      "Bug",
-      "Steel",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Water",
-      "Ground",
-      "Rock"
-    ],
+    "types": ["Fire"],
+    "resistant": ["Fire", "Grass", "Ice", "Bug", "Steel", "Fairy"],
+    "weaknesses": ["Water", "Ground", "Rock"],
     "weight": {
       "minimum": "16.63kg",
       "maximum": "21.38kg"
@@ -4163,22 +3488,9 @@
     "id": "059",
     "name": "Arcanine",
     "classification": "Legendary Pokémon",
-    "types": [
-      "Fire"
-    ],
-    "resistant": [
-      "Fire",
-      "Grass",
-      "Ice",
-      "Bug",
-      "Steel",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Water",
-      "Ground",
-      "Rock"
-    ],
+    "types": ["Fire"],
+    "resistant": ["Fire", "Grass", "Ice", "Bug", "Steel", "Fairy"],
+    "weaknesses": ["Water", "Ground", "Rock"],
     "weight": {
       "minimum": "135.63kg",
       "maximum": "174.38kg"
@@ -4232,19 +3544,9 @@
     "id": "060",
     "name": "Poliwag",
     "classification": "Tadpole Pokémon",
-    "types": [
-      "Water"
-    ],
-    "resistant": [
-      "Fire",
-      "Water",
-      "Ice",
-      "Steel"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Grass"
-    ],
+    "types": ["Water"],
+    "resistant": ["Fire", "Water", "Ice", "Steel"],
+    "weaknesses": ["Electric", "Grass"],
     "weight": {
       "minimum": "10.85kg",
       "maximum": "13.95kg"
@@ -4306,19 +3608,9 @@
     "id": "061",
     "name": "Poliwhirl",
     "classification": "Tadpole Pokémon",
-    "types": [
-      "Water"
-    ],
-    "resistant": [
-      "Fire",
-      "Water",
-      "Ice",
-      "Steel"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Grass"
-    ],
+    "types": ["Water"],
+    "resistant": ["Fire", "Water", "Ice", "Steel"],
+    "weaknesses": ["Electric", "Grass"],
     "weight": {
       "minimum": "17.5kg",
       "maximum": "22.5kg"
@@ -4382,26 +3674,9 @@
     "id": "062",
     "name": "Poliwrath",
     "classification": "Tadpole Pokémon",
-    "types": [
-      "Water",
-      "Fighting"
-    ],
-    "resistant": [
-      "Fire",
-      "Water",
-      "Ice",
-      "Bug",
-      "Rock",
-      "Dark",
-      "Steel"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Grass",
-      "Flying",
-      "Psychic",
-      "Fairy"
-    ],
+    "types": ["Water", "Fighting"],
+    "resistant": ["Fire", "Water", "Ice", "Bug", "Rock", "Dark", "Steel"],
+    "weaknesses": ["Electric", "Grass", "Flying", "Psychic", "Fairy"],
     "weight": {
       "minimum": "47.25kg",
       "maximum": "60.75kg"
@@ -4459,18 +3734,9 @@
     "id": "063",
     "name": "Abra",
     "classification": "Psi Pokémon",
-    "types": [
-      "Psychic"
-    ],
-    "resistant": [
-      "Fighting",
-      "Psychic"
-    ],
-    "weaknesses": [
-      "Bug",
-      "Ghost",
-      "Dark"
-    ],
+    "types": ["Psychic"],
+    "resistant": ["Fighting", "Psychic"],
+    "weaknesses": ["Bug", "Ghost", "Dark"],
     "weight": {
       "minimum": "17.06kg",
       "maximum": "21.94kg"
@@ -4528,18 +3794,9 @@
     "id": "064",
     "name": "Kadabra",
     "classification": "Psi Pokémon",
-    "types": [
-      "Psychic"
-    ],
-    "resistant": [
-      "Fighting",
-      "Psychic"
-    ],
-    "weaknesses": [
-      "Bug",
-      "Ghost",
-      "Dark"
-    ],
+    "types": ["Psychic"],
+    "resistant": ["Fighting", "Psychic"],
+    "weaknesses": ["Bug", "Ghost", "Dark"],
     "weight": {
       "minimum": "49.44kg",
       "maximum": "63.56kg"
@@ -4603,18 +3860,9 @@
     "id": "065",
     "name": "Alakazam",
     "classification": "Psi Pokémon",
-    "types": [
-      "Psychic"
-    ],
-    "resistant": [
-      "Fighting",
-      "Psychic"
-    ],
-    "weaknesses": [
-      "Bug",
-      "Ghost",
-      "Dark"
-    ],
+    "types": ["Psychic"],
+    "resistant": ["Fighting", "Psychic"],
+    "weaknesses": ["Bug", "Ghost", "Dark"],
     "weight": {
       "minimum": "42kg",
       "maximum": "54kg"
@@ -4672,19 +3920,9 @@
     "id": "066",
     "name": "Machop",
     "classification": "Superpower Pokémon",
-    "types": [
-      "Fighting"
-    ],
-    "resistant": [
-      "Bug",
-      "Rock",
-      "Dark"
-    ],
-    "weaknesses": [
-      "Flying",
-      "Psychic",
-      "Fairy"
-    ],
+    "types": ["Fighting"],
+    "resistant": ["Bug", "Rock", "Dark"],
+    "weaknesses": ["Flying", "Psychic", "Fairy"],
     "weight": {
       "minimum": "17.06kg",
       "maximum": "21.94kg"
@@ -4746,19 +3984,9 @@
     "id": "067",
     "name": "Machoke",
     "classification": "Superpower Pokémon",
-    "types": [
-      "Fighting"
-    ],
-    "resistant": [
-      "Bug",
-      "Rock",
-      "Dark"
-    ],
-    "weaknesses": [
-      "Flying",
-      "Psychic",
-      "Fairy"
-    ],
+    "types": ["Fighting"],
+    "resistant": ["Bug", "Rock", "Dark"],
+    "weaknesses": ["Flying", "Psychic", "Fairy"],
     "weight": {
       "minimum": "61.69kg",
       "maximum": "79.31kg"
@@ -4822,19 +4050,9 @@
     "id": "068",
     "name": "Machamp",
     "classification": "Superpower Pokémon",
-    "types": [
-      "Fighting"
-    ],
-    "resistant": [
-      "Bug",
-      "Rock",
-      "Dark"
-    ],
-    "weaknesses": [
-      "Flying",
-      "Psychic",
-      "Fairy"
-    ],
+    "types": ["Fighting"],
+    "resistant": ["Bug", "Rock", "Dark"],
+    "weaknesses": ["Flying", "Psychic", "Fairy"],
     "weight": {
       "minimum": "113.75kg",
       "maximum": "146.25kg"
@@ -4892,23 +4110,9 @@
     "id": "069",
     "name": "Bellsprout",
     "classification": "Flower Pokémon",
-    "types": [
-      "Grass",
-      "Poison"
-    ],
-    "resistant": [
-      "Water",
-      "Electric",
-      "Grass",
-      "Fighting",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Fire",
-      "Ice",
-      "Flying",
-      "Psychic"
-    ],
+    "types": ["Grass", "Poison"],
+    "resistant": ["Water", "Electric", "Grass", "Fighting", "Fairy"],
+    "weaknesses": ["Fire", "Ice", "Flying", "Psychic"],
     "weight": {
       "minimum": "3.5kg",
       "maximum": "4.5kg"
@@ -4970,23 +4174,9 @@
     "id": "070",
     "name": "Weepinbell",
     "classification": "Flycatcher Pokémon",
-    "types": [
-      "Grass",
-      "Poison"
-    ],
-    "resistant": [
-      "Water",
-      "Electric",
-      "Grass",
-      "Fighting",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Fire",
-      "Ice",
-      "Flying",
-      "Psychic"
-    ],
+    "types": ["Grass", "Poison"],
+    "resistant": ["Water", "Electric", "Grass", "Fighting", "Fairy"],
+    "weaknesses": ["Fire", "Ice", "Flying", "Psychic"],
     "weight": {
       "minimum": "5.6kg",
       "maximum": "7.2kg"
@@ -5050,23 +4240,9 @@
     "id": "071",
     "name": "Victreebel",
     "classification": "Flycatcher Pokémon",
-    "types": [
-      "Grass",
-      "Poison"
-    ],
-    "resistant": [
-      "Water",
-      "Electric",
-      "Grass",
-      "Fighting",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Fire",
-      "Ice",
-      "Flying",
-      "Psychic"
-    ],
+    "types": ["Grass", "Poison"],
+    "resistant": ["Water", "Electric", "Grass", "Fighting", "Fairy"],
+    "weaknesses": ["Fire", "Ice", "Flying", "Psychic"],
     "weight": {
       "minimum": "13.56kg",
       "maximum": "17.44kg"
@@ -5124,10 +4300,7 @@
     "id": "072",
     "name": "Tentacool",
     "classification": "Jellyfish Pokémon",
-    "types": [
-      "Water",
-      "Poison"
-    ],
+    "types": ["Water", "Poison"],
     "resistant": [
       "Fire",
       "Water",
@@ -5138,11 +4311,7 @@
       "Steel",
       "Fairy"
     ],
-    "weaknesses": [
-      "Electric",
-      "Ground",
-      "Psychic"
-    ],
+    "weaknesses": ["Electric", "Ground", "Psychic"],
     "weight": {
       "minimum": "39.81kg",
       "maximum": "51.19kg"
@@ -5200,10 +4369,7 @@
     "id": "073",
     "name": "Tentacruel",
     "classification": "Jellyfish Pokémon",
-    "types": [
-      "Water",
-      "Poison"
-    ],
+    "types": ["Water", "Poison"],
     "resistant": [
       "Fire",
       "Water",
@@ -5214,11 +4380,7 @@
       "Steel",
       "Fairy"
     ],
-    "weaknesses": [
-      "Electric",
-      "Ground",
-      "Psychic"
-    ],
+    "weaknesses": ["Electric", "Ground", "Psychic"],
     "weight": {
       "minimum": "48.13kg",
       "maximum": "61.88kg"
@@ -5272,26 +4434,9 @@
     "id": "074",
     "name": "Geodude",
     "classification": "Rock Pokémon",
-    "types": [
-      "Rock",
-      "Ground"
-    ],
-    "resistant": [
-      "Normal",
-      "Fire",
-      "Electric",
-      "Poison",
-      "Flying",
-      "Rock"
-    ],
-    "weaknesses": [
-      "Water",
-      "Grass",
-      "Ice",
-      "Fighting",
-      "Ground",
-      "Steel"
-    ],
+    "types": ["Rock", "Ground"],
+    "resistant": ["Normal", "Fire", "Electric", "Poison", "Flying", "Rock"],
+    "weaknesses": ["Water", "Grass", "Ice", "Fighting", "Ground", "Steel"],
     "weight": {
       "minimum": "17.5kg",
       "maximum": "22.5kg"
@@ -5353,26 +4498,9 @@
     "id": "075",
     "name": "Graveler",
     "classification": "Rock Pokémon",
-    "types": [
-      "Rock",
-      "Ground"
-    ],
-    "resistant": [
-      "Normal",
-      "Fire",
-      "Electric",
-      "Poison",
-      "Flying",
-      "Rock"
-    ],
-    "weaknesses": [
-      "Water",
-      "Grass",
-      "Ice",
-      "Fighting",
-      "Ground",
-      "Steel"
-    ],
+    "types": ["Rock", "Ground"],
+    "resistant": ["Normal", "Fire", "Electric", "Poison", "Flying", "Rock"],
+    "weaknesses": ["Water", "Grass", "Ice", "Fighting", "Ground", "Steel"],
     "weight": {
       "minimum": "91.88kg",
       "maximum": "118.13kg"
@@ -5436,26 +4564,9 @@
     "id": "076",
     "name": "Golem",
     "classification": "Megaton Pokémon",
-    "types": [
-      "Rock",
-      "Ground"
-    ],
-    "resistant": [
-      "Normal",
-      "Fire",
-      "Electric",
-      "Poison",
-      "Flying",
-      "Rock"
-    ],
-    "weaknesses": [
-      "Water",
-      "Grass",
-      "Ice",
-      "Fighting",
-      "Ground",
-      "Steel"
-    ],
+    "types": ["Rock", "Ground"],
+    "resistant": ["Normal", "Fire", "Electric", "Poison", "Flying", "Rock"],
+    "weaknesses": ["Water", "Grass", "Ice", "Fighting", "Ground", "Steel"],
     "weight": {
       "minimum": "262.5kg",
       "maximum": "337.5kg"
@@ -5513,22 +4624,9 @@
     "id": "077",
     "name": "Ponyta",
     "classification": "Fire Horse Pokémon",
-    "types": [
-      "Fire"
-    ],
-    "resistant": [
-      "Fire",
-      "Grass",
-      "Ice",
-      "Bug",
-      "Steel",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Water",
-      "Ground",
-      "Rock"
-    ],
+    "types": ["Fire"],
+    "resistant": ["Fire", "Grass", "Ice", "Bug", "Steel", "Fairy"],
+    "weaknesses": ["Water", "Ground", "Rock"],
     "weight": {
       "minimum": "26.25kg",
       "maximum": "33.75kg"
@@ -5586,22 +4684,9 @@
     "id": "078",
     "name": "Rapidash",
     "classification": "Fire Horse Pokémon",
-    "types": [
-      "Fire"
-    ],
-    "resistant": [
-      "Fire",
-      "Grass",
-      "Ice",
-      "Bug",
-      "Steel",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Water",
-      "Ground",
-      "Rock"
-    ],
+    "types": ["Fire"],
+    "resistant": ["Fire", "Grass", "Ice", "Bug", "Steel", "Fairy"],
+    "weaknesses": ["Water", "Ground", "Rock"],
     "weight": {
       "minimum": "83.13kg",
       "maximum": "106.88kg"
@@ -5655,25 +4740,9 @@
     "id": "079",
     "name": "Slowpoke",
     "classification": "Dopey Pokémon",
-    "types": [
-      "Water",
-      "Psychic"
-    ],
-    "resistant": [
-      "Fire",
-      "Water",
-      "Ice",
-      "Fighting",
-      "Psychic",
-      "Steel"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Grass",
-      "Bug",
-      "Ghost",
-      "Dark"
-    ],
+    "types": ["Water", "Psychic"],
+    "resistant": ["Fire", "Water", "Ice", "Fighting", "Psychic", "Steel"],
+    "weaknesses": ["Electric", "Grass", "Bug", "Ghost", "Dark"],
     "weight": {
       "minimum": "31.5kg",
       "maximum": "40.5kg"
@@ -5731,25 +4800,9 @@
     "id": "080",
     "name": "Slowbro",
     "classification": "Hermit Crab Pokémon",
-    "types": [
-      "Water",
-      "Psychic"
-    ],
-    "resistant": [
-      "Fire",
-      "Water",
-      "Ice",
-      "Fighting",
-      "Psychic",
-      "Steel"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Grass",
-      "Bug",
-      "Ghost",
-      "Dark"
-    ],
+    "types": ["Water", "Psychic"],
+    "resistant": ["Fire", "Water", "Ice", "Fighting", "Psychic", "Steel"],
+    "weaknesses": ["Electric", "Grass", "Bug", "Ghost", "Dark"],
     "weight": {
       "minimum": "68.69kg",
       "maximum": "88.31kg"
@@ -5803,10 +4856,7 @@
     "id": "081",
     "name": "Magnemite",
     "classification": "Magnet Pokémon",
-    "types": [
-      "Electric",
-      "Steel"
-    ],
+    "types": ["Electric", "Steel"],
     "resistant": [
       "Normal",
       "Electric",
@@ -5821,11 +4871,7 @@
       "Steel",
       "Fairy"
     ],
-    "weaknesses": [
-      "Fire",
-      "Fighting",
-      "Ground"
-    ],
+    "weaknesses": ["Fire", "Fighting", "Ground"],
     "weight": {
       "minimum": "5.25kg",
       "maximum": "6.75kg"
@@ -5883,10 +4929,7 @@
     "id": "082",
     "name": "Magneton",
     "classification": "Magnet Pokémon",
-    "types": [
-      "Electric",
-      "Steel"
-    ],
+    "types": ["Electric", "Steel"],
     "resistant": [
       "Normal",
       "Electric",
@@ -5901,11 +4944,7 @@
       "Steel",
       "Fairy"
     ],
-    "weaknesses": [
-      "Fire",
-      "Fighting",
-      "Ground"
-    ],
+    "weaknesses": ["Fire", "Fighting", "Ground"],
     "weight": {
       "minimum": "52.5kg",
       "maximum": "67.5kg"
@@ -5959,21 +4998,9 @@
     "id": "083",
     "name": "Farfetch'd",
     "classification": "Wild Duck Pokémon",
-    "types": [
-      "Normal",
-      "Flying"
-    ],
-    "resistant": [
-      "Grass",
-      "Ground",
-      "Bug",
-      "Ghost"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Ice",
-      "Rock"
-    ],
+    "types": ["Normal", "Flying"],
+    "resistant": ["Grass", "Ground", "Bug", "Ghost"],
+    "weaknesses": ["Electric", "Ice", "Rock"],
     "weight": {
       "minimum": "13.13kg",
       "maximum": "16.88kg"
@@ -6019,21 +5046,9 @@
     "id": "084",
     "name": "Doduo",
     "classification": "Twin Bird Pokémon",
-    "types": [
-      "Normal",
-      "Flying"
-    ],
-    "resistant": [
-      "Grass",
-      "Ground",
-      "Bug",
-      "Ghost"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Ice",
-      "Rock"
-    ],
+    "types": ["Normal", "Flying"],
+    "resistant": ["Grass", "Ground", "Bug", "Ghost"],
+    "weaknesses": ["Electric", "Ice", "Rock"],
     "weight": {
       "minimum": "34.3kg",
       "maximum": "44.1kg"
@@ -6091,21 +5106,9 @@
     "id": "085",
     "name": "Dodrio",
     "classification": "Triple Bird Pokémon",
-    "types": [
-      "Normal",
-      "Flying"
-    ],
-    "resistant": [
-      "Grass",
-      "Ground",
-      "Bug",
-      "Ghost"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Ice",
-      "Rock"
-    ],
+    "types": ["Normal", "Flying"],
+    "resistant": ["Grass", "Ground", "Bug", "Ghost"],
+    "weaknesses": ["Electric", "Ice", "Rock"],
     "weight": {
       "minimum": "74.55kg",
       "maximum": "95.85kg"
@@ -6159,19 +5162,9 @@
     "id": "086",
     "name": "Seel",
     "classification": "Sea Lion Pokémon",
-    "types": [
-      "Water"
-    ],
-    "resistant": [
-      "Fire",
-      "Water",
-      "Ice",
-      "Steel"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Grass"
-    ],
+    "types": ["Water"],
+    "resistant": ["Fire", "Water", "Ice", "Steel"],
+    "weaknesses": ["Electric", "Grass"],
     "weight": {
       "minimum": "78.75kg",
       "maximum": "101.25kg"
@@ -6229,20 +5222,9 @@
     "id": "087",
     "name": "Dewgong",
     "classification": "Sea Lion Pokémon",
-    "types": [
-      "Water",
-      "Ice"
-    ],
-    "resistant": [
-      "Water",
-      "Ice"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Grass",
-      "Fighting",
-      "Rock"
-    ],
+    "types": ["Water", "Ice"],
+    "resistant": ["Water", "Ice"],
+    "weaknesses": ["Electric", "Grass", "Fighting", "Rock"],
     "weight": {
       "minimum": "105kg",
       "maximum": "135kg"
@@ -6296,20 +5278,9 @@
     "id": "088",
     "name": "Grimer",
     "classification": "Sludge Pokémon",
-    "types": [
-      "Poison"
-    ],
-    "resistant": [
-      "Grass",
-      "Fighting",
-      "Poison",
-      "Bug",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Ground",
-      "Psychic"
-    ],
+    "types": ["Poison"],
+    "resistant": ["Grass", "Fighting", "Poison", "Bug", "Fairy"],
+    "weaknesses": ["Ground", "Psychic"],
     "weight": {
       "minimum": "26.25kg",
       "maximum": "33.75kg"
@@ -6367,20 +5338,9 @@
     "id": "089",
     "name": "Muk",
     "classification": "Sludge Pokémon",
-    "types": [
-      "Poison"
-    ],
-    "resistant": [
-      "Grass",
-      "Fighting",
-      "Poison",
-      "Bug",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Ground",
-      "Psychic"
-    ],
+    "types": ["Poison"],
+    "resistant": ["Grass", "Fighting", "Poison", "Bug", "Fairy"],
+    "weaknesses": ["Ground", "Psychic"],
     "weight": {
       "minimum": "26.25kg",
       "maximum": "33.75kg"
@@ -6434,19 +5394,9 @@
     "id": "090",
     "name": "Shellder",
     "classification": "Bivalve Pokémon",
-    "types": [
-      "Water"
-    ],
-    "resistant": [
-      "Fire",
-      "Water",
-      "Ice",
-      "Steel"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Grass"
-    ],
+    "types": ["Water"],
+    "resistant": ["Fire", "Water", "Ice", "Steel"],
+    "weaknesses": ["Electric", "Grass"],
     "weight": {
       "minimum": "3.5kg",
       "maximum": "4.5kg"
@@ -6504,20 +5454,9 @@
     "id": "091",
     "name": "Cloyster",
     "classification": "Bivalve Pokémon",
-    "types": [
-      "Water",
-      "Ice"
-    ],
-    "resistant": [
-      "Water",
-      "Ice"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Grass",
-      "Fighting",
-      "Rock"
-    ],
+    "types": ["Water", "Ice"],
+    "resistant": ["Water", "Ice"],
+    "weaknesses": ["Electric", "Grass", "Fighting", "Rock"],
     "weight": {
       "minimum": "115.94kg",
       "maximum": "149.06kg"
@@ -6571,24 +5510,9 @@
     "id": "092",
     "name": "Gastly",
     "classification": "Gas Pokémon",
-    "types": [
-      "Ghost",
-      "Poison"
-    ],
-    "resistant": [
-      "Normal",
-      "Grass",
-      "Fighting",
-      "Poison",
-      "Bug",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Ground",
-      "Psychic",
-      "Ghost",
-      "Dark"
-    ],
+    "types": ["Ghost", "Poison"],
+    "resistant": ["Normal", "Grass", "Fighting", "Poison", "Bug", "Fairy"],
+    "weaknesses": ["Ground", "Psychic", "Ghost", "Dark"],
     "weight": {
       "minimum": "0.09kg",
       "maximum": "0.11kg"
@@ -6650,24 +5574,9 @@
     "id": "093",
     "name": "Haunter",
     "classification": "Gas Pokémon",
-    "types": [
-      "Ghost",
-      "Poison"
-    ],
-    "resistant": [
-      "Normal",
-      "Grass",
-      "Fighting",
-      "Poison",
-      "Bug",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Ground",
-      "Psychic",
-      "Ghost",
-      "Dark"
-    ],
+    "types": ["Ghost", "Poison"],
+    "resistant": ["Normal", "Grass", "Fighting", "Poison", "Bug", "Fairy"],
+    "weaknesses": ["Ground", "Psychic", "Ghost", "Dark"],
     "weight": {
       "minimum": "0.09kg",
       "maximum": "0.11kg"
@@ -6731,24 +5640,9 @@
     "id": "094",
     "name": "Gengar",
     "classification": "Shadow Pokémon",
-    "types": [
-      "Ghost",
-      "Poison"
-    ],
-    "resistant": [
-      "Normal",
-      "Grass",
-      "Fighting",
-      "Poison",
-      "Bug",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Ground",
-      "Psychic",
-      "Ghost",
-      "Dark"
-    ],
+    "types": ["Ghost", "Poison"],
+    "resistant": ["Normal", "Grass", "Fighting", "Poison", "Bug", "Fairy"],
+    "weaknesses": ["Ground", "Psychic", "Ghost", "Dark"],
     "weight": {
       "minimum": "35.44kg",
       "maximum": "45.56kg"
@@ -6806,26 +5700,9 @@
     "id": "095",
     "name": "Onix",
     "classification": "Rock Snake Pokémon",
-    "types": [
-      "Rock",
-      "Ground"
-    ],
-    "resistant": [
-      "Normal",
-      "Fire",
-      "Electric",
-      "Poison",
-      "Flying",
-      "Rock"
-    ],
-    "weaknesses": [
-      "Water",
-      "Grass",
-      "Ice",
-      "Fighting",
-      "Ground",
-      "Steel"
-    ],
+    "types": ["Rock", "Ground"],
+    "resistant": ["Normal", "Fire", "Electric", "Poison", "Flying", "Rock"],
+    "weaknesses": ["Water", "Grass", "Ice", "Fighting", "Ground", "Steel"],
     "weight": {
       "minimum": "183.75kg",
       "maximum": "236.25kg"
@@ -6873,18 +5750,9 @@
     "id": "096",
     "name": "Drowzee",
     "classification": "Hypnosis Pokémon",
-    "types": [
-      "Psychic"
-    ],
-    "resistant": [
-      "Fighting",
-      "Psychic"
-    ],
-    "weaknesses": [
-      "Bug",
-      "Ghost",
-      "Dark"
-    ],
+    "types": ["Psychic"],
+    "resistant": ["Fighting", "Psychic"],
+    "weaknesses": ["Bug", "Ghost", "Dark"],
     "weight": {
       "minimum": "28.35kg",
       "maximum": "36.45kg"
@@ -6942,18 +5810,9 @@
     "id": "097",
     "name": "Hypno",
     "classification": "Hypnosis Pokémon",
-    "types": [
-      "Psychic"
-    ],
-    "resistant": [
-      "Fighting",
-      "Psychic"
-    ],
-    "weaknesses": [
-      "Bug",
-      "Ghost",
-      "Dark"
-    ],
+    "types": ["Psychic"],
+    "resistant": ["Fighting", "Psychic"],
+    "weaknesses": ["Bug", "Ghost", "Dark"],
     "weight": {
       "minimum": "66.15kg",
       "maximum": "85.05kg"
@@ -7007,19 +5866,9 @@
     "id": "098",
     "name": "Krabby",
     "classification": "River Crab Pokémon",
-    "types": [
-      "Water"
-    ],
-    "resistant": [
-      "Fire",
-      "Water",
-      "Ice",
-      "Steel"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Grass"
-    ],
+    "types": ["Water"],
+    "resistant": ["Fire", "Water", "Ice", "Steel"],
+    "weaknesses": ["Electric", "Grass"],
     "weight": {
       "minimum": "5.69kg",
       "maximum": "7.31kg"
@@ -7077,19 +5926,9 @@
     "id": "099",
     "name": "Kingler",
     "classification": "Pincer Pokémon",
-    "types": [
-      "Water"
-    ],
-    "resistant": [
-      "Fire",
-      "Water",
-      "Ice",
-      "Steel"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Grass"
-    ],
+    "types": ["Water"],
+    "resistant": ["Fire", "Water", "Ice", "Steel"],
+    "weaknesses": ["Electric", "Grass"],
     "weight": {
       "minimum": "52.5kg",
       "maximum": "67.5kg"
@@ -7143,17 +5982,9 @@
     "id": "100",
     "name": "Voltorb",
     "classification": "Ball Pokémon",
-    "types": [
-      "Electric"
-    ],
-    "resistant": [
-      "Electric",
-      "Flying",
-      "Steel"
-    ],
-    "weaknesses": [
-      "Ground"
-    ],
+    "types": ["Electric"],
+    "resistant": ["Electric", "Flying", "Steel"],
+    "weaknesses": ["Ground"],
     "weight": {
       "minimum": "9.1kg",
       "maximum": "11.7kg"
@@ -7211,17 +6042,9 @@
     "id": "101",
     "name": "Electrode",
     "classification": "Ball Pokémon",
-    "types": [
-      "Electric"
-    ],
-    "resistant": [
-      "Electric",
-      "Flying",
-      "Steel"
-    ],
-    "weaknesses": [
-      "Ground"
-    ],
+    "types": ["Electric"],
+    "resistant": ["Electric", "Flying", "Steel"],
+    "weaknesses": ["Ground"],
     "weight": {
       "minimum": "58.27kg",
       "maximum": "74.92kg"
@@ -7275,10 +6098,7 @@
     "id": "102",
     "name": "Exeggcute",
     "classification": "Egg Pokémon",
-    "types": [
-      "Grass",
-      "Psychic"
-    ],
+    "types": ["Grass", "Psychic"],
     "resistant": [
       "Water",
       "Electric",
@@ -7287,15 +6107,7 @@
       "Ground",
       "Psychic"
     ],
-    "weaknesses": [
-      "Fire",
-      "Ice",
-      "Poison",
-      "Flying",
-      "Bug",
-      "Ghost",
-      "Dark"
-    ],
+    "weaknesses": ["Fire", "Ice", "Poison", "Flying", "Bug", "Ghost", "Dark"],
     "weight": {
       "minimum": "2.19kg",
       "maximum": "2.81kg"
@@ -7348,10 +6160,7 @@
     "id": "103",
     "name": "Exeggutor",
     "classification": "Coconut Pokémon",
-    "types": [
-      "Grass",
-      "Psychic"
-    ],
+    "types": ["Grass", "Psychic"],
     "resistant": [
       "Water",
       "Electric",
@@ -7360,15 +6169,7 @@
       "Ground",
       "Psychic"
     ],
-    "weaknesses": [
-      "Fire",
-      "Ice",
-      "Poison",
-      "Flying",
-      "Bug",
-      "Ghost",
-      "Dark"
-    ],
+    "weaknesses": ["Fire", "Ice", "Poison", "Flying", "Bug", "Ghost", "Dark"],
     "weight": {
       "minimum": "105kg",
       "maximum": "135kg"
@@ -7422,19 +6223,9 @@
     "id": "104",
     "name": "Cubone",
     "classification": "Lonely Pokémon",
-    "types": [
-      "Ground"
-    ],
-    "resistant": [
-      "Electric",
-      "Poison",
-      "Rock"
-    ],
-    "weaknesses": [
-      "Water",
-      "Grass",
-      "Ice"
-    ],
+    "types": ["Ground"],
+    "resistant": ["Electric", "Poison", "Rock"],
+    "weaknesses": ["Water", "Grass", "Ice"],
     "weight": {
       "minimum": "5.69kg",
       "maximum": "7.31kg"
@@ -7492,19 +6283,9 @@
     "id": "105",
     "name": "Marowak",
     "classification": "Bone Keeper Pokémon",
-    "types": [
-      "Ground"
-    ],
-    "resistant": [
-      "Electric",
-      "Poison",
-      "Rock"
-    ],
-    "weaknesses": [
-      "Water",
-      "Grass",
-      "Ice"
-    ],
+    "types": ["Ground"],
+    "resistant": ["Electric", "Poison", "Rock"],
+    "weaknesses": ["Water", "Grass", "Ice"],
     "weight": {
       "minimum": "39.38kg",
       "maximum": "50.63kg"
@@ -7558,19 +6339,9 @@
     "id": "106",
     "name": "Hitmonlee",
     "classification": "Kicking Pokémon",
-    "types": [
-      "Fighting"
-    ],
-    "resistant": [
-      "Bug",
-      "Rock",
-      "Dark"
-    ],
-    "weaknesses": [
-      "Flying",
-      "Psychic",
-      "Fairy"
-    ],
+    "types": ["Fighting"],
+    "resistant": ["Bug", "Rock", "Dark"],
+    "weaknesses": ["Flying", "Psychic", "Fairy"],
     "weight": {
       "minimum": "43.57kg",
       "maximum": "56.02kg"
@@ -7618,19 +6389,9 @@
     "id": "107",
     "name": "Hitmonchan",
     "classification": "Punching Pokémon",
-    "types": [
-      "Fighting"
-    ],
-    "resistant": [
-      "Bug",
-      "Rock",
-      "Dark"
-    ],
-    "weaknesses": [
-      "Flying",
-      "Psychic",
-      "Fairy"
-    ],
+    "types": ["Fighting"],
+    "resistant": ["Bug", "Rock", "Dark"],
+    "weaknesses": ["Flying", "Psychic", "Fairy"],
     "weight": {
       "minimum": "43.93kg",
       "maximum": "56.48kg"
@@ -7683,15 +6444,9 @@
     "id": "108",
     "name": "Lickitung",
     "classification": "Licking Pokémon",
-    "types": [
-      "Normal"
-    ],
-    "resistant": [
-      "Ghost"
-    ],
-    "weaknesses": [
-      "Fighting"
-    ],
+    "types": ["Normal"],
+    "resistant": ["Ghost"],
+    "weaknesses": ["Fighting"],
     "weight": {
       "minimum": "57.31kg",
       "maximum": "73.69kg"
@@ -7739,20 +6494,9 @@
     "id": "109",
     "name": "Koffing",
     "classification": "Poison Gas Pokémon",
-    "types": [
-      "Poison"
-    ],
-    "resistant": [
-      "Grass",
-      "Fighting",
-      "Poison",
-      "Bug",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Ground",
-      "Psychic"
-    ],
+    "types": ["Poison"],
+    "resistant": ["Grass", "Fighting", "Poison", "Bug", "Fairy"],
+    "weaknesses": ["Ground", "Psychic"],
     "weight": {
       "minimum": "0.88kg",
       "maximum": "1.13kg"
@@ -7810,20 +6554,9 @@
     "id": "110",
     "name": "Weezing",
     "classification": "Poison Gas Pokémon",
-    "types": [
-      "Poison"
-    ],
-    "resistant": [
-      "Grass",
-      "Fighting",
-      "Poison",
-      "Bug",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Ground",
-      "Psychic"
-    ],
+    "types": ["Poison"],
+    "resistant": ["Grass", "Fighting", "Poison", "Bug", "Fairy"],
+    "weaknesses": ["Ground", "Psychic"],
     "weight": {
       "minimum": "8.31kg",
       "maximum": "10.69kg"
@@ -7877,26 +6610,9 @@
     "id": "111",
     "name": "Rhyhorn",
     "classification": "Spikes Pokémon",
-    "types": [
-      "Ground",
-      "Rock"
-    ],
-    "resistant": [
-      "Normal",
-      "Fire",
-      "Electric",
-      "Poison",
-      "Flying",
-      "Rock"
-    ],
-    "weaknesses": [
-      "Water",
-      "Grass",
-      "Ice",
-      "Fighting",
-      "Ground",
-      "Steel"
-    ],
+    "types": ["Ground", "Rock"],
+    "resistant": ["Normal", "Fire", "Electric", "Poison", "Flying", "Rock"],
+    "weaknesses": ["Water", "Grass", "Ice", "Fighting", "Ground", "Steel"],
     "weight": {
       "minimum": "100.63kg",
       "maximum": "129.38kg"
@@ -7954,26 +6670,9 @@
     "id": "112",
     "name": "Rhydon",
     "classification": "Drill Pokémon",
-    "types": [
-      "Ground",
-      "Rock"
-    ],
-    "resistant": [
-      "Normal",
-      "Fire",
-      "Electric",
-      "Poison",
-      "Flying",
-      "Rock"
-    ],
-    "weaknesses": [
-      "Water",
-      "Grass",
-      "Ice",
-      "Fighting",
-      "Ground",
-      "Steel"
-    ],
+    "types": ["Ground", "Rock"],
+    "resistant": ["Normal", "Fire", "Electric", "Poison", "Flying", "Rock"],
+    "weaknesses": ["Water", "Grass", "Ice", "Fighting", "Ground", "Steel"],
     "weight": {
       "minimum": "105kg",
       "maximum": "135kg"
@@ -8027,15 +6726,9 @@
     "id": "113",
     "name": "Chansey",
     "classification": "Egg Pokémon",
-    "types": [
-      "Normal"
-    ],
-    "resistant": [
-      "Ghost"
-    ],
-    "weaknesses": [
-      "Fighting"
-    ],
+    "types": ["Normal"],
+    "resistant": ["Ghost"],
+    "weaknesses": ["Fighting"],
     "weight": {
       "minimum": "30.27kg",
       "maximum": "38.92kg"
@@ -8083,22 +6776,9 @@
     "id": "114",
     "name": "Tangela",
     "classification": "Vine Pokémon",
-    "types": [
-      "Grass"
-    ],
-    "resistant": [
-      "Water",
-      "Electric",
-      "Grass",
-      "Ground"
-    ],
-    "weaknesses": [
-      "Fire",
-      "Ice",
-      "Poison",
-      "Flying",
-      "Bug"
-    ],
+    "types": ["Grass"],
+    "resistant": ["Water", "Electric", "Grass", "Ground"],
+    "weaknesses": ["Fire", "Ice", "Poison", "Flying", "Bug"],
     "weight": {
       "minimum": "30.63kg",
       "maximum": "39.38kg"
@@ -8141,15 +6821,9 @@
     "id": "115",
     "name": "Kangaskhan",
     "classification": "Parent Pokémon",
-    "types": [
-      "Normal"
-    ],
-    "resistant": [
-      "Ghost"
-    ],
-    "weaknesses": [
-      "Fighting"
-    ],
+    "types": ["Normal"],
+    "resistant": ["Ghost"],
+    "weaknesses": ["Fighting"],
     "weight": {
       "minimum": "70kg",
       "maximum": "90kg"
@@ -8199,19 +6873,9 @@
     "id": "116",
     "name": "Horsea",
     "classification": "Dragon Pokémon",
-    "types": [
-      "Water"
-    ],
-    "resistant": [
-      "Fire",
-      "Water",
-      "Ice",
-      "Steel"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Grass"
-    ],
+    "types": ["Water"],
+    "resistant": ["Fire", "Water", "Ice", "Steel"],
+    "weaknesses": ["Electric", "Grass"],
     "weight": {
       "minimum": "7kg",
       "maximum": "9kg"
@@ -8269,19 +6933,9 @@
     "id": "117",
     "name": "Seadra",
     "classification": "Dragon Pokémon",
-    "types": [
-      "Water"
-    ],
-    "resistant": [
-      "Fire",
-      "Water",
-      "Ice",
-      "Steel"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Grass"
-    ],
+    "types": ["Water"],
+    "resistant": ["Fire", "Water", "Ice", "Steel"],
+    "weaknesses": ["Electric", "Grass"],
     "weight": {
       "minimum": "21.88kg",
       "maximum": "28.13kg"
@@ -8335,19 +6989,9 @@
     "id": "118",
     "name": "Goldeen",
     "classification": "Goldfish Pokémon",
-    "types": [
-      "Water"
-    ],
-    "resistant": [
-      "Fire",
-      "Water",
-      "Ice",
-      "Steel"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Grass"
-    ],
+    "types": ["Water"],
+    "resistant": ["Fire", "Water", "Ice", "Steel"],
+    "weaknesses": ["Electric", "Grass"],
     "weight": {
       "minimum": "13.13kg",
       "maximum": "16.88kg"
@@ -8405,19 +7049,9 @@
     "id": "119",
     "name": "Seaking",
     "classification": "Goldfish Pokémon",
-    "types": [
-      "Water"
-    ],
-    "resistant": [
-      "Fire",
-      "Water",
-      "Ice",
-      "Steel"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Grass"
-    ],
+    "types": ["Water"],
+    "resistant": ["Fire", "Water", "Ice", "Steel"],
+    "weaknesses": ["Electric", "Grass"],
     "weight": {
       "minimum": "34.13kg",
       "maximum": "43.88kg"
@@ -8471,19 +7105,9 @@
     "id": "120",
     "name": "Staryu",
     "classification": "Starshape Pokémon",
-    "types": [
-      "Water"
-    ],
-    "resistant": [
-      "Fire",
-      "Water",
-      "Ice",
-      "Steel"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Grass"
-    ],
+    "types": ["Water"],
+    "resistant": ["Fire", "Water", "Ice", "Steel"],
+    "weaknesses": ["Electric", "Grass"],
     "weight": {
       "minimum": "30.19kg",
       "maximum": "38.81kg"
@@ -8541,25 +7165,9 @@
     "id": "121",
     "name": "Starmie",
     "classification": "Mysterious Pokémon",
-    "types": [
-      "Water",
-      "Psychic"
-    ],
-    "resistant": [
-      "Fire",
-      "Water",
-      "Ice",
-      "Fighting",
-      "Psychic",
-      "Steel"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Grass",
-      "Bug",
-      "Ghost",
-      "Dark"
-    ],
+    "types": ["Water", "Psychic"],
+    "resistant": ["Fire", "Water", "Ice", "Fighting", "Psychic", "Steel"],
+    "weaknesses": ["Electric", "Grass", "Bug", "Ghost", "Dark"],
     "weight": {
       "minimum": "70kg",
       "maximum": "90kg"
@@ -8613,20 +7221,9 @@
     "id": "122",
     "name": "Mr. Mime",
     "classification": "Barrier Pokémon",
-    "types": [
-      "Psychic",
-      "Fairy"
-    ],
-    "resistant": [
-      "Fighting",
-      "Psychic",
-      "Dragon"
-    ],
-    "weaknesses": [
-      "Poison",
-      "Ghost",
-      "Steel"
-    ],
+    "types": ["Psychic", "Fairy"],
+    "resistant": ["Fighting", "Psychic", "Dragon"],
+    "weaknesses": ["Poison", "Ghost", "Steel"],
     "weight": {
       "minimum": "47.69kg",
       "maximum": "61.31kg"
@@ -8676,23 +7273,9 @@
     "id": "123",
     "name": "Scyther",
     "classification": "Mantis Pokémon",
-    "types": [
-      "Bug",
-      "Flying"
-    ],
-    "resistant": [
-      "Grass",
-      "Fighting",
-      "Ground",
-      "Bug"
-    ],
-    "weaknesses": [
-      "Fire",
-      "Electric",
-      "Ice",
-      "Flying",
-      "Rock"
-    ],
+    "types": ["Bug", "Flying"],
+    "resistant": ["Grass", "Fighting", "Ground", "Bug"],
+    "weaknesses": ["Fire", "Electric", "Ice", "Flying", "Rock"],
     "weight": {
       "minimum": "49kg",
       "maximum": "63kg"
@@ -8740,22 +7323,9 @@
     "id": "124",
     "name": "Jynx",
     "classification": "Humanshape Pokémon",
-    "types": [
-      "Ice",
-      "Psychic"
-    ],
-    "resistant": [
-      "Ice",
-      "Psychic"
-    ],
-    "weaknesses": [
-      "Fire",
-      "Bug",
-      "Rock",
-      "Ghost",
-      "Dark",
-      "Steel"
-    ],
+    "types": ["Ice", "Psychic"],
+    "resistant": ["Ice", "Psychic"],
+    "weaknesses": ["Fire", "Bug", "Rock", "Ghost", "Dark", "Steel"],
     "weight": {
       "minimum": "35.52kg",
       "maximum": "45.67kg"
@@ -8803,17 +7373,9 @@
     "id": "125",
     "name": "Electabuzz",
     "classification": "Electric Pokémon",
-    "types": [
-      "Electric"
-    ],
-    "resistant": [
-      "Electric",
-      "Flying",
-      "Steel"
-    ],
-    "weaknesses": [
-      "Ground"
-    ],
+    "types": ["Electric"],
+    "resistant": ["Electric", "Flying", "Steel"],
+    "weaknesses": ["Ground"],
     "weight": {
       "minimum": "26.25kg",
       "maximum": "33.75kg"
@@ -8861,22 +7423,9 @@
     "id": "126",
     "name": "Magmar",
     "classification": "Spitfire Pokémon",
-    "types": [
-      "Fire"
-    ],
-    "resistant": [
-      "Fire",
-      "Grass",
-      "Ice",
-      "Bug",
-      "Steel",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Water",
-      "Ground",
-      "Rock"
-    ],
+    "types": ["Fire"],
+    "resistant": ["Fire", "Grass", "Ice", "Bug", "Steel", "Fairy"],
+    "weaknesses": ["Water", "Ground", "Rock"],
     "weight": {
       "minimum": "38.94kg",
       "maximum": "50.06kg"
@@ -8924,19 +7473,9 @@
     "id": "127",
     "name": "Pinsir",
     "classification": "Stagbeetle Pokémon",
-    "types": [
-      "Bug"
-    ],
-    "resistant": [
-      "Grass",
-      "Fighting",
-      "Ground"
-    ],
-    "weaknesses": [
-      "Fire",
-      "Flying",
-      "Rock"
-    ],
+    "types": ["Bug"],
+    "resistant": ["Grass", "Fighting", "Ground"],
+    "weaknesses": ["Fire", "Flying", "Rock"],
     "weight": {
       "minimum": "48.13kg",
       "maximum": "61.88kg"
@@ -8984,15 +7523,9 @@
     "id": "128",
     "name": "Tauros",
     "classification": "Wild Bull Pokémon",
-    "types": [
-      "Normal"
-    ],
-    "resistant": [
-      "Ghost"
-    ],
-    "weaknesses": [
-      "Fighting"
-    ],
+    "types": ["Normal"],
+    "resistant": ["Ghost"],
+    "weaknesses": ["Fighting"],
     "weight": {
       "minimum": "77.35kg",
       "maximum": "99.45kg"
@@ -9042,19 +7575,9 @@
     "id": "129",
     "name": "Magikarp",
     "classification": "Fish Pokémon",
-    "types": [
-      "Water"
-    ],
-    "resistant": [
-      "Fire",
-      "Water",
-      "Ice",
-      "Steel"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Grass"
-    ],
+    "types": ["Water"],
+    "resistant": ["Fire", "Water", "Ice", "Steel"],
+    "weaknesses": ["Electric", "Grass"],
     "weight": {
       "minimum": "8.75kg",
       "maximum": "11.25kg"
@@ -9097,22 +7620,9 @@
     "id": "130",
     "name": "Gyarados",
     "classification": "Atrocious Pokémon",
-    "types": [
-      "Water",
-      "Flying"
-    ],
-    "resistant": [
-      "Fire",
-      "Water",
-      "Fighting",
-      "Ground",
-      "Bug",
-      "Steel"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Rock"
-    ],
+    "types": ["Water", "Flying"],
+    "resistant": ["Fire", "Water", "Fighting", "Ground", "Bug", "Steel"],
+    "weaknesses": ["Electric", "Rock"],
     "weight": {
       "minimum": "205.63kg",
       "maximum": "264.38kg"
@@ -9166,20 +7676,9 @@
     "id": "131",
     "name": "Lapras",
     "classification": "Transport Pokémon",
-    "types": [
-      "Water",
-      "Ice"
-    ],
-    "resistant": [
-      "Water",
-      "Ice"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Grass",
-      "Fighting",
-      "Rock"
-    ],
+    "types": ["Water", "Ice"],
+    "resistant": ["Water", "Ice"],
+    "weaknesses": ["Electric", "Grass", "Fighting", "Rock"],
     "weight": {
       "minimum": "192.5kg",
       "maximum": "247.5kg"
@@ -9227,15 +7726,9 @@
     "id": "132",
     "name": "Ditto",
     "classification": "Transform Pokémon",
-    "types": [
-      "Normal"
-    ],
-    "resistant": [
-      "Ghost"
-    ],
-    "weaknesses": [
-      "Fighting"
-    ],
+    "types": ["Normal"],
+    "resistant": ["Ghost"],
+    "weaknesses": ["Fighting"],
     "weight": {
       "minimum": "3.5kg",
       "maximum": "4.5kg"
@@ -9268,15 +7761,9 @@
     "id": "133",
     "name": "Eevee",
     "classification": "Evolution Pokémon",
-    "types": [
-      "Normal"
-    ],
-    "resistant": [
-      "Ghost"
-    ],
-    "weaknesses": [
-      "Fighting"
-    ],
+    "types": ["Normal"],
+    "resistant": ["Ghost"],
+    "weaknesses": ["Fighting"],
     "weight": {
       "minimum": "5.69kg",
       "maximum": "7.31kg"
@@ -9342,19 +7829,9 @@
     "id": "134",
     "name": "Vaporeon",
     "classification": "Bubble Jet Pokémon",
-    "types": [
-      "Water"
-    ],
-    "resistant": [
-      "Fire",
-      "Water",
-      "Ice",
-      "Steel"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Grass"
-    ],
+    "types": ["Water"],
+    "resistant": ["Fire", "Water", "Ice", "Steel"],
+    "weaknesses": ["Electric", "Grass"],
     "weight": {
       "minimum": "25.38kg",
       "maximum": "32.63kg"
@@ -9403,17 +7880,9 @@
     "id": "135",
     "name": "Jolteon",
     "classification": "Lightning Pokémon",
-    "types": [
-      "Electric"
-    ],
-    "resistant": [
-      "Electric",
-      "Flying",
-      "Steel"
-    ],
-    "weaknesses": [
-      "Ground"
-    ],
+    "types": ["Electric"],
+    "resistant": ["Electric", "Flying", "Steel"],
+    "weaknesses": ["Ground"],
     "weight": {
       "minimum": "21.44kg",
       "maximum": "27.56kg"
@@ -9462,22 +7931,9 @@
     "id": "136",
     "name": "Flareon",
     "classification": "Flame Pokémon",
-    "types": [
-      "Fire"
-    ],
-    "resistant": [
-      "Fire",
-      "Grass",
-      "Ice",
-      "Bug",
-      "Steel",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Water",
-      "Ground",
-      "Rock"
-    ],
+    "types": ["Fire"],
+    "resistant": ["Fire", "Grass", "Ice", "Bug", "Steel", "Fairy"],
+    "weaknesses": ["Water", "Ground", "Rock"],
     "weight": {
       "minimum": "21.88kg",
       "maximum": "28.13kg"
@@ -9526,15 +7982,9 @@
     "id": "137",
     "name": "Porygon",
     "classification": "Virtual Pokémon",
-    "types": [
-      "Normal"
-    ],
-    "resistant": [
-      "Ghost"
-    ],
-    "weaknesses": [
-      "Fighting"
-    ],
+    "types": ["Normal"],
+    "resistant": ["Ghost"],
+    "weaknesses": ["Fighting"],
     "weight": {
       "minimum": "31.94kg",
       "maximum": "41.06kg"
@@ -9582,23 +8032,9 @@
     "id": "138",
     "name": "Omanyte",
     "classification": "Spiral Pokémon",
-    "types": [
-      "Rock",
-      "Water"
-    ],
-    "resistant": [
-      "Normal",
-      "Fire",
-      "Ice",
-      "Poison",
-      "Flying"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Grass",
-      "Fighting",
-      "Ground"
-    ],
+    "types": ["Rock", "Water"],
+    "resistant": ["Normal", "Fire", "Ice", "Poison", "Flying"],
+    "weaknesses": ["Electric", "Grass", "Fighting", "Ground"],
     "weight": {
       "minimum": "6.56kg",
       "maximum": "8.44kg"
@@ -9656,23 +8092,9 @@
     "id": "139",
     "name": "Omastar",
     "classification": "Spiral Pokémon",
-    "types": [
-      "Rock",
-      "Water"
-    ],
-    "resistant": [
-      "Normal",
-      "Fire",
-      "Ice",
-      "Poison",
-      "Flying"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Grass",
-      "Fighting",
-      "Ground"
-    ],
+    "types": ["Rock", "Water"],
+    "resistant": ["Normal", "Fire", "Ice", "Poison", "Flying"],
+    "weaknesses": ["Electric", "Grass", "Fighting", "Ground"],
     "weight": {
       "minimum": "30.63kg",
       "maximum": "39.38kg"
@@ -9726,23 +8148,9 @@
     "id": "140",
     "name": "Kabuto",
     "classification": "Shellfish Pokémon",
-    "types": [
-      "Rock",
-      "Water"
-    ],
-    "resistant": [
-      "Normal",
-      "Fire",
-      "Ice",
-      "Poison",
-      "Flying"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Grass",
-      "Fighting",
-      "Ground"
-    ],
+    "types": ["Rock", "Water"],
+    "resistant": ["Normal", "Fire", "Ice", "Poison", "Flying"],
+    "weaknesses": ["Electric", "Grass", "Fighting", "Ground"],
     "weight": {
       "minimum": "10.06kg",
       "maximum": "12.94kg"
@@ -9800,23 +8208,9 @@
     "id": "141",
     "name": "Kabutops",
     "classification": "Shellfish Pokémon",
-    "types": [
-      "Rock",
-      "Water"
-    ],
-    "resistant": [
-      "Normal",
-      "Fire",
-      "Ice",
-      "Poison",
-      "Flying"
-    ],
-    "weaknesses": [
-      "Electric",
-      "Grass",
-      "Fighting",
-      "Ground"
-    ],
+    "types": ["Rock", "Water"],
+    "resistant": ["Normal", "Fire", "Ice", "Poison", "Flying"],
+    "weaknesses": ["Electric", "Grass", "Fighting", "Ground"],
     "weight": {
       "minimum": "35.44kg",
       "maximum": "45.56kg"
@@ -9870,24 +8264,9 @@
     "id": "142",
     "name": "Aerodactyl",
     "classification": "Fossil Pokémon",
-    "types": [
-      "Rock",
-      "Flying"
-    ],
-    "resistant": [
-      "Normal",
-      "Fire",
-      "Poison",
-      "Flying",
-      "Bug"
-    ],
-    "weaknesses": [
-      "Water",
-      "Electric",
-      "Ice",
-      "Rock",
-      "Steel"
-    ],
+    "types": ["Rock", "Flying"],
+    "resistant": ["Normal", "Fire", "Poison", "Flying", "Bug"],
+    "weaknesses": ["Water", "Electric", "Ice", "Rock", "Steel"],
     "weight": {
       "minimum": "51.63kg",
       "maximum": "66.38kg"
@@ -9935,15 +8314,9 @@
     "id": "143",
     "name": "Snorlax",
     "classification": "Sleeping Pokémon",
-    "types": [
-      "Normal"
-    ],
-    "resistant": [
-      "Ghost"
-    ],
-    "weaknesses": [
-      "Fighting"
-    ],
+    "types": ["Normal"],
+    "resistant": ["Ghost"],
+    "weaknesses": ["Fighting"],
     "weight": {
       "minimum": "402.5kg",
       "maximum": "517.5kg"
@@ -9991,21 +8364,9 @@
     "id": "144",
     "name": "Articuno",
     "classification": "Freeze Pokémon",
-    "types": [
-      "Ice",
-      "Flying"
-    ],
-    "resistant": [
-      "Grass",
-      "Ground",
-      "Bug"
-    ],
-    "weaknesses": [
-      "Fire",
-      "Electric",
-      "Rock",
-      "Steel"
-    ],
+    "types": ["Ice", "Flying"],
+    "resistant": ["Grass", "Ground", "Bug"],
+    "weaknesses": ["Fire", "Electric", "Rock", "Steel"],
     "weight": {
       "minimum": "48.48kg",
       "maximum": "62.33kg"
@@ -10050,21 +8411,9 @@
     "id": "145",
     "name": "Zapdos",
     "classification": "Electric Pokémon",
-    "types": [
-      "Electric",
-      "Flying"
-    ],
-    "resistant": [
-      "Grass",
-      "Fighting",
-      "Flying",
-      "Bug",
-      "Steel"
-    ],
-    "weaknesses": [
-      "Ice",
-      "Rock"
-    ],
+    "types": ["Electric", "Flying"],
+    "resistant": ["Grass", "Fighting", "Flying", "Bug", "Steel"],
+    "weaknesses": ["Ice", "Rock"],
     "weight": {
       "minimum": "46.02kg",
       "maximum": "59.17kg"
@@ -10109,23 +8458,9 @@
     "id": "146",
     "name": "Moltres",
     "classification": "Flame Pokémon",
-    "types": [
-      "Fire",
-      "Flying"
-    ],
-    "resistant": [
-      "Fire",
-      "Grass",
-      "Fighting",
-      "Bug",
-      "Steel",
-      "Fairy"
-    ],
-    "weaknesses": [
-      "Water",
-      "Electric",
-      "Rock"
-    ],
+    "types": ["Fire", "Flying"],
+    "resistant": ["Fire", "Grass", "Fighting", "Bug", "Steel", "Fairy"],
+    "weaknesses": ["Water", "Electric", "Rock"],
     "weight": {
       "minimum": "52.5kg",
       "maximum": "67.5kg"
@@ -10170,20 +8505,9 @@
     "id": "147",
     "name": "Dratini",
     "classification": "Dragon Pokémon",
-    "types": [
-      "Dragon"
-    ],
-    "resistant": [
-      "Fire",
-      "Water",
-      "Electric",
-      "Grass"
-    ],
-    "weaknesses": [
-      "Ice",
-      "Dragon",
-      "Fairy"
-    ],
+    "types": ["Dragon"],
+    "resistant": ["Fire", "Water", "Electric", "Grass"],
+    "weaknesses": ["Ice", "Dragon", "Fairy"],
     "weight": {
       "minimum": "2.89kg",
       "maximum": "3.71kg"
@@ -10236,20 +8560,9 @@
     "id": "148",
     "name": "Dragonair",
     "classification": "Dragon Pokémon",
-    "types": [
-      "Dragon"
-    ],
-    "resistant": [
-      "Fire",
-      "Water",
-      "Electric",
-      "Grass"
-    ],
-    "weaknesses": [
-      "Ice",
-      "Dragon",
-      "Fairy"
-    ],
+    "types": ["Dragon"],
+    "resistant": ["Fire", "Water", "Electric", "Grass"],
+    "weaknesses": ["Ice", "Dragon", "Fairy"],
     "weight": {
       "minimum": "14.44kg",
       "maximum": "18.56kg"
@@ -10308,24 +8621,9 @@
     "id": "149",
     "name": "Dragonite",
     "classification": "Dragon Pokémon",
-    "types": [
-      "Dragon",
-      "Flying"
-    ],
-    "resistant": [
-      "Fire",
-      "Water",
-      "Grass",
-      "Fighting",
-      "Ground",
-      "Bug"
-    ],
-    "weaknesses": [
-      "Ice",
-      "Rock",
-      "Dragon",
-      "Fairy"
-    ],
+    "types": ["Dragon", "Flying"],
+    "resistant": ["Fire", "Water", "Grass", "Fighting", "Ground", "Bug"],
+    "weaknesses": ["Ice", "Rock", "Dragon", "Fairy"],
     "weight": {
       "minimum": "183.75kg",
       "maximum": "236.25kg"
@@ -10383,18 +8681,9 @@
     "id": "150",
     "name": "Mewtwo",
     "classification": "Genetic Pokémon",
-    "types": [
-      "Psychic"
-    ],
-    "resistant": [
-      "Fighting",
-      "Psychic"
-    ],
-    "weaknesses": [
-      "Bug",
-      "Ghost",
-      "Dark"
-    ],
+    "types": ["Psychic"],
+    "resistant": ["Fighting", "Psychic"],
+    "weaknesses": ["Bug", "Ghost", "Dark"],
     "weight": {
       "minimum": "106.75kg",
       "maximum": "137.25kg"
@@ -10444,18 +8733,9 @@
     "id": "151",
     "name": "Mew",
     "classification": "New Species Pokémon",
-    "types": [
-      "Psychic"
-    ],
-    "resistant": [
-      "Fighting",
-      "Psychic"
-    ],
-    "weaknesses": [
-      "Bug",
-      "Ghost",
-      "Dark"
-    ],
+    "types": ["Psychic"],
+    "resistant": ["Fighting", "Psychic"],
+    "weaknesses": ["Bug", "Ghost", "Dark"],
     "weight": {
       "minimum": "3.5kg",
       "maximum": "4.5kg"

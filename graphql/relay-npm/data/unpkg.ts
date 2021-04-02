@@ -1,5 +1,5 @@
 import got from 'got';
-import { getCacheForPrefix } from '../../../util/cache';
+import { getCacheForPrefix } from './cache';
 
 const PKG_URL = 'https://unpkg.com';
 const cache = getCacheForPrefix('npm');

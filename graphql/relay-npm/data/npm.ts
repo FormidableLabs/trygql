@@ -1,7 +1,7 @@
 import got from 'got';
 import * as semver from 'semver';
 
-import { getCacheForPrefix } from '../../../util/cache';
+import { getCacheForPrefix } from './cache';
 
 const REGISTRY_URL = 'https://registry.npmjs.org';
 const cache = getCacheForPrefix('npm');
@@ -101,7 +101,7 @@ interface NpmSearchPage {
 export const searchPackage = async (args: {
   query: string;
   first: number;
-  after: string | null;
+  after?: string | null | undefined;
 }): Promise<(NpmPackage | null)[]> => {
   const from = args.after ? parseInt(args.after, 10) : 0;
 

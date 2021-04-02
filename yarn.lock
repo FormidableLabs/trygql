@@ -1663,10 +1663,10 @@ meow@^3.3.0:
     redent "^1.0.0"
     trim-newlines "^1.0.0"
 
-mercurius@^7.3.2:
-  version "7.3.2"
-  resolved "https://registry.yarnpkg.com/mercurius/-/mercurius-7.3.2.tgz#9d5220215561fd957c39d86e3f033904bc304b10"
-  integrity sha512-bqs4B0J+4VTsBLpJV2LZM4UvdBEXmSRIphtCbyv77L/9SSgYFAUj6QHGj+KGH94Wlxc3ym5BByeQdlGp1JD7Dw==
+mercurius@^7.3.3:
+  version "7.3.3"
+  resolved "https://registry.yarnpkg.com/mercurius/-/mercurius-7.3.3.tgz#0c66936b38d0141466c5db17fe11226f2d5794ff"
+  integrity sha512-LiG5CZ8mj6iDzoqF/t7KYT3FBZxIL2bM50kMLYxotv8Ok/WqXTLYpV7E4FUfBsE8fGvIibSY/doSp8Bc+OaTPQ==
   dependencies:
     "@types/isomorphic-form-data" "^2.0.0"
     end-of-stream "^1.4.4"

@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
     "noEmit": true,
     "lib": ["es2020"],
     "module": "commonjs",
@@ -9,8 +10,8 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "outDir": "./dist",
-    "rootDir": "."
-  }
+    "forceConsistentCasingInFileNames": true
+  },
+  "exclude": ["scripts", "node_modules"],
+  "include": ["api", "graphql"]
 }

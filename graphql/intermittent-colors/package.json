@@ -1,0 +1,13 @@
+{
+  "name": "@trygql/intermittent-colors",
+  "version": "0.0.0",
+  "private": true,
+  "source": "api/index.ts",
+  "dependencies": {
+    "fastify": "^3.14.1",
+    "graphql": "^15.5.0",
+    "graphql-scalars": "^1.9.0",
+    "mercurius": "^7.3.3",
+    "nexus": "^1.0.0"
+  }
+}
