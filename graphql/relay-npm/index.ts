@@ -27,6 +27,10 @@ const schema = makeSchema({
       },
     ],
   },
+  contextType: {
+    module: '@trygql/api/context',
+    export: 'Context',
+  },
   outputs: {
     schema: path.join(__dirname, '__generated/schema.gen.graphql'),
     typegen: path.join(__dirname, '__generated/nexus.gen.ts'),
@@ -35,6 +39,7 @@ const schema = makeSchema({
 
 const plugin: FastifyPluginCallback = (instance) =>
   mercurius(instance, {
+    context: request => request.ctx,
     prefix: '/graphql',
     path: '/relay-npm',
     schema,

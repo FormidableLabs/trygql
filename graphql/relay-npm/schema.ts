@@ -215,10 +215,10 @@ export const Query = objectType({
       args: {
         id: nonNull(idArg()),
       },
-      async resolve(_, { id }) {
+      async resolve(_, { id }, ctx) {
         const [match, scope, name, version] = idRe.exec(id) || [];
         if (!match) return null;
-        const metadata = await getPackage(scope ? `@${scope}/${name}` : name);
+        const metadata = await getPackage(ctx, scope ? `@${scope}/${name}` : name);
         if (!version || !metadata) return metadata;
         return metadata.versions[version] || null;
       },
@@ -230,7 +230,9 @@ export const Query = objectType({
       args: {
         name: nonNull(stringArg()),
       },
-      resolve: (_, { name }) => getPackage(name),
+      resolve(_, { name }, ctx) {
+        return getPackage(ctx, name);
+      },
     });
 
     t.field('resolve', {
@@ -240,8 +242,8 @@ export const Query = objectType({
         name: nonNull(stringArg()),
         selector: nonNull(stringArg()),
       },
-      async resolve(_, { name, selector }) {
-        const packument = await getPackage(name);
+      async resolve(_, { name, selector }, ctx) {
+        const packument = await getPackage(ctx, name);
         if (!packument) return null;
         return resolveVersion(packument, selector);
       },
@@ -258,7 +260,9 @@ export const Query = objectType({
           })
         ),
       },
-      nodes: (_, args) => searchPackage(args),
+      nodes(_, args, ctx) {
+        return searchPackage(ctx, args);
+      },
     });
   },
 });

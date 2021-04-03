@@ -2,6 +2,7 @@ import Fastify from 'fastify';
 
 import underPressure from 'under-pressure';
 import headers from './headers';
+import context from './context';
 
 import basicPokedex from '@trygql/basic-pokedex';
 import intermittentColors from '@trygql/intermittent-colors';
@@ -10,7 +11,9 @@ import relayNpm from '@trygql/relay-npm';
 const app = Fastify();
 
 app.register(headers);
+app.register(context);
 app.register(underPressure, { maxEventLoopDelay: 1000 });
+
 app.register(basicPokedex);
 app.register(intermittentColors);
 app.register(relayNpm);
