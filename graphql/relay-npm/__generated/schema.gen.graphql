@@ -2,6 +2,13 @@
 ### Do not make changes to this file directly
 
 """
+Non-JS asset file in the distributable as provided by skypack.dev.
+"""
+type AssetExport implements Export {
+  path: String!
+}
+
+"""
 A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
 """
 scalar DateTime
@@ -23,34 +30,27 @@ A field whose value conforms to the standard internet email address format as sp
 """
 scalar EmailAddress
 
-"""
-Reference to a repository or website
-"""
-type External {
-  type: String
-  url: URL!
+interface Export {
+  path: String!
 }
 
 """
-File in the distributable as provided by unpkg.com.
+JavaScript file in the distributable as provided by skypack.dev.
 """
-type File {
-  contentType: String
-  integrity: String
-  lastModified: DateTime
+type JSExport implements Export {
+  hasDefaultExport: Boolean
+  namedExports: [String]
   path: String!
-  size: Int
-  url: URL
 }
+
+"""
+The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSONObject
 
 interface Metadata {
-  bugs: External
-  description: String
   id: ID!
-  license: String
-  maintainers: [User]
   name: String!
-  repository: External
 }
 
 interface Node {
@@ -61,22 +61,13 @@ interface Node {
 Metadata for an npm package.
 """
 type Package implements Metadata & Node {
-  bugs: External
-  createdAt: DateTime!
-  description: String
-
   """
   List of registered distributable tags.
   """
   distTags: [Tag!]
   id: ID!
-  license: String
-  maintainers: [User]
   modifiedAt: DateTime!
   name: String!
-  readme: String
-  readmeFilename: String
-  repository: External
 
   """
   Resolve a specific version of the package given a valid semver selector
@@ -190,30 +181,18 @@ A field whose value conforms to the standard URL format as specified in RFC3986:
 scalar URL
 
 """
-User registered on the npm registry.
-"""
-type User {
-  email: EmailAddress
-  name: String!
-  url: URL
-}
-
-"""
 Published version for an npm package.
 """
 type Version implements Metadata & Node {
-  author: User!
-  bugs: External
-  description: String
+  bin: JSONObject
+  dependencies: JSONObject
+  devDependencies: JSONObject
   dist: Distributable!
-  files(limit: Int, skip: Int): [File]
+  engines: JSONObject
+  exports(limit: Int, skip: Int): [Export]
   id: ID!
-  license: String
-  licenseText: String
-  main: String
-  maintainers: [User]
-  module: String
   name: String!
-  repository: External
+  optionalDependencies: JSONObject
+  peerDependencies: JSONObject
   version: String!
 }

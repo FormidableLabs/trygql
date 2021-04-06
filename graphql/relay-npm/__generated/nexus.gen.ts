@@ -4,6 +4,7 @@
  */
 
 import * as npm from './../data/npm';
+import * as skypack from './../data/skypack';
 import { Context } from '@trygql/api/context';
 import { core, connectionPluginCore } from 'nexus';
 declare global {
@@ -22,6 +23,13 @@ declare global {
       fieldName: FieldName,
       opts?: core.CommonInputFieldConfig<TypeName, FieldName>
     ): void; // "EmailAddress";
+    /**
+     * The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+     */
+    object<FieldName extends string>(
+      fieldName: FieldName,
+      opts?: core.CommonInputFieldConfig<TypeName, FieldName>
+    ): void; // "JSONObject";
     /**
      * A field whose value conforms to the standard URL format as specified in RFC3986: https://www.ietf.org/rfc/rfc3986.txt.
      */
@@ -47,6 +55,13 @@ declare global {
       fieldName: FieldName,
       ...opts: core.ScalarOutSpread<TypeName, FieldName>
     ): void; // "EmailAddress";
+    /**
+     * The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+     */
+    object<FieldName extends string>(
+      fieldName: FieldName,
+      ...opts: core.ScalarOutSpread<TypeName, FieldName>
+    ): void; // "JSONObject";
     /**
      * A field whose value conforms to the standard URL format as specified in RFC3986: https://www.ietf.org/rfc/rfc3986.txt.
      */
@@ -82,21 +97,14 @@ export interface NexusGenScalars {
   ID: string;
   DateTime: any;
   EmailAddress: any;
+  JSONObject: any;
   URL: any;
 }
 
 export interface NexusGenObjects {
+  AssetExport: skypack.AssetExport;
   Distributable: npm.Distributable;
-  External: npm.External;
-  File: {
-    // root type
-    contentType?: string | null; // String
-    integrity?: string | null; // String
-    lastModified?: NexusGenScalars['DateTime'] | null; // DateTime
-    path: string; // String!
-    size?: number | null; // Int
-    url?: NexusGenScalars['URL'] | null; // URL
-  };
+  JSExport: skypack.JSExport;
   Package: npm.Package;
   PackageConnection: {
     // root type
@@ -122,11 +130,11 @@ export interface NexusGenObjects {
     tag: string; // String!
     version: string; // String!
   };
-  User: npm.User;
   Version: npm.Version;
 }
 
 export interface NexusGenInterfaces {
+  Export: skypack.Export;
   Metadata: npm.Metadata;
   Node: NexusGenRootTypes['Package'] | NexusGenRootTypes['Version'];
 }
@@ -138,6 +146,10 @@ export type NexusGenRootTypes = NexusGenInterfaces & NexusGenObjects;
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars;
 
 export interface NexusGenFieldTypes {
+  AssetExport: {
+    // field return type
+    path: string; // String!
+  };
   Distributable: {
     // field return type
     fileCount: number | null; // Int
@@ -147,34 +159,18 @@ export interface NexusGenFieldTypes {
     tarball: NexusGenScalars['URL']; // URL!
     unpackagedSize: number | null; // Int
   };
-  External: {
+  JSExport: {
     // field return type
-    type: string | null; // String
-    url: NexusGenScalars['URL']; // URL!
-  };
-  File: {
-    // field return type
-    contentType: string | null; // String
-    integrity: string | null; // String
-    lastModified: NexusGenScalars['DateTime'] | null; // DateTime
+    hasDefaultExport: boolean | null; // Boolean
+    namedExports: Array<string | null> | null; // [String]
     path: string; // String!
-    size: number | null; // Int
-    url: NexusGenScalars['URL'] | null; // URL
   };
   Package: {
     // field return type
-    bugs: NexusGenRootTypes['External'] | null; // External
-    createdAt: NexusGenScalars['DateTime']; // DateTime!
-    description: string | null; // String
     distTags: NexusGenRootTypes['Tag'][] | null; // [Tag!]
     id: string; // ID!
-    license: string | null; // String
-    maintainers: Array<NexusGenRootTypes['User'] | null> | null; // [User]
     modifiedAt: NexusGenScalars['DateTime']; // DateTime!
     name: string; // String!
-    readme: string | null; // String
-    readmeFilename: string | null; // String
-    repository: NexusGenRootTypes['External'] | null; // External
     version: NexusGenRootTypes['Version'] | null; // Version
     versions: NexusGenRootTypes['Version'][] | null; // [Version!]
   };
@@ -208,38 +204,28 @@ export interface NexusGenFieldTypes {
     tag: string; // String!
     version: string; // String!
   };
-  User: {
-    // field return type
-    email: NexusGenScalars['EmailAddress'] | null; // EmailAddress
-    name: string; // String!
-    url: NexusGenScalars['URL'] | null; // URL
-  };
   Version: {
     // field return type
-    author: NexusGenRootTypes['User']; // User!
-    bugs: NexusGenRootTypes['External'] | null; // External
-    description: string | null; // String
+    bin: NexusGenScalars['JSONObject'] | null; // JSONObject
+    dependencies: NexusGenScalars['JSONObject'] | null; // JSONObject
+    devDependencies: NexusGenScalars['JSONObject'] | null; // JSONObject
     dist: NexusGenRootTypes['Distributable']; // Distributable!
-    files: Array<NexusGenRootTypes['File'] | null> | null; // [File]
+    engines: NexusGenScalars['JSONObject'] | null; // JSONObject
+    exports: Array<NexusGenRootTypes['Export'] | null> | null; // [Export]
     id: string; // ID!
-    license: string | null; // String
-    licenseText: string | null; // String
-    main: string | null; // String
-    maintainers: Array<NexusGenRootTypes['User'] | null> | null; // [User]
-    module: string | null; // String
     name: string; // String!
-    repository: NexusGenRootTypes['External'] | null; // External
+    optionalDependencies: NexusGenScalars['JSONObject'] | null; // JSONObject
+    peerDependencies: NexusGenScalars['JSONObject'] | null; // JSONObject
     version: string; // String!
+  };
+  Export: {
+    // field return type
+    path: string; // String!
   };
   Metadata: {
     // field return type
-    bugs: NexusGenRootTypes['External'] | null; // External
-    description: string | null; // String
     id: string; // ID!
-    license: string | null; // String
-    maintainers: Array<NexusGenRootTypes['User'] | null> | null; // [User]
     name: string; // String!
-    repository: NexusGenRootTypes['External'] | null; // External
   };
   Node: {
     // field return type
@@ -248,6 +234,10 @@ export interface NexusGenFieldTypes {
 }
 
 export interface NexusGenFieldTypeNames {
+  AssetExport: {
+    // field return type name
+    path: 'String';
+  };
   Distributable: {
     // field return type name
     fileCount: 'Int';
@@ -257,34 +247,18 @@ export interface NexusGenFieldTypeNames {
     tarball: 'URL';
     unpackagedSize: 'Int';
   };
-  External: {
+  JSExport: {
     // field return type name
-    type: 'String';
-    url: 'URL';
-  };
-  File: {
-    // field return type name
-    contentType: 'String';
-    integrity: 'String';
-    lastModified: 'DateTime';
+    hasDefaultExport: 'Boolean';
+    namedExports: 'String';
     path: 'String';
-    size: 'Int';
-    url: 'URL';
   };
   Package: {
     // field return type name
-    bugs: 'External';
-    createdAt: 'DateTime';
-    description: 'String';
     distTags: 'Tag';
     id: 'ID';
-    license: 'String';
-    maintainers: 'User';
     modifiedAt: 'DateTime';
     name: 'String';
-    readme: 'String';
-    readmeFilename: 'String';
-    repository: 'External';
     version: 'Version';
     versions: 'Version';
   };
@@ -318,38 +292,28 @@ export interface NexusGenFieldTypeNames {
     tag: 'String';
     version: 'String';
   };
-  User: {
-    // field return type name
-    email: 'EmailAddress';
-    name: 'String';
-    url: 'URL';
-  };
   Version: {
     // field return type name
-    author: 'User';
-    bugs: 'External';
-    description: 'String';
+    bin: 'JSONObject';
+    dependencies: 'JSONObject';
+    devDependencies: 'JSONObject';
     dist: 'Distributable';
-    files: 'File';
+    engines: 'JSONObject';
+    exports: 'Export';
     id: 'ID';
-    license: 'String';
-    licenseText: 'String';
-    main: 'String';
-    maintainers: 'User';
-    module: 'String';
     name: 'String';
-    repository: 'External';
+    optionalDependencies: 'JSONObject';
+    peerDependencies: 'JSONObject';
     version: 'String';
+  };
+  Export: {
+    // field return type name
+    path: 'String';
   };
   Metadata: {
     // field return type name
-    bugs: 'External';
-    description: 'String';
     id: 'ID';
-    license: 'String';
-    maintainers: 'User';
     name: 'String';
-    repository: 'External';
   };
   Node: {
     // field return type name
@@ -391,7 +355,7 @@ export interface NexusGenArgTypes {
     };
   };
   Version: {
-    files: {
+    exports: {
       // args
       limit?: number | null; // Int
       skip?: number | null; // Int
@@ -400,11 +364,14 @@ export interface NexusGenArgTypes {
 }
 
 export interface NexusGenAbstractTypeMembers {
+  Export: 'AssetExport' | 'JSExport';
   Metadata: 'Package' | 'Version';
   Node: 'Package' | 'Version';
 }
 
 export interface NexusGenTypeInterfaces {
+  AssetExport: 'Export';
+  JSExport: 'Export';
   Package: 'Metadata' | 'Node';
   Version: 'Metadata' | 'Node';
 }
@@ -423,7 +390,10 @@ export type NexusGenUnionNames = never;
 
 export type NexusGenObjectsUsingAbstractStrategyIsTypeOf = never;
 
-export type NexusGenAbstractsUsingStrategyResolveType = 'Metadata' | 'Node';
+export type NexusGenAbstractsUsingStrategyResolveType =
+  | 'Export'
+  | 'Metadata'
+  | 'Node';
 
 export type NexusGenFeaturesConfig = {
   abstractTypeStrategies: {

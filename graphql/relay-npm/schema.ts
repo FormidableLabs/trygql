@@ -1,6 +1,7 @@
 import {
   GraphQLDateTime,
   GraphQLEmailAddress,
+  GraphQLJSONObject,
   GraphQLURL,
 } from 'graphql-scalars';
 
@@ -16,10 +17,11 @@ import {
 
 import ms from 'ms';
 import { getPackage, searchPackage, resolveVersion } from './data/npm';
-import { getFiles } from './data/unpkg';
+import { getMetadata } from './data/skypack';
 
 export const DateTime = asNexusMethod(GraphQLDateTime, 'dateTime');
 export const EmailAddress = asNexusMethod(GraphQLEmailAddress, 'email');
+export const JSONObject = asNexusMethod(GraphQLJSONObject, 'object');
 export const URL = asNexusMethod(GraphQLURL, 'url');
 
 const idRe = /^(?:@([^/@]+?)[/])?([^/@]+)(?:@([\d.]+(?:-.+)?))?$/;
@@ -35,25 +37,6 @@ export const Node = interfaceType({
   },
 });
 
-export const User = objectType({
-  name: 'User',
-  description: 'User registered on the npm registry.',
-  definition(t) {
-    t.string('name', { required: true });
-    t.email('email');
-    t.url('url');
-  },
-});
-
-export const External = objectType({
-  name: 'External',
-  description: 'Reference to a repository or website',
-  definition(t) {
-    t.string('type');
-    t.url('url', { required: true });
-  },
-});
-
 export const Metadata = interfaceType({
   name: 'Metadata',
   resolveType: (source) => ('_rev' in source ? 'Package' : 'Version'),
@@ -64,11 +47,6 @@ export const Metadata = interfaceType({
     });
 
     t.string('name', { required: true });
-    t.list.field('maintainers', { type: User });
-    t.string('description');
-    t.string('license');
-    t.field('repository', { type: External });
-    t.field('bugs', { type: External });
   },
 });
 
@@ -97,16 +75,32 @@ export const Distributable = objectType({
   },
 });
 
-export const File = objectType({
-  name: 'File',
-  description: 'File in the distributable as provided by unpkg.com.',
+export const Export = interfaceType({
+  name: 'Export',
+  resolveType: (source) => source.type === 'JS' ? 'JSExport' : 'AssetExport',
   definition(t) {
-    t.string('path', { required: true });
-    t.string('contentType');
-    t.string('integrity');
-    t.dateTime('lastModified');
-    t.int('size');
-    t.url('url');
+    t.string('path', {
+      required: true,
+      resolve: (source) => source.id,
+    });
+  },
+});
+
+export const JSExport = objectType({
+  name: 'JSExport',
+  description: 'JavaScript file in the distributable as provided by skypack.dev.',
+  definition(t) {
+    t.implements(Export);
+    t.boolean('hasDefaultExport');
+    t.list.string('namedExports');
+  },
+});
+
+export const AssetExport = objectType({
+  name: 'AssetExport',
+  description: 'Non-JS asset file in the distributable as provided by skypack.dev.',
+  definition(t) {
+    t.implements(Export);
   },
 });
 
@@ -119,25 +113,25 @@ export const Version = objectType({
 
     t.field('dist', { type: Distributable, required: true });
     t.string('version', { required: true });
-    t.string('licenseText');
-    t.string('main');
-    t.string('module');
 
-    t.field('author', {
-      type: User,
-      required: true,
-      resolve: (source) => source._npmUser,
-    });
+    t.object('optionalDependencies');
+    t.object('peerDependencies');
+    t.object('devDependencies');
+    t.object('dependencies');
+    t.object('engines');
+    t.object('bin');
 
-    t.list.field('files', {
-      type: File,
+    t.list.field('exports', {
+      type: Export,
       args: {
         limit: intArg(),
         skip: intArg(),
       },
       ttl: ms('1h'),
       async resolve(source, { limit, skip }) {
-        let list = await getFiles(source.name, source.version);
+        const metadata = await getMetadata(source.name, source.version);
+        if (!metadata) return null;
+        let list = Object.values(metadata.packageExports || {});
         if (skip != null) list = list.slice(skip);
         if (limit != null) list = list.slice(0, limit);
         return list;
@@ -153,17 +147,9 @@ export const Package = objectType({
     t.implements(Node);
     t.implements(Metadata);
 
-    t.string('readme');
-    t.string('readmeFilename');
-
-    t.dateTime('createdAt', {
-      required: true,
-      resolve: (source) => source.time.created,
-    });
-
     t.dateTime('modifiedAt', {
       required: true,
-      resolve: (source) => source.time.modified,
+      resolve: (source) => source.modified,
     });
 
     t.list.field('distTags', {

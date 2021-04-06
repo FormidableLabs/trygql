@@ -6,18 +6,10 @@ const npm = got.extend({
   prefixUrl: 'https://registry.npmjs.org',
   responseType: 'json',
   dnsCache,
+  headers: {
+    accept: 'application/vnd.npm.install-v1+json; q=1.0, application/json; q=0.8, */*',
+  },
 });
-
-export interface User {
-  name: string;
-  email?: string;
-  url?: string;
-}
-
-export interface External {
-  type?: string;
-  url: string;
-}
 
 export interface Distributable {
   shasum: string;
@@ -31,33 +23,24 @@ export interface Distributable {
 export interface Metadata {
   _id: string;
   name: string;
-  maintainers: User[];
-  description?: string;
-  license?: string;
-  repository?: External;
-  bugs?: External;
 }
 
 export interface Version extends Metadata {
-  _shasum: string;
-  _npmUser: User;
+  deprecated?: string | null;
   dist: Distributable;
   version: string;
-  licenseText?: string;
+  optionalDependencies?: Record<string, string>;
   peerDependencies?: Record<string, string>;
   devDependendencies?: Record<string, string>;
   dependencies?: Record<string, string>;
-  scripts?: Record<string, string>;
-  main?: string;
-  module?: string;
+  bin?: Record<string, string>;
+  engines?: Record<string, string>;
 }
 
 export interface Package extends Metadata {
   _rev: string;
   'dist-tags': Record<string, string>;
-  readme: string;
-  readmeFilename: string;
-  time: { created: string; modified: string; [tag: string]: string };
+  modified: string;
   versions: Record<string, Version>;
 }
 
@@ -76,8 +59,6 @@ interface SearchPackageEdge {
   description?: string;
   keywords?: string[];
   date: string;
-  publisher: User;
-  maintainers: User[];
 }
 
 interface SearchScore {

@@ -25,8 +25,8 @@ const plugin: FastifyPluginCallback = (instance) => {
           alias: 'npm',
         },
         {
-          module: path.join(__dirname, 'data/unpkg.ts'),
-          alias: 'unpkg',
+          module: path.join(__dirname, 'data/skypack.ts'),
+          alias: 'skypack',
         },
       ],
     },
