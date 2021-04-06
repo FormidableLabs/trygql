@@ -17,7 +17,7 @@ const redisURL = process.env.FLY_REDIS_CACHE_URL;
 
 const contextPlugin: FastifyPluginCallback = (instance, _, next) => {
   const store = redisURL
-    ? new RedisStore(redisURL)
+    ? new RedisStore(instance, redisURL)
     : undefined;
 
   instance.decorateRequest('ctx', null);

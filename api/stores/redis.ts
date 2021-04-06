@@ -1,25 +1,24 @@
+import ms from 'ms';
 import Redis from 'ioredis';
+import { FastifyInstance, FastifyLoggerInstance } from 'fastify';
 import { ConnectionString } from 'connection-string';
-import DataLoader from 'dataloader';
 import { Store } from 'keyv';
 
 export class RedisStore implements Store<string> {
   private client: Redis.Redis;
-  private loader: DataLoader<string, string | null>;
+  private log: FastifyLoggerInstance;
 
-  constructor(uri: string) {
+  constructor(app: FastifyInstance, uri: string) {
     const redisCredentials = new ConnectionString(uri);
-
+    this.log = app.log;
     this.client = new Redis({
       host: redisCredentials.hosts![0].name,
       port: redisCredentials.hosts![0].port,
       password: redisCredentials.password,
+      dropBufferSupport: true,
+      enableAutoPipelining: true,
+      keepAlive: ms('10m')
     });
-
-    this.loader = new DataLoader(
-      keys => this.client.mget(...keys),
-      { cache: false }
-    );
   }
 
   async set(
@@ -27,19 +26,20 @@ export class RedisStore implements Store<string> {
     value: string,
     ttl?: number,
   ): Promise<void> {
-    if (ttl != null) {
-      await this.client.set(key, value, 'EX', ttl);
-    } else {
-      await this.client.set(key, value);
+    try {
+      if (ttl != null) {
+        await this.client.set(key, value, 'EX', ttl);
+      } else {
+        await this.client.set(key, value);
+      }
+    } catch (error) {
+      this.log.error(error.message);
     }
   }
 
   async get(key: string): Promise<string | undefined> {
-    const reply = await this.loader.load(key);
-    if (reply !== null) {
-      return reply;
-    }
-    return;
+    const reply = await this.client.get(key);
+    return reply != null ? reply : undefined;
   }
 
   async delete(key: string): Promise<boolean> {

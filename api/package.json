@@ -5,7 +5,6 @@
   "source": "api/index.ts",
   "dependencies": {
     "connection-string": "^4.3.2",
-    "dataloader": "^2.0.0",
     "fastify": "^3.14.1",
     "fastify-plugin": "^3.0.0",
     "ioredis": "^4.25.0",
