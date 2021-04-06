@@ -72,8 +72,8 @@ export const getPackage = async (
   name: string
 ): Promise<Package | null> => {
   try {
-    const { store: cache } = context;
-    return await npm.get(name, { cache }).json();
+    const { store: cache, lookup: dnsCache } = context;
+    return await npm.get(name, { cache, dnsCache }).json();
   } catch (error) {
     if (error.response && error.response.statusCode === 404) return null;
     throw error;
@@ -115,11 +115,12 @@ export const searchPackage = async (context: Context, args: {
   first: number;
   after?: string | null | undefined;
 }): Promise<(Package | null)[]> => {
-  const { store: cache } = context;
+  const { store: cache, lookup: dnsCache } = context;
   const from = args.after ? parseInt(args.after, 10) : 0;
   const result: SearchPage = await npm
     .get('/-/v1/search', {
       cache,
+      dnsCache,
       searchParams: {
         text: args.query,
         size: args.first,

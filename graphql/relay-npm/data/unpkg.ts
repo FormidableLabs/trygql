@@ -50,10 +50,10 @@ export const getFiles = async (
   version: string
 ): Promise<UnpkgFile[]> => {
   try {
-    const { store: cache } = context;
+    const { store: cache, lookup: dnsCache } = context;
     const path = `/${name}@${version}`;
     const meta: UnpkgDirectory = await unpkg
-      .get(`${path}/?meta`, { cache })
+      .get(`${path}/?meta`, { cache, dnsCache })
       .json();
     const files = collectFiles(meta);
 

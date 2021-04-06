@@ -30,13 +30,16 @@ export interface Location {
 export const searchLocations = async (
   context: Context,
   query: string
-): Promise<Location[]> =>
-  metaweather
+): Promise<Location[]> => {
+  const { store: cache, lookup: dnsCache } = context;
+  return metaweather
     .get('location/search/', {
-      cache: context.store,
+      cache,
+      dnsCache,
       searchParams: { query },
     })
     .json();
+};
 
 export type WeatherState =
   | 'Snow'
@@ -110,8 +113,9 @@ export const getForecast = async (
   woeid: number | string
 ): Promise<Forecast | null> => {
   try {
+    const { store: cache, lookup: dnsCache } = context;
     return await metaweather
-      .get(`location/${woeid}/`, { cache: context.store })
+      .get(`location/${woeid}/`, { cache, dnsCache })
       .json();
   } catch (error) {
     if (error.response && error.response.statusCode === 404) return null;

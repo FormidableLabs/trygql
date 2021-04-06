@@ -4,12 +4,19 @@ import { FastifyInstance, FastifyLoggerInstance } from 'fastify';
 import { ConnectionString } from 'connection-string';
 import { Store } from 'keyv';
 
+export interface Options {
+  uri: string;
+  minTtl?: number;
+}
+
 export class RedisStore implements Store<string> {
   private client: Redis.Redis;
   private log: FastifyLoggerInstance;
+  private minTtl: number;
 
-  constructor(app: FastifyInstance, uri: string) {
-    const redisCredentials = new ConnectionString(uri);
+  constructor(app: FastifyInstance, opts: Options) {
+    const redisCredentials = new ConnectionString(opts.uri);
+    this.minTtl = opts.minTtl || 0;
     this.log = app.log;
     this.client = new Redis({
       host: redisCredentials.hosts![0].name,
@@ -25,10 +32,11 @@ export class RedisStore implements Store<string> {
   async set(
     key: string,
     value: string,
-    ttl?: number,
+    maxTtl?: number,
   ): Promise<void> {
     try {
-      if (ttl != null) {
+      if (maxTtl != null) {
+        const ttl = Math.max(this.minTtl, maxTtl);
         await this.client.set(key, value, 'EX', ttl);
       } else {
         await this.client.set(key, value);

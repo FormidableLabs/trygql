@@ -27,7 +27,7 @@ app.get('/health', (_req, res) => {
 app.listen(process.env.PORT || 8080, '0.0.0.0')
   .catch(error => {
     if (error.errors) {
-      error.errors.forEach(error => console.error(error.toString()));
+      error.errors.forEach((error: Error) => console.error(error.toString()));
     } else {
       console.error(error.toString());
     }
