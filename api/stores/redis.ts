@@ -27,6 +27,10 @@ export class RedisStore implements Store<string> {
       keepAlive: ms('10m'),
       reconnectOnError: () => true,
     });
+
+    this.client.on('error', error => {
+      this.log.error(`${error}`);
+    });
   }
 
   async set(

@@ -9,7 +9,11 @@ import intermittentColors from '@trygql/intermittent-colors';
 import relayNpm from '@trygql/relay-npm';
 import apqWeather from '@trygql/apq-weather';
 
-const app = Fastify();
+const app = Fastify({
+  logger: {
+    level: 'warn',
+  }
+});
 
 app.register(headers);
 app.register(context);
