@@ -73,7 +73,7 @@ export const WeatherState = enumType({
     'Snow',
     'Sleet',
     'Hail',
-    'Thunderstorm',
+    'Thunder',
     'HeavyRain',
     'LightRain',
     'Showers',
@@ -126,13 +126,18 @@ export const Weather = objectType({
     t.field('state', {
       type: WeatherState,
       resolve: parent => {
-        switch (parent.weather_state_name) {
-          case 'Heavy Rain': return 'HeavyRain';
-          case 'Light Rain': return 'LightRain';
-          case 'Heavy Cloud': return 'HeavyCloud';
-          case 'Light Cloud': return 'LightCloud';
-          default:
-            return parent.weather_state_name as any;
+        switch (parent.weather_state_abbr) {
+          case 'sn': return 'Snow';
+          case 'sl': return 'Sleet';
+          case 'h': return 'Hail';
+          case 't': return 'Thunder';
+          case 'hr': return 'HeavyRain';
+          case 'lr': return 'LightRain';
+          case 's': return 'Showers';
+          case 'hc': return 'HeavyCloud';
+          case 'lc': return 'LightCloud';
+          case 'c': return 'Clear';
+          default: return null as any;
         }
       },
     });

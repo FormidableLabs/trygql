@@ -7,11 +7,11 @@ const metaweather = got.extend({
   dnsCache,
 });
 
-export enum LocationType {
+export const enum LocationType {
   City = 'City',
   Region = 'Region / State / Province',
   Country = 'Country',
-  Continent = 'Continent'
+  Continent = 'Continent',
 }
 
 export interface Location {
@@ -26,17 +26,18 @@ export const searchLocations = async (query: string): Promise<Location[]> =>
     .get('location/search/', { searchParams: { query } })
     .json();
 
-export type WeatherState =
-  | 'Snow'
-  | 'Sleet'
-  | 'Hail'
-  | 'Thunderstorm'
-  | 'Heavy Rain'
-  | 'Light Rain'
-  | 'Showers'
-  | 'Heavy Cloud'
-  | 'Light Cloud'
-  | 'Clear';
+export enum WeatherState {
+  Snow = 'sn',
+  Sleet = 'sl',
+  Hail = 'h',
+  Thunder = 't',
+  HeavyRain = 'hr',
+  LightRain = 'lr',
+  Showers = 's',
+  HeavyCloud = 'hc',
+  LightCloud = 'lc',
+  Clear = 'c',
+}
 
 export type CompassPoint =
   | 'N'
@@ -58,8 +59,8 @@ export type CompassPoint =
 
 export interface Weather {
   id: number;
-  weather_state_name: WeatherState;
-  weather_state_abbr: string;
+  weather_state_name: string;
+  weather_state_abbr: WeatherState;
   wind_direction_compass: CompassPoint;
   created: string;
   applicable_date: string;

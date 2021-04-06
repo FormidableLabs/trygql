@@ -154,7 +154,7 @@ enum WeatherState {
   Showers
   Sleet
   Snow
-  Thunderstorm
+  Thunder
 }
 
 """
