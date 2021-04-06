@@ -11,6 +11,10 @@ declare module 'fastify' {
   interface FastifyRequest {
     ctx: Context;
   }
+
+  interface FastifyInstance {
+    store: Store<any> | undefined;
+  }
 }
 
 const redisURL = process.env.FLY_REDIS_CACHE_URL;
@@ -20,7 +24,9 @@ const contextPlugin: FastifyPluginCallback = (instance, _, next) => {
     ? new RedisStore(instance, redisURL)
     : undefined;
 
+  instance.decorate('store', store);
   instance.decorateRequest('ctx', null);
+
   instance.addHook('preHandler', (request, _reply, done) => {
     request.ctx = { store };
     done();

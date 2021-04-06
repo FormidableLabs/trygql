@@ -17,7 +17,8 @@ export class RedisStore implements Store<string> {
       password: redisCredentials.password,
       dropBufferSupport: true,
       enableAutoPipelining: true,
-      keepAlive: ms('10m')
+      keepAlive: ms('10m'),
+      reconnectOnError: () => true,
     });
   }
 
