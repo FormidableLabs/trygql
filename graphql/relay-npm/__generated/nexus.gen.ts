@@ -374,6 +374,7 @@ export interface NexusGenTypeInterfaces {
   JSExport: 'Export';
   Package: 'Metadata' | 'Node';
   Version: 'Metadata' | 'Node';
+  Metadata: 'Node';
 }
 
 export type NexusGenObjectNames = keyof NexusGenObjects;

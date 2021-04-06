@@ -1,11 +1,8 @@
-import got from 'got';
+import { got } from '@trygql/api/got';
 import * as semver from 'semver';
-import { dnsCache } from '@trygql/api/stores/dnsCache';
 
 const npm = got.extend({
   prefixUrl: 'https://registry.npmjs.org',
-  responseType: 'json',
-  dnsCache,
   headers: {
     accept: 'application/vnd.npm.install-v1+json; q=1.0, application/json; q=0.8, */*',
   },
@@ -38,7 +35,6 @@ export interface Version extends Metadata {
 }
 
 export interface Package extends Metadata {
-  _rev: string;
   'dist-tags': Record<string, string>;
   modified: string;
   versions: Record<string, Version>;

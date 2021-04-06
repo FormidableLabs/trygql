@@ -1,10 +1,7 @@
-import got from 'got';
-import { dnsCache } from '@trygql/api/stores/dnsCache';
+import { got } from '@trygql/api/got';
 
 const metaweather = got.extend({
   prefixUrl: 'https://www.metaweather.com/api',
-  responseType: 'json',
-  dnsCache,
 });
 
 export const enum LocationType {

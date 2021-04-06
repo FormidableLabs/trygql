@@ -1,12 +1,7 @@
-import got from 'got';
-import { dnsCache } from '@trygql/api/stores/dnsCache';
-
-const BASE_URL = 'https://cdn.skypack.dev';
+import { got } from '@trygql/api/got';
 
 const skypack = got.extend({
-  prefixUrl: BASE_URL,
-  responseType: 'json',
-  dnsCache,
+  prefixUrl: 'https://cdn.skypack.dev',
 });
 
 export interface AssetExport {

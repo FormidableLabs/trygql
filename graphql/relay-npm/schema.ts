@@ -28,24 +28,21 @@ const idRe = /^(?:@([^/@]+?)[/])?([^/@]+)(?:@([\d.]+(?:-.+)?))?$/;
 
 export const Node = interfaceType({
   name: 'Node',
-  resolveType: (source) => ('_rev' in source ? 'Package' : 'Version'),
+  resolveType: (source) => ('version' in source ? 'Package' : 'Version'),
   definition(t) {
     t.id('id', {
       required: true,
-      resolve: (source) => source._id,
+      resolve: (source) =>
+        'version' in source ? `${source.name}@${source.version}` : source.name
     });
   },
 });
 
 export const Metadata = interfaceType({
   name: 'Metadata',
-  resolveType: (source) => ('_rev' in source ? 'Package' : 'Version'),
+  resolveType: (source) => ('version' in source ? 'Package' : 'Version'),
   definition(t) {
-    t.id('id', {
-      required: true,
-      resolve: (source) => source._id,
-    });
-
+    t.implements(Node);
     t.string('name', { required: true });
   },
 });
