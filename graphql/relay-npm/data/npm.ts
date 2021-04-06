@@ -1,17 +1,11 @@
 import got from 'got';
-import ms from 'ms';
 import * as semver from 'semver';
-import { Context } from '@trygql/api/context';
+import { dnsCache } from '@trygql/api/stores/dnsCache';
 
 const npm = got.extend({
   prefixUrl: 'https://registry.npmjs.org',
   responseType: 'json',
-  cacheOptions: {
-    shared: false,
-    cacheHeuristic: 1,
-    immutableMinTimeToLive: ms('1h'),
-    ignoreCargoCult: true,
-  },
+  dnsCache,
 });
 
 export interface User {
@@ -67,13 +61,9 @@ export interface Package extends Metadata {
   versions: Record<string, Version>;
 }
 
-export const getPackage = async (
-  context: Context,
-  name: string
-): Promise<Package | null> => {
+export const getPackage = async (name: string): Promise<Package | null> => {
   try {
-    const { store: cache, lookup: dnsCache } = context;
-    return await npm.get(name, { cache, dnsCache }).json();
+    return await npm.get(name).json();
   } catch (error) {
     if (error.response && error.response.statusCode === 404) return null;
     throw error;
@@ -110,17 +100,14 @@ interface SearchPage {
   total: number;
 }
 
-export const searchPackage = async (context: Context, args: {
+export const searchPackage = async (args: {
   query: string;
   first: number;
   after?: string | null | undefined;
 }): Promise<(Package | null)[]> => {
-  const { store: cache, lookup: dnsCache } = context;
   const from = args.after ? parseInt(args.after, 10) : 0;
   const result: SearchPage = await npm
-    .get('/-/v1/search', {
-      cache,
-      dnsCache,
+    .get('-/v1/search', {
       searchParams: {
         text: args.query,
         size: args.first,
@@ -130,7 +117,7 @@ export const searchPackage = async (context: Context, args: {
     .json();
 
   return await Promise.all(
-    result.objects.map((object) => getPackage(context, object.package.name))
+    result.objects.map((object) => getPackage(object.package.name))
   );
 };
 

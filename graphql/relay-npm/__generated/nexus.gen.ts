@@ -495,6 +495,10 @@ declare global {
      * @see declarativeWrappingPlugin
      */
     required?: boolean;
+    /**
+    The TTL (time to live) for the given field’s cached results.
+     */
+    ttl?: number;
   }
   interface NexusGenPluginInputFieldConfig<
     TypeName extends string,

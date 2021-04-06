@@ -14,6 +14,7 @@ import {
   objectType,
 } from 'nexus';
 
+import ms from 'ms';
 import { getPackage, searchPackage, resolveVersion } from './data/npm';
 import { getFiles } from './data/unpkg';
 
@@ -134,6 +135,7 @@ export const Version = objectType({
         limit: intArg(),
         skip: intArg(),
       },
+      ttl: ms('1h'),
       async resolve(source, { limit, skip }) {
         let list = await getFiles(source.name, source.version);
         if (skip != null) list = list.slice(skip);
@@ -199,9 +201,8 @@ export const Package = objectType({
       args: {
         selector: nonNull(stringArg()),
       },
-      resolve(parent, args) {
-        return resolveVersion(parent, args.selector);
-      },
+      ttl: ms('1h'),
+      resolve: (parent, args) => resolveVersion(parent, args.selector),
     });
   },
 });
@@ -215,10 +216,11 @@ export const Query = objectType({
       args: {
         id: nonNull(idArg()),
       },
-      async resolve(_, { id }, ctx) {
+      ttl: ms('1h'),
+      async resolve(_, { id }) {
         const [match, scope, name, version] = idRe.exec(id) || [];
         if (!match) return null;
-        const metadata = await getPackage(ctx, scope ? `@${scope}/${name}` : name);
+        const metadata = await getPackage(scope ? `@${scope}/${name}` : name);
         if (!version || !metadata) return metadata;
         return metadata.versions[version] || null;
       },
@@ -230,9 +232,8 @@ export const Query = objectType({
       args: {
         name: nonNull(stringArg()),
       },
-      resolve(_, { name }, ctx) {
-        return getPackage(ctx, name);
-      },
+      ttl: ms('1h'),
+      resolve: (_, { name }) => getPackage(name),
     });
 
     t.field('resolve', {
@@ -242,8 +243,9 @@ export const Query = objectType({
         name: nonNull(stringArg()),
         selector: nonNull(stringArg()),
       },
-      async resolve(_, { name, selector }, ctx) {
-        const packument = await getPackage(ctx, name);
+      ttl: ms('1h'),
+      async resolve(_, { name, selector }) {
+        const packument = await getPackage(name);
         if (!packument) return null;
         return resolveVersion(packument, selector);
       },
@@ -260,9 +262,8 @@ export const Query = objectType({
           })
         ),
       },
-      nodes(_, args, ctx) {
-        return searchPackage(ctx, args);
-      },
+      ttl: ms('1h'),
+      nodes: (_, args) => searchPackage(args),
     });
   },
 });

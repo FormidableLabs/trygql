@@ -1692,6 +1692,11 @@ merge-stream@^2.0.0:
   resolved "https://registry.yarnpkg.com/merge-stream/-/merge-stream-2.0.0.tgz#52823629a14dd00c9770fb6ad47dc6310f2c1f60"
   integrity sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w==
 
+merkle-json@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/merkle-json/-/merkle-json-2.0.0.tgz#f13d6462d67e161dd8beecfdc537d285471f7952"
+  integrity sha512-lt42h1Dt1xbcM5AAk6RW2h/yyyAXWLmX+D6LYC8RSniDdD+xgcxk44DhHPhJTLN2aP/s0KjvLEfX214GwYTBoA==
+
 micromatch@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/micromatch/-/micromatch-4.0.2.tgz#4fcb0999bf9fbc2fcbdd212f6d629b9a56c39259"
@@ -1776,6 +1781,11 @@ ms@^2.1.3:
   version "2.1.3"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.3.tgz#574c8138ce1d2b5861f0b44579dbadd60c6615b2"
   integrity sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==
+
+murmurhash@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/murmurhash/-/murmurhash-2.0.0.tgz#556779daf7c39a0d2a3f5a9d080d84bf4833f9ee"
+  integrity sha512-Uo7ZHw+PLe2Q8/qbPIVYxAaoi+TYGZwu1a8ryeeASRXJLRSaLCblAGfjh02eu4+/9aUJBpkHXZv42AXmzOW2kw==
 
 nexus@^1.0.0:
   version "1.0.0"

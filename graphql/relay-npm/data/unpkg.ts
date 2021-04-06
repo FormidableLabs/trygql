@@ -1,18 +1,12 @@
 import got from 'got';
-import ms from 'ms';
-import { Context } from '@trygql/api/context';
+import { dnsCache } from '@trygql/api/stores/dnsCache';
 
 const BASE_URL = 'https://unpkg.com';
 
 const unpkg = got.extend({
   prefixUrl: BASE_URL,
   responseType: 'json',
-  cacheOptions: {
-    shared: false,
-    cacheHeuristic: 1,
-    immutableMinTimeToLive: ms('1h'),
-    ignoreCargoCult: true,
-  },
+  dnsCache,
 });
 
 export interface UnpkgFile {
@@ -45,15 +39,13 @@ const collectFiles = (directory: UnpkgDirectory, files: UnpkgFile[] = []) => {
 };
 
 export const getFiles = async (
-  context: Context,
   name: string,
   version: string
 ): Promise<UnpkgFile[]> => {
   try {
-    const { store: cache, lookup: dnsCache } = context;
-    const path = `/${name}@${version}`;
+    const path = `${name}@${version}`;
     const meta: UnpkgDirectory = await unpkg
-      .get(`${path}/?meta`, { cache, dnsCache })
+      .get(`${path}/?meta`)
       .json();
     const files = collectFiles(meta);
 

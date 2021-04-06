@@ -1,3 +1,4 @@
+import ms from 'ms';
 import { asNexusMethod, enumType, objectType, nonNull, stringArg, idArg } from 'nexus';
 import { GraphQLLatitude, GraphQLLongitude, GraphQLDate, GraphQLURL } from 'graphql-scalars';
 
@@ -60,7 +61,8 @@ export const Location = objectType({
 
     t.field('forecast', {
       type: Forecast,
-      resolve: (parent, _args, ctx) => getForecast(ctx, parent.woeid),
+      ttl: 3600,
+      resolve: (parent, _args) => getForecast(parent.woeid),
     });
   }
 });
@@ -225,7 +227,8 @@ export const Query = objectType({
       args: {
         query: nonNull(stringArg()),
       },
-      resolve: (_, { query }, ctx) => searchLocations(ctx, query),
+      ttl: ms('1d'),
+      resolve: (_, { query }) => searchLocations(query),
     });
 
     t.field('forecast', {
@@ -234,7 +237,8 @@ export const Query = objectType({
       args: {
         locationId: nonNull(idArg()),
       },
-      resolve: (_, { locationId }, ctx) => getForecast(ctx, locationId),
+      ttl: ms('1h'),
+      resolve: (_, { locationId }) => getForecast(locationId),
     });
   },
 });

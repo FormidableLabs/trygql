@@ -1,16 +1,10 @@
 import got from 'got';
-import ms from 'ms';
-import { Context } from '@trygql/api/context';
+import { dnsCache } from '@trygql/api/stores/dnsCache';
 
 const metaweather = got.extend({
   prefixUrl: 'https://www.metaweather.com/api',
   responseType: 'json',
-  cacheOptions: {
-    shared: false,
-    cacheHeuristic: 1,
-    immutableMinTimeToLive: ms('1h'),
-    ignoreCargoCult: true,
-  },
+  dnsCache,
 });
 
 export enum LocationType {
@@ -27,19 +21,10 @@ export interface Location {
   latt_long: string;
 }
 
-export const searchLocations = async (
-  context: Context,
-  query: string
-): Promise<Location[]> => {
-  const { store: cache, lookup: dnsCache } = context;
-  return metaweather
-    .get('location/search/', {
-      cache,
-      dnsCache,
-      searchParams: { query },
-    })
+export const searchLocations = async (query: string): Promise<Location[]> =>
+  metaweather
+    .get('location/search/', { searchParams: { query } })
     .json();
-};
 
 export type WeatherState =
   | 'Snow'
@@ -108,15 +93,9 @@ export interface Forecast extends Location {
   children?: Location[];
 }
 
-export const getForecast = async (
-  context: Context,
-  woeid: number | string
-): Promise<Forecast | null> => {
+export const getForecast = async (woeid: number | string): Promise<Forecast | null> => {
   try {
-    const { store: cache, lookup: dnsCache } = context;
-    return await metaweather
-      .get(`location/${woeid}/`, { cache, dnsCache })
-      .json();
+    return await metaweather.get(`location/${woeid}/`).json();
   } catch (error) {
     if (error.response && error.response.statusCode === 404) return null;
     throw error;
