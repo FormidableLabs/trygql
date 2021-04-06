@@ -8,6 +8,7 @@ import basicPokedex from '@trygql/basic-pokedex';
 import intermittentColors from '@trygql/intermittent-colors';
 import relayNpm from '@trygql/relay-npm';
 import apqWeather from '@trygql/apq-weather';
+import uploadsMock from '@trygql/uploads-mock';
 
 const app = Fastify({
   logger: {
@@ -23,6 +24,7 @@ app.register(basicPokedex);
 app.register(intermittentColors);
 app.register(relayNpm);
 app.register(apqWeather);
+app.register(uploadsMock);
 
 app.get('/health', (_req, res) => {
   res.code(200).send({ statusCode: 200, status: 'ok' });
