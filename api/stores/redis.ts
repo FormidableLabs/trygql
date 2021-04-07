@@ -19,6 +19,10 @@ export class RedisStore implements Store<string> {
     this.minTtl = opts.minTtl || 0;
     this.log = app.log;
 
+    const additionalOptions = {
+      commandTimeout: ms('200ms'),
+    } as Redis.RedisOptions;
+
     this.client = new Redis({
       host: redisCredentials.hosts![0].name,
       port: redisCredentials.hosts![0].port,
@@ -31,6 +35,7 @@ export class RedisStore implements Store<string> {
       keepAlive: ms('2min'),
       retryStrategy: (times) => Math.min(times * 20, 500),
       reconnectOnError: () => 2 as const,
+      ...additionalOptions,
     });
 
     this.client.on('close', () => {
@@ -43,6 +48,14 @@ export class RedisStore implements Store<string> {
 
     this.client.on('error', error => {
       this.log.error(`${error}`);
+    });
+
+    this.client.on('end', () => {
+      this.log.error('ioredis has ended its connection');
+      this.client.connect().catch(error => {
+        this.log.error(`ioredis could not reestablish its connection: ${error}`);
+        process.exit(1);
+      });
     });
   }
 
