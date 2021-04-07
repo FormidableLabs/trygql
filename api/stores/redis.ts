@@ -18,14 +18,27 @@ export class RedisStore implements Store<string> {
     const redisCredentials = new ConnectionString(opts.uri);
     this.minTtl = opts.minTtl || 0;
     this.log = app.log;
+
     this.client = new Redis({
       host: redisCredentials.hosts![0].name,
       port: redisCredentials.hosts![0].port,
       password: redisCredentials.password,
       dropBufferSupport: true,
       enableAutoPipelining: true,
-      keepAlive: ms('10m'),
-      reconnectOnError: () => true,
+      autoResubscribe: false,
+      autoResendUnfulfilledCommands: true,
+      enableOfflineQueue: true,
+      keepAlive: ms('2min'),
+      retryStrategy: (times) => Math.min(times * 20, 500),
+      reconnectOnError: () => 2 as const,
+    });
+
+    this.client.on('close', () => {
+      this.log.warn('ioredis lost connection');
+    });
+
+    this.client.on('reconnecting', (delay: number) => {
+      this.log.warn(`ioredis is reconnecting (after ${delay}ms)`);
     });
 
     this.client.on('error', error => {
