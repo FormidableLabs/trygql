@@ -3,6 +3,7 @@ import { connectionPlugin, declarativeWrappingPlugin, makeSchema } from 'nexus';
 import mercurius from 'mercurius';
 import * as path from 'path';
 
+import { migrate } from '@trygql/api/utils/prisma-migrate';
 import * as types from './schema';
 
 const schema = makeSchema({
@@ -36,13 +37,21 @@ const schema = makeSchema({
   },
 });
 
-const plugin: FastifyPluginCallback = (instance) =>
-  mercurius(instance, {
+const plugin: FastifyPluginCallback = (instance, _, done) => {
+  instance.register(migrate, {
+    schemaPath: 'node_modules/@prisma/client__web-collections/schema.prisma',
+    database: 'web-collections',
+  });
+
+  instance.register(mercurius, {
     context: (request) => request.ctx,
     prefix: '/graphql',
     path: '/web-collections',
     schema,
     jit: 10,
   });
+
+  done();
+};
 
 export default plugin;
