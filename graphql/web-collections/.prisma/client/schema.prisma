@@ -1,0 +1,50 @@
+datasource db {
+  url      = env("DATABASE_URL")
+  provider = "postgresql"
+}
+
+generator client {
+  provider = "prisma-client-js"
+  output = ".prisma/client"
+  previewFeatures = ["orderByRelation"]
+}
+
+model User {
+  id            String         @id @default(value: uuid()) @db.Uuid
+  username      String         @unique
+  hash          String
+  links         LinkEdge[]
+  refreshTokens RefreshToken[]
+  createdAt     DateTime       @default(value: now())
+  updatedAt     DateTime       @updatedAt
+}
+
+model RefreshToken {
+  id        String   @id @default(value: uuid()) @db.Uuid
+  createdAt DateTime @default(value: now())
+  updatedAt DateTime @updatedAt
+  userId    String   @db.Uuid
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model LinkEdge {
+  createdAt DateTime @default(value: now())
+
+  userId    String   @db.Uuid
+  user      User     @relation(fields: [userId], references: [id])
+  linkId    String   @db.Uuid
+  node      Link     @relation(fields: [linkId], references: [id])
+
+  @@id(fields: [userId, linkId])
+}
+
+model Link {
+  id           String     @id @default(value: uuid()) @db.Uuid
+  createdAt    DateTime   @default(value: now())
+  updatedAt    DateTime   @updatedAt
+  canonicalUrl String     @unique
+  title        String?
+  description  String?
+  image        String?
+  edges        LinkEdge[]
+}

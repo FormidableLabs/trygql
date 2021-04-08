@@ -9,6 +9,7 @@ import intermittentColors from '@trygql/intermittent-colors';
 import relayNpm from '@trygql/relay-npm';
 import apqWeather from '@trygql/apq-weather';
 import uploadsMock from '@trygql/uploads-mock';
+import webCollections from '@trygql/web-collections';
 
 const app = Fastify({
   logger: {
@@ -25,6 +26,7 @@ app.register(intermittentColors);
 app.register(relayNpm);
 app.register(apqWeather);
 app.register(uploadsMock);
+app.register(webCollections);
 
 app.get('/health', (_req, res) => {
   res.code(200).send({ statusCode: 200, status: 'ok' });

@@ -92,7 +92,7 @@ export interface NexusGenScalars {
   Date: any;
   Latitude: any;
   Longitude: any;
-  URL: any;
+  URL: string;
 }
 
 export interface NexusGenObjects {

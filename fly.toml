@@ -26,3 +26,6 @@ app = "trygql"
     path = "/health"
     protocol = "http"
     timeout = 2000
+
+[experimental]
+  private_network=true

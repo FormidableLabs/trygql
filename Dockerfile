@@ -11,7 +11,8 @@ ENV PORT "8080"
 ENV NODE_ENV=production
 WORKDIR /app
 
-COPY --from=builder /app/dist /app/dist
+COPY --from=builder /app/dist/*.js /app/
+COPY --from=builder /app/node_modules/@prisma /app/node_modules/@prisma
 
 EXPOSE 8080
-ENTRYPOINT ["node", "dist/out.js"]
+ENTRYPOINT ["node", "out.js"]

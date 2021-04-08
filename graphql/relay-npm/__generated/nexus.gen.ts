@@ -95,10 +95,10 @@ export interface NexusGenScalars {
   Float: number;
   Boolean: boolean;
   ID: string;
-  DateTime: any;
-  EmailAddress: any;
-  JSONObject: any;
-  URL: any;
+  DateTime: Date;
+  EmailAddress: string;
+  JSONObject: object;
+  URL: string;
 }
 
 export interface NexusGenObjects {

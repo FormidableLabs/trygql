@@ -19,10 +19,10 @@ import ms from 'ms';
 import { getPackage, searchPackage, resolveVersion } from './data/npm';
 import { getMetadata } from './data/skypack';
 
-export const DateTime = asNexusMethod(GraphQLDateTime, 'dateTime');
-export const EmailAddress = asNexusMethod(GraphQLEmailAddress, 'email');
-export const JSONObject = asNexusMethod(GraphQLJSONObject, 'object');
-export const URL = asNexusMethod(GraphQLURL, 'url');
+export const DateTime = asNexusMethod(GraphQLDateTime, 'dateTime', 'Date');
+export const EmailAddress = asNexusMethod(GraphQLEmailAddress, 'email', 'string');
+export const JSONObject = asNexusMethod(GraphQLJSONObject, 'object', 'object');
+export const URL = asNexusMethod(GraphQLURL, 'url', 'string');
 
 const idRe = /^(?:@([^/@]+?)[/])?([^/@]+)(?:@([\d.]+(?:-.+)?))?$/;
 
@@ -146,7 +146,7 @@ export const Package = objectType({
 
     t.dateTime('modifiedAt', {
       required: true,
-      resolve: (source) => source.modified,
+      resolve: (source) => new Date(source.modified),
     });
 
     t.list.field('distTags', {

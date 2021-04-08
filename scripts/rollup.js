@@ -17,11 +17,11 @@ const tryResolve = (str) => {
   }
 };
 
-const nodeBuiltins = new Set(builtins);
+const external = new Set([...builtins, '@prisma/client']);
 
 export default {
   input: path.join(__dirname, '../api/index.ts'),
-  external: builtins,
+  external: id => external.has(id),
   plugins: [
     alias({
       entries: [
@@ -154,7 +154,7 @@ export default {
         },
       ],
       interop(id) {
-        return nodeBuiltins.has(id) ? 'default' : 'defaultOnly';
+        return external.has(id) ? 'default' : 'defaultOnly';
       },
     },
   ],

@@ -1,0 +1,28 @@
+{
+  "name": "@trygql/web-collections",
+  "version": "0.0.0",
+  "private": true,
+  "source": "api/index.ts",
+  "scripts": {
+    "db:generate": "prisma generate deploy",
+    "db:migrate": "prisma migrate"
+  },
+  "dependencies": {
+    "@prisma/client": "~2.19.0",
+    "bcryptjs": "^2.4.3",
+    "fastify": "^3.14.1",
+    "graphql": "^15.5.0",
+    "graphql-scalars": "^1.9.0",
+    "htmlparser2": "^6.0.1",
+    "is-absolute-url": "^3.0.3",
+    "mercurius": "^7.3.3",
+    "nexus": "^1.0.0",
+    "normalize-url": "^6.0.0",
+    "tough-cookie": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/tough-cookie": "^4.0.0",
+    "prisma": "~2.19.0"
+  }
+}
