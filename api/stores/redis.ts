@@ -33,6 +33,7 @@ export class RedisStore implements Store<string> {
       autoResendUnfulfilledCommands: true,
       enableOfflineQueue: true,
       keepAlive: ms('2min'),
+      lazyConnect: true,
       retryStrategy: (times) => Math.min(times * 20, 500),
       reconnectOnError: () => 2 as const,
       ...additionalOptions,
@@ -46,24 +47,22 @@ export class RedisStore implements Store<string> {
       this.log.warn(`ioredis is reconnecting (after ${delay}ms)`);
     });
 
-    this.client.on('error', error => {
+    this.client.on('error', (error) => {
       this.log.error(`${error}`);
     });
 
     this.client.on('end', () => {
       this.log.error('ioredis has ended its connection');
-      this.client.connect().catch(error => {
-        this.log.error(`ioredis could not reestablish its connection: ${error}`);
+      this.client.connect().catch((error) => {
+        this.log.error(
+          `ioredis could not reestablish its connection: ${error}`
+        );
         process.exit(1);
       });
     });
   }
 
-  async set(
-    key: string,
-    value: string,
-    maxTtl?: number,
-  ): Promise<void> {
+  async set(key: string, value: string, maxTtl?: number): Promise<void> {
     try {
       if (maxTtl != null) {
         const ttl = Math.max(this.minTtl, maxTtl);
@@ -89,5 +88,3 @@ export class RedisStore implements Store<string> {
     await this.client.flushdb();
   }
 }
-
-
