@@ -60,6 +60,21 @@ export class RedisStore implements Store<string> {
         process.exit(1);
       });
     });
+
+    const keepAlive = async () => {
+      if (this.client.status !== 'reconnecting') {
+        try {
+          await this.client.ping();
+        } catch (error) {
+          if (this.client.status !== 'reconnecting')
+            (this.client.disconnect as any)(true);
+        }
+      }
+
+      setTimeout(keepAlive, ms('30s'));
+    };
+
+    keepAlive();
   }
 
   async set(key: string, value: string, maxTtl?: number): Promise<void> {
@@ -76,8 +91,13 @@ export class RedisStore implements Store<string> {
   }
 
   async get(key: string): Promise<string | undefined> {
-    const reply = await this.client.get(key);
-    return reply != null ? reply : undefined;
+    try {
+      const reply = await this.client.get(key);
+      return reply != null ? reply : undefined;
+    } catch (error) {
+      this.log.error(error.message);
+      return undefined;
+    }
   }
 
   async delete(key: string): Promise<boolean> {

@@ -1,5 +1,4 @@
 import { promisify } from 'util';
-import { CookieJar } from 'tough-cookie';
 import { WritableStream as Parser } from 'htmlparser2/lib/WritableStream';
 import normalizeURL from 'normalize-url';
 import isAbsoluteURL from 'is-absolute-url';
@@ -13,8 +12,10 @@ const pipeline = promisify(stream.pipeline);
 
 const fetch = got.extend({
   headers: {
-    accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-    'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+    accept:
+      'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+    'user-agent':
+      'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
     'accept-language': 'en-US,en;q=0.5',
     'cache-control': 'max-age=0',
   },
@@ -56,13 +57,18 @@ interface Meta {
 }
 
 const constructURL = (baseUrl: string, pathOrUrl: string) =>
-  normalizeURL(isAbsoluteURL(pathOrUrl) ? pathOrUrl : `${baseUrl}/${pathOrUrl}`);
+  normalizeURL(
+    isAbsoluteURL(pathOrUrl) ? pathOrUrl : `${baseUrl}/${pathOrUrl}`
+  );
 
-const fetchMeta = async (url: string, canonical?: string): Promise<Meta | null> => {
+const fetchMeta = async (
+  url: string,
+  canonical?: string
+): Promise<Meta | null> => {
   let baseUrl = (url = normalizeURL(url));
 
-  const request = fetch.stream(url, { cookieJar: new CookieJar() });
-  request.on('response', event => {
+  const request = fetch.stream(url);
+  request.on('response', (event) => {
     if (event.url) baseUrl = normalizeURL(event.url);
   });
 
@@ -72,10 +78,20 @@ const fetchMeta = async (url: string, canonical?: string): Promise<Meta | null> 
     onopentag(name, attributes) {
       if (name === 'body') {
         parser.end();
-      } else if (name === 'meta' && attributes.content && (attributes.property || attributes.name)) {
+      } else if (
+        name === 'meta' &&
+        attributes.content &&
+        (attributes.property || attributes.name)
+      ) {
         let content = `${attributes.content}`.trim();
-        const prop = `${attributes.property || attributes.name}`.trim().toLowerCase();
-        if (prop === 'og:image' || prop === 'twitter:image' || prop === 'twitter:image:src')
+        const prop = `${attributes.property || attributes.name}`
+          .trim()
+          .toLowerCase();
+        if (
+          prop === 'og:image' ||
+          prop === 'twitter:image' ||
+          prop === 'twitter:image:src'
+        )
           content = constructURL(baseUrl, content);
         meta[prop] = content;
       } else if (name === 'link' && attributes.rel === 'icon') {
@@ -107,9 +123,7 @@ const fetchMeta = async (url: string, canonical?: string): Promise<Meta | null> 
     return fetchMeta(meta.canonical, baseUrl);
   }
 
-  return Object.keys(meta).length
-    ? { ...meta, canonical: baseUrl }
-    : null;
+  return Object.keys(meta).length ? { ...meta, canonical: baseUrl } : null;
 };
 
 export interface NormalizedMeta {
@@ -124,8 +138,13 @@ export const getMeta = async (url: string): Promise<NormalizedMeta> => {
   if (!meta) throw new NoMetaError(url);
 
   const title = meta['twitter:title'] || meta['og:title'] || undefined;
-  const description = meta['twitter:description'] || meta['og:description'] || undefined;
-  const image = meta['twitter:image'] || meta['twitter:image:src'] || meta['og:image'] || undefined;
+  const description =
+    meta['twitter:description'] || meta['og:description'] || undefined;
+  const image =
+    meta['twitter:image'] ||
+    meta['twitter:image:src'] ||
+    meta['og:image'] ||
+    undefined;
   if (!title && !description && !image) throw new NoMetaError(url);
 
   return {

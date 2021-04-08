@@ -18,12 +18,25 @@ const tryResolve = (str) => {
 };
 
 const external = new Set([...builtins, '@prisma/client']);
-const isExternal = id => external.has(id) || /^@prisma\/client/.test(id);
+const isExternal = (id) => external.has(id) || /^@prisma\/client/.test(id);
 
 export default {
   input: path.join(__dirname, '../api/index.ts'),
   external: isExternal,
   plugins: [
+    {
+      resolveId(src, root) {
+        if (
+          /deps[/\\]encoding[/\\]encoding/g.test(src) &&
+          /node_modules[/\\]busboy/g.test(root)
+        ) {
+          return this.resolve(require.resolve('./~text-encoding.js'), root);
+        }
+
+        return null;
+      },
+    },
+
     alias({
       entries: [
         { find: /^semver$/, replacement: tryResolve('semver') },
@@ -61,10 +74,11 @@ export default {
           replacement: require.resolve('./~empty.js'),
         },
 
-        !tryResolve('pino-pretty') && {
-          find: /^pino-pretty$/,
+        !tryResolve('encoding') && {
+          find: /^encoding$/,
           replacement: require.resolve('./~empty.js'),
         },
+
         !tryResolve('uglify-es') && {
           find: /^uglify-es([/\\].*|$)/,
           replacement: require.resolve('./~empty.js'),
@@ -88,6 +102,17 @@ export default {
       exclude: [/\.mjs$/],
       ignore: builtins,
       transformMixedEsModules: true,
+      ignoreTryCatch(id) {
+        switch (id) {
+          case 'long':
+          case 'prettier':
+          case 'pino-pretty':
+          case 'supports-color':
+            return 'remove';
+          default:
+            return true;
+        }
+      },
     }),
 
     resolve({
@@ -130,7 +155,7 @@ export default {
       externalLiveBindings: false,
       preferConst: true,
       format: 'cjs',
-      interop: id => isExternal(id) ? 'default' : 'defaultOnly',
+      interop: (id) => (isExternal(id) ? 'default' : 'defaultOnly'),
       plugins: [
         {
           name: 'minify',
