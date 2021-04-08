@@ -18,10 +18,11 @@ const tryResolve = (str) => {
 };
 
 const external = new Set([...builtins, '@prisma/client']);
+const isExternal = id => external.has(id) || /^@prisma\/client/.test(id);
 
 export default {
   input: path.join(__dirname, '../api/index.ts'),
-  external: id => external.has(id),
+  external: isExternal,
   plugins: [
     alias({
       entries: [
@@ -129,6 +130,7 @@ export default {
       externalLiveBindings: false,
       preferConst: true,
       format: 'cjs',
+      interop: id => isExternal(id) ? 'default' : 'defaultOnly',
       plugins: [
         {
           name: 'minify',
@@ -153,9 +155,6 @@ export default {
           },
         },
       ],
-      interop(id) {
-        return external.has(id) ? 'default' : 'defaultOnly';
-      },
     },
   ],
 };

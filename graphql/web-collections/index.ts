@@ -18,7 +18,10 @@ const schema = makeSchema({
   sourceTypes: {
     modules: [
       {
-        module: path.join(__dirname, 'node_modules/@prisma/client/index.d.ts'),
+        module: path.join(
+          __dirname,
+          '../../node_modules/@prisma/client__web-collections/index.d.ts'
+        ),
         alias: 'prisma',
       },
     ],
@@ -35,7 +38,7 @@ const schema = makeSchema({
 
 const plugin: FastifyPluginCallback = (instance) =>
   mercurius(instance, {
-    context: request => request.ctx,
+    context: (request) => request.ctx,
     prefix: '/graphql',
     path: '/web-collections',
     schema,

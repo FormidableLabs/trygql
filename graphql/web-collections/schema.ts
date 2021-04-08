@@ -14,7 +14,7 @@ import {
   nonNull
 } from 'nexus';
 
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@prisma/client__web-collections'
 
 import { UnauthorizedError } from './data/errors';
 import { toHash, compareToHash } from './data/crypt';
