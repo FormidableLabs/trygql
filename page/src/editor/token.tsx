@@ -18,11 +18,13 @@ const tokenStyles = css`
     color: #a626a4;
   }
 
-  &.builtin {
+  &.builtin,
+  &.number {
     color: #e45649;
   }
 
-  &.qualifier {
+  &.qualifier,
+  &.string {
     color: #986801;
   }
 
