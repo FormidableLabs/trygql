@@ -14,7 +14,7 @@ import {
 } from '@urql/preact';
 
 import { Toolbar } from './toolbar';
-import { Editor } from './editor';
+import { Editor } from '../editor';
 import { Result } from './result';
 
 export const Wrapper = styled('form')`

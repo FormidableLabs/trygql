@@ -1,4 +1,4 @@
-import { forwardRef } from 'preact/compat';
+import { forwardRef, memo } from 'preact/compat';
 import { Diagnostic } from 'graphql-language-service-types';
 import { getDiagnostics } from 'graphql-language-service-interface';
 import { useRef, useCallback, useMemo, useState, useImperativeHandle } from 'preact/hooks';
@@ -16,7 +16,6 @@ import {
 } from './utils';
 
 const wrapperStyles = css`
-  font-family: Source Code Pro,source-code-pro,Menlo,Consolas,Monaco,Andale Mono,Courier New,monospace;
   font-size: 14px;
   line-height: 1.3em;
   display: grid;
@@ -86,7 +85,7 @@ export interface TextboxProps extends
   children?: preact.ComponentChildren;
 }
 
-export const Textbox = forwardRef((props: TextboxProps, ref: preact.Ref<TextboxHandle>) => {
+export const Textbox = memo(forwardRef((props: TextboxProps, ref: preact.Ref<TextboxHandle>) => {
   const {
     schemaRef,
     className,
@@ -176,4 +175,4 @@ export const Textbox = forwardRef((props: TextboxProps, ref: preact.Ref<TextboxH
       </pre>
     </div>
   );
-});
+}));

@@ -4,7 +4,6 @@ import { gql, useQuery } from '@urql/preact';
 import { styled } from 'goober';
 
 const Wrapper = styled('pre')`
-  font-family: monospace;
   font-size: 14px;
   line-height: 1.3em;
   display: flex;

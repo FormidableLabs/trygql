@@ -177,14 +177,14 @@ export const Editor = (props: EditorProps) => {
       aria-haspopup={haspopup}
       aria-controls={controls}
     >
-      {state.hints ? (
+      {state.hover ? (
+        <Hover {...state.hover} onDismiss={onDismiss} />
+      ) : null}
+      {state.hints && !state.hover ? (
         <Hints {...state.hints} onSelect={onSelectHint} onDismiss={onDismiss} />
       ) : null}
-      {state.diagnostic && !state.hints ? (
+      {state.diagnostic && !state.hints && !state.hover ? (
         <Error diagnostic={state.diagnostic} />
-      ) : null}
-      {state.hover && !state.hover ? (
-        <Hover {...state.hover} onDismiss={onDismiss} />
       ) : null}
     </Textbox>
   );

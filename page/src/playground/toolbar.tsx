@@ -1,18 +1,18 @@
 import { styled } from 'goober';
 
-const Wrapper = styled('div')`
+const Wrapper = styled('pre')`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 
-  font-family: monospace;
   font-size: 14px;
   line-height: 1.3em;
   display: flex;
   height: 3em;
   margin-bottom: -0.5em;
   padding-bottom: 0.5em;
+  white-space: normal;
 
   &:before {
     border-top-left-radius: 0.7em;
@@ -30,7 +30,6 @@ const Wrapper = styled('div')`
 `;
 
 const Location = styled('h3')`
-  font-family: monospace;
   font-size: inherit;
   font-weight: normal;
   color: #44596f;

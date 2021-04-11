@@ -3757,10 +3757,10 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
-use-editable@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/use-editable/-/use-editable-2.2.0.tgz#6870177a73cec4f82c19562c5a44e378b228ab3f"
-  integrity sha512-DqFtNau/SALXhKOYh5X3UEDp3rLRZgbRHZvb1fZ+8ea0Q/VB2rrlQxtmZHRJQ2OaaSnY5yWZcSHj+r/5h2f7uw==
+use-editable@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/use-editable/-/use-editable-2.2.2.tgz#e6a3890cd51c8aad43153ae5603da8bd5fe18e6e"
+  integrity sha512-oLh4NDCUwtcsDSoCforgM6HrXSWL35spmrQkNamtOCLh2VIOpGurlUBzEEDZJhi5wJParYZc522OCxy3nD+XfQ==
 
 util-deprecate@^1.0.1:
   version "1.0.2"

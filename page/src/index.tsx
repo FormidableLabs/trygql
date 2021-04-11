@@ -9,7 +9,17 @@ setup(h);
 const Global = createGlobalStyles`
   body {
     background: #f3f5f7;
+    color: #001f3f;
     font-family: system-ui,helvetica,sans-serif;
+  }
+
+  pre, code {
+    margin: 0;
+    font-family: Source Code Pro,source-code-pro,Menlo,Consolas,Monaco,Andale Mono,Courier New,monospace;
+  }
+
+  * {
+    font-family: inherit;
   }
 `;
 
