@@ -78,6 +78,7 @@ export interface EditorProps {
 export const Editor = (props: EditorProps) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const frameRef = useRef<number | null>(null);
+  const blockTimerRef = useRef<any>(null);
   const schemaRef = useRef<GraphQLSchema | null>(props.schema);
   const textbox = useRef<TextboxHandle>();
 
@@ -137,6 +138,7 @@ export const Editor = (props: EditorProps) => {
   }, []);
 
   const onDiagnostic = useCallback((diagnostic: Diagnostic | null) => {
+    if (blockTimerRef.current) return;
     if (frameRef.current) cancelAnimationFrame(frameRef.current);
     frameRef.current = requestAnimationFrame(() => {
       dispatch({ type: ActionType.Diagnostic, diagnostic });
@@ -152,6 +154,10 @@ export const Editor = (props: EditorProps) => {
       event.preventDefault();
       dispatch({ type: ActionType.HideOverlays });
     }
+
+    // Block hovers for a set amount of time
+    if (blockTimerRef.current) clearTimeout(blockTimerRef.current);
+    blockTimerRef.current = setTimeout(() => blockTimerRef.current = null, 700);
   }, []);
 
   const haspopup =
