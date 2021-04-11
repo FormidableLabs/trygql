@@ -1,7 +1,7 @@
 import { Position } from 'use-editable';
 import { onlineParser, CharacterStream } from 'graphql-language-service-parser';
 import { getTokenAtPosition } from 'graphql-language-service-interface';
-import { IPosition } from 'graphql-language-service-types';
+import { Diagnostic, IPosition } from 'graphql-language-service-types';
 
 export interface TokenPosition {
   row: number;
@@ -42,6 +42,22 @@ export const tokenizeGraphQL = (code: string): Token[][] => {
   }
 
   return lines;
+};
+
+export const getDiagnosticForCursor = (
+  diagnostics: Diagnostic[],
+  cursor: IPosition,
+): Diagnostic | undefined => {
+  return diagnostics.find(diagnostic => {
+    const { start, end } = diagnostic.range;
+    const isAfterStart =
+      (start.line === cursor.line && start.character < cursor.character)
+        || start.line < cursor.line;
+    const isBeforeEnd =
+      (end.line === cursor.line && end.character > cursor.character)
+        || end.line > cursor.line;
+    return isAfterStart && isBeforeEnd;
+  });
 };
 
 export class HoverCursor implements IPosition {

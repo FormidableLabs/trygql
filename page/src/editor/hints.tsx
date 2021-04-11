@@ -67,10 +67,10 @@ export const Hints = ({
 
   useLayoutEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'ArrowDown') {
+      if (event.key === 'ArrowDown' && !event.shiftKey) {
         event.preventDefault();
         setSelected(selected < suggestions.length - 1 ? selected + 1 : 0);
-      } else if (event.key === 'ArrowUp') {
+      } else if (event.key === 'ArrowUp' && !event.shiftKey) {
         event.preventDefault();
         setSelected(selected > 0 ? selected - 1 : suggestions.length - 1);
       } else if (event.key === 'Enter' && !event.shiftKey) {

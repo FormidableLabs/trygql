@@ -1,10 +1,19 @@
 import { forwardRef } from 'preact/compat';
+import { Diagnostic } from 'graphql-language-service-types';
+import { getDiagnostics } from 'graphql-language-service-interface';
 import { useRef, useCallback, useMemo, useState, useImperativeHandle } from 'preact/hooks';
-import { css } from 'goober';
 import { useEditable, Edit, Position } from 'use-editable';
+import { GraphQLSchema } from 'graphql';
+import { css } from 'goober';
 
-import { tokenizeGraphQL, Cursor, HoverCursor } from './utils';
 import { TokenSpan } from './token';
+
+import {
+  getDiagnosticForCursor,
+  tokenizeGraphQL,
+  HoverCursor,
+  Cursor,
+} from './utils';
 
 const wrapperStyles = css`
   font-family: Source Code Pro,source-code-pro,Menlo,Consolas,Monaco,Andale Mono,Courier New,monospace;
@@ -56,25 +65,34 @@ const editableStyles = css`
   }
 `;
 
+interface State {
+  diagnostics: Diagnostic[];
+  text: string;
+}
+
 export interface TextboxHandle extends Edit {
   text: string;
 }
 
 export interface TextboxProps extends
   Omit<JSX.HTMLAttributes<HTMLElement>, 'ref' | 'onChange' | 'onClick'> {
+  schemaRef?: preact.RefObject<GraphQLSchema | null>;
   initialText?: string;
   disabled?: boolean;
   onChange?(cursor: Cursor): void;
   onClick?(position: HoverCursor): void;
+  onDiagnostic?(diagnostic: Diagnostic | null): void;
   onKeyDown?(event: KeyboardEvent): void;
   children?: preact.ComponentChildren;
 }
 
 export const Textbox = forwardRef((props: TextboxProps, ref: preact.Ref<TextboxHandle>) => {
   const {
+    schemaRef,
     className,
     initialText,
     disabled,
+    onDiagnostic,
     onChange,
     onKeyDown,
     onClick,
@@ -82,21 +100,33 @@ export const Textbox = forwardRef((props: TextboxProps, ref: preact.Ref<TextboxH
     ...rest
   } = props;
 
-  const [text, setText] = useState(initialText || '# Enter a GraphQL query.');
-  const tokens = useMemo(() => tokenizeGraphQL(text), [text]);
+  const [state, setState] = useState<State>({
+    diagnostics: [],
+    text: initialText || '# Enter a GraphQL query.\n\n{}'
+  });
+
+  const tokens = useMemo(() => tokenizeGraphQL(state.text), [state.text]);
   const editableRef = useRef<HTMLPreElement>(null);
 
   const onEditableChange = useCallback((code: string, position: Position) => {
-    setText(code.slice(0, -1));
+    const text = code.slice(0, -1);
+
+    setState({
+      diagnostics: schemaRef
+        ? getDiagnostics(text, schemaRef.current)
+        : [],
+      text,
+    });
+
     if (onChange) onChange(new Cursor(code, position));
-  }, [onChange]);
+  }, [onChange, schemaRef]);
 
   const edit = useEditable(editableRef, onEditableChange, {
     disabled,
     indentation: 2,
   });
 
-  useImperativeHandle(ref, () => ({ text, ...edit }), [text]);
+  useImperativeHandle(ref, () => ({ text: state.text, ...edit }), [state.text]);
 
   return (
     <div
@@ -120,17 +150,23 @@ export const Textbox = forwardRef((props: TextboxProps, ref: preact.Ref<TextboxH
         >
         {tokens.map((line, row) => (
           <>
-            {line.map((token, i) => (
-              <TokenSpan
-                style={token.style}
-                key={`${row}-${i}`}
-                onClick={onClick && (() => {
-                  onClick(new HoverCursor(row, token.start + 1));
-                })}
-              >
-                {token.string}
-              </TokenSpan>
-            ))}
+            {line.map((token, i) => {
+              const cursor = new HoverCursor(row, token.start + 1);
+              const diagnostic = getDiagnosticForCursor(state.diagnostics, cursor);
+
+              return (
+                <TokenSpan
+                  onClick={onClick && (() => onClick(cursor))}
+                  onMouseOver={onDiagnostic && diagnostic && (() => onDiagnostic(diagnostic))}
+                  onMouseOut={onDiagnostic && diagnostic && (() => onDiagnostic(null))}
+                  hasError={!!diagnostic}
+                  style={token.style}
+                  key={`${row}-${i}`}
+                >
+                  {token.string}
+                </TokenSpan>
+              );
+            })}
             {'\n'}
           </>
         ))}

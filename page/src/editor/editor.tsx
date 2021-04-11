@@ -1,16 +1,16 @@
 import { useReducer, useRef, useCallback, useEffect } from 'preact/hooks';
-import { CompletionItem } from 'graphql-language-service-types';
+import { CompletionItem, Diagnostic } from 'graphql-language-service-types';
 import { GraphQLSchema } from 'graphql';
 
 import {
   getAutocompleteSuggestions,
   getHoverInformation,
   getTokenAtPosition,
-  getDiagnostics,
 } from 'graphql-language-service-interface';
 
 import { TokenPosition, HoverCursor, Cursor } from './utils';
 import { Textbox, TextboxHandle } from './textbox';
+import { Error } from './error';
 import { Hints } from './hints';
 import { Hover } from './hover';
 
@@ -27,32 +27,41 @@ interface HintsState {
 interface State {
   hover: HoverState | null;
   hints: HintsState | null;
+  diagnostic: Diagnostic | null;
 }
 
 const enum ActionType {
   SwitchSchema,
   HideOverlays,
-  UpdateHints,
-  UpdateHover,
+  Diagnostic,
+  Update,
+  Hover,
 }
 
 type Action =
   | { type: ActionType.SwitchSchema }
   | { type: ActionType.HideOverlays }
-  | { type: ActionType.UpdateHints, hints: HintsState | null }
-  | { type: ActionType.UpdateHover, hover: HoverState | null };
+  | { type: ActionType.Update, hints: HintsState | null }
+  | { type: ActionType.Hover, hover: HoverState | null }
+  | { type: ActionType.Diagnostic, diagnostic: Diagnostic | null };
 
-const initialState: State = { hover: null, hints: null };
+const initialState: State = {
+  diagnostic: null,
+  hover: null,
+  hints: null
+};
 
-const reducer = (state: State, action: Action) => {
+const reducer = (state: State, action: Action): State => {
   switch (action.type) {
-    case ActionType.SwitchSchema:
     case ActionType.HideOverlays:
-      return { hover: null, hints: null };
-    case ActionType.UpdateHints:
+    case ActionType.SwitchSchema:
+      return initialState;
+    case ActionType.Update:
       return { ...state, hover: null, hints: action.hints };
-    case ActionType.UpdateHover:
+    case ActionType.Hover:
       return { ...state, hints: null, hover: action.hover };
+    case ActionType.Diagnostic:
+      return { ...state, hints: null, diagnostic: action.diagnostic };
     default:
       return state;
   }
@@ -68,6 +77,7 @@ export interface EditorProps {
 
 export const Editor = (props: EditorProps) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const frameRef = useRef<number | null>(null);
   const schemaRef = useRef<GraphQLSchema | null>(props.schema);
   const textbox = useRef<TextboxHandle>();
 
@@ -78,23 +88,17 @@ export const Editor = (props: EditorProps) => {
 
   const onChange = useCallback((cursor: Cursor) => {
     const { current: schema } = schemaRef;
-    if (props.onChange) {
-      props.onChange(cursor.text);
-    }
+    if (props.onChange) props.onChange(cursor.text);
 
-    if (!schema) {
-      return dispatch({ type: ActionType.UpdateHints, hints: null });
-    }
+    const baseAction: Action = { type: ActionType.Update, hints: null };
+    if (!schema) return dispatch(baseAction);
 
     const token = cursor.getToken();
-    if (!token.string || token.style === 'invalidchar' || token.style === 'ws') {
-      return dispatch({ type: ActionType.UpdateHints, hints: null });
-    }
-
+    if (!token.string || token.style === 'invalidchar' || token.style === 'ws')
+      return dispatch(baseAction);
     const suggestions = getAutocompleteSuggestions(schema, cursor.text, cursor, token);
-    if (!suggestions.length || token.string === suggestions[0].label) {
-      return dispatch({ type: ActionType.UpdateHints, hints: null });
-    }
+    if (!suggestions.length || token.string === suggestions[0].label)
+      return dispatch(baseAction);
 
     const columnEnd = cursor.character;
     const columnStart = token.style !== 'punctuation' && token.style !== 'ws'
@@ -102,7 +106,7 @@ export const Editor = (props: EditorProps) => {
       : columnEnd;
 
     const hints = { suggestions, position: { row: cursor.line, columnStart, columnEnd } };
-    dispatch({ type: ActionType.UpdateHints, hints });
+    dispatch({ ...baseAction, hints });
   }, []);
 
   const onSelectHint = useCallback((suggestion: CompletionItem, position: TokenPosition) => {
@@ -128,8 +132,15 @@ export const Editor = (props: EditorProps) => {
             columnEnd: cursor.character
           },
         } : null;
-      dispatch({ type: ActionType.UpdateHover, hover });
+      dispatch({ type: ActionType.Hover, hover });
     }
+  }, []);
+
+  const onDiagnostic = useCallback((diagnostic: Diagnostic | null) => {
+    if (frameRef.current) cancelAnimationFrame(frameRef.current);
+    frameRef.current = requestAnimationFrame(() => {
+      dispatch({ type: ActionType.Diagnostic, diagnostic });
+    });
   }, []);
 
   const onDismiss = useCallback(() => {
@@ -155,21 +166,26 @@ export const Editor = (props: EditorProps) => {
   return (
     <Textbox
       ref={textbox}
+      schemaRef={schemaRef}
       onChange={onChange}
       onKeyDown={onKeyDown}
       onClick={onClickToken}
+      onDiagnostic={onDiagnostic}
       disabled={props.disabled}
       initialText={props.initialText}
       className={props.className}
       aria-haspopup={haspopup}
       aria-controls={controls}
     >
-      {state.hints && (
+      {state.hints ? (
         <Hints {...state.hints} onSelect={onSelectHint} onDismiss={onDismiss} />
-      )}
-      {state.hover && (
+      ) : null}
+      {state.diagnostic && !state.hints ? (
+        <Error diagnostic={state.diagnostic} />
+      ) : null}
+      {state.hover && !state.hover ? (
         <Hover {...state.hover} onDismiss={onDismiss} />
-      )}
+      ) : null}
     </Textbox>
   );
 };

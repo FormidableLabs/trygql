@@ -36,11 +36,16 @@ const tokenStyles = css`
     color: #4078f2;
   }
 
-  pre:not(:focus) &.invalidchar {
+  *:not(:focus) > &.invalidchar,
+  *:not(:focus) > &.error {
     text-decoration-thickness: 1px;
     text-decoration-line: underline;
     text-decoration-style: wavy;
     text-decoration-color: red;
+  }
+
+  &.error {
+    cursor: pointer;
   }
 `;
 
@@ -56,29 +61,43 @@ const buttonStyles = css`
 
 export interface TokenProps {
   style: string;
+  hasError?: boolean;
   onClick?(event: MouseEvent): void;
+  onMouseOver?(event: MouseEvent): void;
+  onMouseOut?(event: MouseEvent): void;
   children?: preact.ComponentChildren;
 }
 
-export const TokenSpan = ({ style, onClick, children }: TokenProps) => {
-  if (style === 'property' || style === 'attribute') {
+export const TokenSpan = (props: TokenProps) => {
+  const { hasError, style } = props;
+  if (hasError) {
+    return (
+      <span
+        className={`${tokenStyles} ${style} error`}
+        onMouseOver={props.onMouseOver}
+        onMouseOut={props.onMouseOut}
+      >
+        {props.children}
+      </span>
+    );
+  } else if (style === 'property' || style === 'attribute') {
     // NOTE: This has to be an <a>-link instead of a <button> so
     // that the content remains editable
     return (
       <a
         href="#"
         className={`${tokenStyles} ${buttonStyles} ${style}`}
-        onClick={onClick}
+        onClick={props.onClick}
         role="button"
       >
-        {children}
+        {props.children}
       </a>
     );
+  } else {
+    return (
+      <span className={`${tokenStyles} ${style}`}>
+        {props.children}
+      </span>
+    );
   }
-
-  return (
-    <span className={`${tokenStyles} ${style}`}>
-      {children}
-    </span>
-  );
 };

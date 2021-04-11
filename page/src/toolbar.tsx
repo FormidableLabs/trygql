@@ -58,10 +58,15 @@ const Submit = styled('button')`
   height: 3.5ch;
   font-size: 1.1em;
   color: #fff;
+
+  &:active {
+    box-shadow: inset 2px 5px 10px rgba(60, 45, 111, 0.3);
+  }
 `;
 
 export interface ToolbarProps {
   endpoint: string;
+  disabled: boolean;
 }
 
 export const Toolbar = (props: ToolbarProps) => (
