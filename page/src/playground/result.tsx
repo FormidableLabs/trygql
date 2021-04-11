@@ -13,6 +13,7 @@ const Wrapper = styled('pre')`
   margin: 0;
   box-shadow: 5px 5px 7px #f1f3f5;
   color: #44596f;
+  white-space: pre-wrap;
   -webkit-overflow-scrolling: touch;
   overflow: scroll;
 `;

@@ -23,12 +23,16 @@ export const Wrapper = styled('form')`
   grid-template-columns: 1fr;
   grid-auto-columns: 40%;
   grid-template-rows: min-content 1fr;
-  height: 27em;
 
+  height: 27em;
   border-radius: 0.7em;
   padding: 0.7em;
   grid-gap: 1.1em;
   box-shadow: 9px 18px 36px #e2e4e6, -9px -18px 36px #fbfbfb;
+
+  @media (max-width: 950px) {
+    height: auto;
+  }
 
   & > *:nth-child(1) {
     grid-column: 1 / span 1;
@@ -38,11 +42,21 @@ export const Wrapper = styled('form')`
   & > *:nth-child(2) {
     grid-column: 1 / span 1;
     grid-row: 2;
+
+    @media (max-width: 950px) {
+      height: 26em;
+    }
   }
 
   & > *:nth-child(3) {
     grid-column: 2 / span 1;
     grid-row: 1 / span 2;
+
+    @media (max-width: 950px) {
+      grid-column: 1 / span 1;
+      grid-row: auto;
+      max-height: 26em;
+    }
   }
 `;
 
