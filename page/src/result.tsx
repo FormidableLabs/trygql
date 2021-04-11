@@ -12,6 +12,7 @@ const Wrapper = styled('pre')`
   border-radius: 0.5em;
   z-index: 1;
   padding: 2ch;
+  margin: 0;
   box-shadow: 5px 5px 7px #f1f3f5;
   color: #44596f;
   -webkit-overflow-scrolling: touch;

@@ -16,6 +16,7 @@ const wrapperStyles = css`
   border: 1px solid #eeebf7;
   box-shadow: 0px 4px 8px rgba(60, 45, 111, 0.13);
   max-width: 45ch;
+  white-space: normal;
 `;
 
 const titleStyles = css`
@@ -47,10 +48,12 @@ export const Hover = ({ content, position, onDismiss }: HoverProps) => {
 
     document.addEventListener('mousedown', onClick);
     document.addEventListener('touchstart', onClick);
+    document.addEventListener('keydown', onDismiss);
 
     return () => {
       document.removeEventListener('mousedown', onClick);
       document.removeEventListener('touchstart', onClick);
+      document.removeEventListener('keydown', onDismiss);
     };
   }, [onDismiss]);
 

@@ -5,12 +5,12 @@ import { GraphQLSchema } from 'graphql';
 import {
   getAutocompleteSuggestions,
   getHoverInformation,
-  getTokenAtPosition
+  getTokenAtPosition,
+  getDiagnostics,
 } from 'graphql-language-service-interface';
 
-import { TokenPosition, Token, HoverCursor, Cursor } from './utils';
+import { TokenPosition, HoverCursor, Cursor } from './utils';
 import { Textbox, TextboxHandle } from './textbox';
-import { TokenSpan } from './token';
 import { Hints } from './hints';
 import { Hover } from './hover';
 
@@ -64,23 +64,25 @@ export interface EditorProps {
   disabled?: boolean;
   className?: string;
   initialText?: string;
-  maxLines?: number;
 }
 
 export const Editor = (props: EditorProps) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const schemaRef = useRef<GraphQLSchema | null>(props.schema);
   const textbox = useRef<TextboxHandle>();
 
   useEffect(() => {
+    schemaRef.current = props.schema || null;
     dispatch({ type: ActionType.SwitchSchema });
   }, [props.schema]);
 
   const onChange = useCallback((cursor: Cursor) => {
+    const { current: schema } = schemaRef;
     if (props.onChange) {
       props.onChange(cursor.text);
     }
 
-    if (!props.schema) {
+    if (!schema) {
       return dispatch({ type: ActionType.UpdateHints, hints: null });
     }
 
@@ -89,7 +91,7 @@ export const Editor = (props: EditorProps) => {
       return dispatch({ type: ActionType.UpdateHints, hints: null });
     }
 
-    const suggestions = getAutocompleteSuggestions(props.schema, cursor.text, cursor, token);
+    const suggestions = getAutocompleteSuggestions(schema, cursor.text, cursor, token);
     if (!suggestions.length || token.string === suggestions[0].label) {
       return dispatch({ type: ActionType.UpdateHints, hints: null });
     }
@@ -101,7 +103,7 @@ export const Editor = (props: EditorProps) => {
 
     const hints = { suggestions, position: { row: cursor.line, columnStart, columnEnd } };
     dispatch({ type: ActionType.UpdateHints, hints });
-  }, [props.schema]);
+  }, []);
 
   const onSelectHint = useCallback((suggestion: CompletionItem, position: TokenPosition) => {
     const { current: handle } = textbox;
@@ -111,11 +113,12 @@ export const Editor = (props: EditorProps) => {
     }
   }, []);
 
-  const onHover = useCallback((cursor: HoverCursor) => {
+  const onClickToken = useCallback((cursor: HoverCursor) => {
     const { current: handle } = textbox;
-    if (props.schema && handle) {
+    const { current: schema } = schemaRef;
+    if (schema && handle) {
       const token = getTokenAtPosition(handle.text, cursor);
-      const info = getHoverInformation(props.schema, handle.text, cursor, token);
+      const info = getHoverInformation(schema, handle.text, cursor, token);
       const hover = info
         ? {
           content: `${info}`,
@@ -127,7 +130,7 @@ export const Editor = (props: EditorProps) => {
         } : null;
       dispatch({ type: ActionType.UpdateHover, hover });
     }
-  }, [props.schema]);
+  }, []);
 
   const onDismiss = useCallback(() => {
     dispatch({ type: ActionType.HideOverlays });
@@ -138,28 +141,6 @@ export const Editor = (props: EditorProps) => {
       event.preventDefault();
       dispatch({ type: ActionType.HideOverlays });
     }
-  }, []);
-
-  const renderTokens = useCallback((tokens: Token[][]) => {
-    return tokens.map((line, row) => (
-      <>
-        {line.map((token, i) => {
-          const key = `${row}-${i}`;
-          const position = new HoverCursor(row, token.start + 1);
-          return (
-            <TokenSpan
-              style={token.style}
-              position={position}
-              onHover={onHover}
-              key={key}
-            >
-              {token.string}
-            </TokenSpan>
-          );
-        })}
-        {'\n'}
-      </>
-    ));
   }, []);
 
   const haspopup =
@@ -176,11 +157,10 @@ export const Editor = (props: EditorProps) => {
       ref={textbox}
       onChange={onChange}
       onKeyDown={onKeyDown}
-      renderTokens={renderTokens}
+      onClick={onClickToken}
       disabled={props.disabled}
       initialText={props.initialText}
       className={props.className}
-      maxLines={props.maxLines}
       aria-haspopup={haspopup}
       aria-controls={controls}
     >

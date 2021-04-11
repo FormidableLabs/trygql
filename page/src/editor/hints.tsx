@@ -16,6 +16,7 @@ const wrapperStyles = css`
   background-color: #ffffff;
   border: 1px solid #eeebf7;
   box-shadow: 0px 4px 8px rgba(60, 45, 111, 0.13);
+  white-space: normal;
 `;
 
 const itemStyle = css`

@@ -56,17 +56,11 @@ const buttonStyles = css`
 
 export interface TokenProps {
   style: string;
-  position: HoverCursor;
-  onHover(cursor: HoverCursor): void;
+  onClick?(event: MouseEvent): void;
   children?: preact.ComponentChildren;
 }
 
-export const TokenSpan = ({ style, position, onHover, children }: TokenProps) => {
-  const onClick = useCallback((event: MouseEvent) => {
-    event.preventDefault();
-    onHover(position);
-  }, [position, onHover]);
-
+export const TokenSpan = ({ style, onClick, children }: TokenProps) => {
   if (style === 'property' || style === 'attribute') {
     // NOTE: This has to be an <a>-link instead of a <button> so
     // that the content remains editable

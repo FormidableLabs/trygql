@@ -3,7 +3,8 @@ import { useRef, useCallback, useMemo, useState, useImperativeHandle } from 'pre
 import { css } from 'goober';
 import { useEditable, Edit, Position } from 'use-editable';
 
-import { tokenizeGraphQL, Token, Cursor } from './utils';
+import { tokenizeGraphQL, Cursor, HoverCursor } from './utils';
+import { TokenSpan } from './token';
 
 const wrapperStyles = css`
   font-family: Source Code Pro,source-code-pro,Menlo,Consolas,Monaco,Andale Mono,Courier New,monospace;
@@ -60,14 +61,13 @@ export interface TextboxHandle extends Edit {
 }
 
 export interface TextboxProps extends
-  Omit<JSX.HTMLAttributes<HTMLElement>, 'ref' | 'onChange'> {
+  Omit<JSX.HTMLAttributes<HTMLElement>, 'ref' | 'onChange' | 'onClick'> {
   initialText?: string;
   disabled?: boolean;
-  maxLines?: number;
   onChange?(cursor: Cursor): void;
+  onClick?(position: HoverCursor): void;
   onKeyDown?(event: KeyboardEvent): void;
   children?: preact.ComponentChildren;
-  renderTokens(tokens: Token[][]): preact.ComponentChildren;
 }
 
 export const Textbox = forwardRef((props: TextboxProps, ref: preact.Ref<TextboxHandle>) => {
@@ -75,10 +75,9 @@ export const Textbox = forwardRef((props: TextboxProps, ref: preact.Ref<TextboxH
     className,
     initialText,
     disabled,
-    maxLines,
     onChange,
     onKeyDown,
-    renderTokens,
+    onClick,
     children,
     ...rest
   } = props;
@@ -86,13 +85,6 @@ export const Textbox = forwardRef((props: TextboxProps, ref: preact.Ref<TextboxH
   const [text, setText] = useState(initialText || '# Enter a GraphQL query.');
   const tokens = useMemo(() => tokenizeGraphQL(text), [text]);
   const editableRef = useRef<HTMLPreElement>(null);
-
-  const style = useMemo(() => {
-    if (!maxLines) return undefined;
-    return {
-      maxHeight: `calc(${maxLines} * 1.3em + 4ch)`,
-    } as JSX.CSSProperties;
-  }, [maxLines]);
 
   const onEditableChange = useCallback((code: string, position: Position) => {
     setText(code.slice(0, -1));
@@ -110,7 +102,6 @@ export const Textbox = forwardRef((props: TextboxProps, ref: preact.Ref<TextboxH
     <div
       className={`${wrapperStyles} ${className || ''}`}
       onKeyDown={onKeyDown}
-      style={style}
     >
       <ul className={gutterStyles} aria-hidden="true">
         {tokens.map((_, i) => <li className={lineNoStyles}>{i + 1}</li>)}
@@ -127,7 +118,22 @@ export const Textbox = forwardRef((props: TextboxProps, ref: preact.Ref<TextboxH
           ref={editableRef}
           {...rest}
         >
-          {renderTokens(tokens)}
+        {tokens.map((line, row) => (
+          <>
+            {line.map((token, i) => (
+              <TokenSpan
+                style={token.style}
+                key={`${row}-${i}`}
+                onClick={onClick && (() => {
+                  onClick(new HoverCursor(row, token.start + 1));
+                })}
+              >
+                {token.string}
+              </TokenSpan>
+            ))}
+            {'\n'}
+          </>
+        ))}
         </code>
 
         {children}
