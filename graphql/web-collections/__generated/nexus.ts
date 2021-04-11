@@ -3,7 +3,7 @@
  * Do not make changes to this file directly
  */
 
-import * as prisma from './../node_modules/@prisma/client/index';
+import * as prisma from './../../../node_modules/@prisma/client__web-collections/index';
 import { Context } from '@trygql/api/context';
 import { core, connectionPluginCore } from 'nexus';
 declare global {

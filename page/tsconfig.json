@@ -1,0 +1,13 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+		"jsx": "preserve",
+		"jsxFactory": "preact.h",
+		"jsxFragmentFactory": "preact.Fragment",
+		"target": "esnext",
+  },
+  "include": [
+    "**/*",
+    "node_modules/wmr/types.d.ts"
+  ]
+}

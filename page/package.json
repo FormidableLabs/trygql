@@ -1,0 +1,28 @@
+{
+  "name": "@trygql/page",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "alias": {
+    "react": "preact/compat",
+    "react-dom": "preact/compat"
+  },
+  "dependencies": {
+    "@urql/exchange-retry": "^0.2.0",
+    "@urql/preact": "^2.0.1",
+    "goober": "^2.0.37",
+    "graphql": "^15.5.0",
+    "graphql-language-service-interface": "^2.8.2",
+    "graphql-language-service-parser": "^1.9.0",
+    "preact": "^10.5.13",
+    "preact-iso": "^1.1.1",
+    "use-editable": "^2.2.0"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.0.1",
+    "vite": "^2.1.5"
+  }
+}
