@@ -16,7 +16,7 @@ const Wrapper = styled('pre')`
   color: #44596f;
   white-space: pre-wrap;
   -webkit-overflow-scrolling: touch;
-  overflow: scroll;
+  overflow-y: scroll;
 `;
 
 const Content = styled('div')`

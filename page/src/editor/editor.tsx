@@ -153,6 +153,8 @@ export const Editor = (props: EditorProps) => {
     if (event.key === 'Escape') {
       event.preventDefault();
       dispatch({ type: ActionType.HideOverlays });
+    } else if (/^Arrow/.test(event.key)) {
+      dispatch({ type: ActionType.HideOverlays });
     }
 
     // Block hovers for a set amount of time

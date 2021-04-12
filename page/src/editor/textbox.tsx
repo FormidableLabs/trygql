@@ -22,7 +22,7 @@ const wrapperStyles = css`
   grid-template-columns: minmax(7ch, min-content) 1fr;
   border-radius: 0.5em;
   -webkit-overflow-scrolling: touch;
-  overflow: scroll;
+  overflow: auto;
 `;
 
 const gutterStyles = css`

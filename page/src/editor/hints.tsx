@@ -58,13 +58,6 @@ export const Hints = ({
   const ref = useRef<HTMLDivElement>(null);
   const [selected, setSelected] = useState(0);
 
-  /*
-  const style = useMemo(() => ({
-    left: `${position.columnStart}ch`,
-    top: `${(position.row + 1) * 1.3}em`
-  }), [position]);
-  */
-
   useLayoutEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'ArrowDown' && !event.shiftKey) {
