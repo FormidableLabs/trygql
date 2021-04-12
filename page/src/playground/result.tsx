@@ -1,9 +1,10 @@
 import { DocumentNode } from 'graphql';
 import { useMemo } from 'preact/hooks';
 import { gql, useQuery } from '@urql/preact';
-import { styled, css } from 'goober';
+import { keyframes, styled, css } from 'goober';
 
 const Wrapper = styled('pre')`
+  position: relative;
   font-size: 14px;
   line-height: 1.3em;
   background-color: #ecedf9;
@@ -16,6 +17,50 @@ const Wrapper = styled('pre')`
   white-space: pre-wrap;
   -webkit-overflow-scrolling: touch;
   overflow: scroll;
+`;
+
+const Content = styled('div')`
+  opacity: ${(p: { fetching: boolean }) => p.fetching ? '0.6' : '1'};
+  filter: ${(p: { fetching: boolean }) => p.fetching ? 'blur(4px)' : 'none'};
+  transition: opacity 0.7s ease-in-out, filter 0.7 ease-in-out;
+`;
+
+const LoadingScreen = styled('div')`
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: ${(p: { fetching: boolean }) => p.fetching ? 'none' : 'auto'};
+  opacity: ${(p: { fetching: boolean }) => p.fetching ? '1' : '0'};
+  transition: opacity 1s ease-in-out;
+`;
+
+const bounce = keyframes`
+  from, to { transform: scale(0.0); }
+  50% { transform: scale(1.0); }
+`;
+
+const Spinner = styled('div')`
+  position: relative;
+  width: 4em;
+  height: 4em;
+
+  &:before, &:after {
+    display: block;
+    content: '';
+    border-radius: 50%;
+    background: #8368db;
+    opacity: 0.5;
+    position: absolute;
+    inset: 0;
+    animation: ${bounce} 2.0s infinite ease-in-out;
+    transform: scale(1.0);
+  }
+
+  &:after {
+    animation-delay: -1.0s;
+  }
 `;
 
 const tokenStyles = css`
@@ -45,7 +90,7 @@ const groupStyles = css`
 `;
 
 export interface ResultProps {
-  query: DocumentNode
+  query: DocumentNode | null
 }
 
 const fallbackQuery = gql`{ __typename }`;
@@ -143,7 +188,14 @@ export const Result = (props: ResultProps) => {
 
   return (
     <Wrapper>
-      <JSONView value={contents} />
+      <Content fetching={result.fetching}>
+        <JSONView value={contents} />
+      </Content>
+      {result.fetching ? (
+        <LoadingScreen fetching={result.fetching} aria-hidden="true">
+          <Spinner />
+        </LoadingScreen>
+      ) : null}
     </Wrapper>
   );
 };

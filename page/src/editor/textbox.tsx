@@ -139,6 +139,9 @@ export const Textbox = memo(forwardRef((props: TextboxProps, ref: preact.Ref<Tex
       <pre className={surfaceStyles}>
         <code
           role="textbox"
+          autocomplete="off"
+          autocorrect="off"
+          spellcheck={false}
           aria-multiline="true"
           aria-autocomplete="list"
           aria-readonly={disabled ? 'true' : 'false'}

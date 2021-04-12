@@ -57,9 +57,9 @@ const reducer = (state: State, action: Action): State => {
     case ActionType.SwitchSchema:
       return initialState;
     case ActionType.Update:
-      return { ...state, hover: null, hints: action.hints };
+      return { ...state, hover: null, diagnostic: null, hints: action.hints };
     case ActionType.Hover:
-      return { ...state, hints: null, hover: action.hover };
+      return { ...state, hints: null, diagnostic: null, hover: action.hover };
     case ActionType.Diagnostic:
       return { ...state, hints: null, diagnostic: action.diagnostic };
     default:

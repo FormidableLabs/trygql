@@ -1,10 +1,11 @@
 import { styled } from 'goober';
 
 const Wrapper = styled('pre')`
-  display: flex;
+  display: grid;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 
   font-size: 14px;
   line-height: 1.3em;
@@ -45,6 +46,10 @@ const Domain = styled('span')`
   text-transform: uppercase;
   font-size: 0.9em;
   color: #db688e;
+
+  @media (max-width: 950px) {
+    display: none;
+  }
 `;
 
 const Submit = styled('button')`
@@ -65,7 +70,7 @@ const Submit = styled('button')`
 
 export interface ToolbarProps {
   endpoint: string;
-  disabled: boolean;
+  disabled?: boolean;
 }
 
 export const Toolbar = (props: ToolbarProps) => (

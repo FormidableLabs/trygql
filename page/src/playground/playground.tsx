@@ -1,6 +1,6 @@
 import { styled } from 'goober';
 import { useCallback, useMemo, useState } from 'preact/hooks';
-import { getIntrospectionQuery, buildClientSchema } from 'graphql';
+import { DocumentNode, getIntrospectionQuery, buildClientSchema } from 'graphql';
 import { retryExchange } from '@urql/exchange-retry';
 
 import {
@@ -18,6 +18,9 @@ import { Editor } from '../editor';
 import { Result } from './result';
 
 export const Wrapper = styled('form')`
+  grid-column: 1 / 4;
+  margin: 1em 0;
+
   position: relative;
   display: grid;
   grid-template-columns: 1fr;
@@ -68,7 +71,7 @@ export interface PlaygroundProps {
 
 const PlaygroundContent = (props: PlaygroundProps) => {
   const [text, setText] = useState('');
-  const [query, setQuery] = useState(null);
+  const [query, setQuery] = useState<DocumentNode | null>(null);
   const [introspectionResult] = useQuery({ query: introspectionQuery });
 
   const schema = useMemo(() => {
@@ -79,11 +82,11 @@ const PlaygroundContent = (props: PlaygroundProps) => {
     }
   }, [introspectionResult.fetching]);
 
-  const onSubmit = useCallback((event: FormEvent) => {
+  const onSubmit = useCallback((event: Event) => {
     event.preventDefault();
     setQuery(query => {
       try {
-        return gql(text);
+        return gql(text) as DocumentNode;
       } catch (_error) {
         return query;
       }
