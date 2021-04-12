@@ -122,8 +122,9 @@ export const Editor = (props: EditorProps) => {
     const { current: handle } = textbox;
     const { current: schema } = schemaRef;
     if (schema && handle) {
-      const token = getTokenAtPosition(handle.text, cursor);
-      const info = getHoverInformation(schema, handle.text, cursor, token);
+      const text = handle.getCursor().text;
+      const token = getTokenAtPosition(text, cursor);
+      const info = getHoverInformation(schema, text, cursor, token);
       const hover = info
         ? {
           content: `${info}`,
@@ -153,7 +154,7 @@ export const Editor = (props: EditorProps) => {
     if (event.key === 'Escape') {
       event.preventDefault();
       dispatch({ type: ActionType.HideOverlays });
-    } else if (/^Arrow/.test(event.key)) {
+    } else if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
       dispatch({ type: ActionType.HideOverlays });
     }
 

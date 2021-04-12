@@ -66,11 +66,12 @@ const editableStyles = css`
 
 interface State {
   diagnostics: Diagnostic[];
+  position: Position;
   text: string;
 }
 
 export interface TextboxHandle extends Edit {
-  text: string;
+  getCursor(): Cursor;
 }
 
 export interface TextboxProps extends
@@ -101,7 +102,8 @@ export const Textbox = memo(forwardRef((props: TextboxProps, ref: preact.Ref<Tex
 
   const [state, setState] = useState<State>({
     diagnostics: [],
-    text: initialText || '# Enter a GraphQL query.\n\n{}'
+    text: initialText || '# Enter a GraphQL query.\n\n{}',
+    position: undefined as any,
   });
 
   const tokens = useMemo(() => tokenizeGraphQL(state.text), [state.text]);
@@ -114,6 +116,7 @@ export const Textbox = memo(forwardRef((props: TextboxProps, ref: preact.Ref<Tex
       diagnostics: schemaRef
         ? getDiagnostics(text, schemaRef.current)
         : [],
+      position,
       text,
     });
 
@@ -125,7 +128,14 @@ export const Textbox = memo(forwardRef((props: TextboxProps, ref: preact.Ref<Tex
     indentation: 2,
   });
 
-  useImperativeHandle(ref, () => ({ text: state.text, ...edit }), [state.text]);
+  useImperativeHandle(
+    ref,
+    () => ({
+      ...edit,
+      getCursor: () => new Cursor(state.text, state.position),
+    }),
+    [state.text, state.position]
+  );
 
   return (
     <div
