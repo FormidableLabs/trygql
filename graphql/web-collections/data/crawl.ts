@@ -77,7 +77,7 @@ const fetchMeta = async (
   const parser = new Parser({
     onopentag(name, attributes) {
       if (name === 'body') {
-        parser.end();
+        parser.destroy();
       } else if (
         name === 'meta' &&
         attributes.content &&
@@ -101,7 +101,10 @@ const fetchMeta = async (
       }
     },
     onclosetag(name) {
-      if (name === 'head') parser.end();
+      if (name === 'head') parser.destroy();
+    },
+    onend() {
+      parser.destroy();
     },
   });
 
