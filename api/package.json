@@ -10,6 +10,7 @@
     "execa": "^5.0.0",
     "fastify": "^3.14.1",
     "fastify-plugin": "^3.0.0",
+    "fastify-static": "^4.0.1",
     "ioredis": "^4.25.0",
     "jsonwebtoken": "^8.5.1",
     "keyv": "^4.0.3",

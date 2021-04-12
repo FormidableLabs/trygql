@@ -15,8 +15,10 @@
     "start": "node dist/out.js",
     "dev": "ts-node-dev --transpile-only --no-notify api/index.ts",
     "check": "tsc --noEmit",
-    "prebuild": "wsrun -m db:generate",
-    "build": "rollup -c scripts/rollup.js"
+    "prebuild:api": "wsrun -m db:generate",
+    "build:api": "rollup -c scripts/rollup.js",
+    "build:page": "yarn workspace @trygql/page build",
+    "build": "run-s build:api build:page"
   },
   "prettier": {
     "singleQuote": true,
@@ -41,6 +43,7 @@
     "builtin-modules": "^3.2.0",
     "husky": "^4.3.8",
     "lint-staged": "^10.5.4",
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "rollup": "^2.44.0",
     "rollup-plugin-ignore": "^1.0.9",

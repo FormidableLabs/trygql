@@ -21,6 +21,7 @@ ENV PRISMA_CLI_BINARY_TARGETS=linux-musl \
 
 WORKDIR /app
 
+COPY --from=builder /app/page/dist /app/page/dist
 COPY --from=builder /app/dist/*.js /app/
 COPY --from=builder /app/node_modules/prisma /app/node_modules/prisma
 COPY --from=builder /app/node_modules/@prisma /app/node_modules/@prisma
