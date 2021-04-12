@@ -14,8 +14,8 @@ const schema = makeSchema({
     trailingComma: 'es5',
   },
   outputs: {
-    schema: path.join(__dirname, '__generated/schema.graphql'),
-    typegen: path.join(__dirname, '__generated/nexus.ts'),
+    schema: path.join(__dirname, '__generated/schema.gen.graphql'),
+    typegen: path.join(__dirname, '__generated/nexus.gen.ts'),
   },
 });
 

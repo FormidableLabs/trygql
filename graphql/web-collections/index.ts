@@ -32,8 +32,8 @@ const schema = makeSchema({
     export: 'Context',
   },
   outputs: {
-    schema: path.join(__dirname, '__generated/schema.graphql'),
-    typegen: path.join(__dirname, '__generated/nexus.ts'),
+    schema: path.join(__dirname, '__generated/schema.gen.graphql'),
+    typegen: path.join(__dirname, '__generated/nexus.gen.ts'),
   },
 });
 
