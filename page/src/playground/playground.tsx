@@ -16,6 +16,7 @@ import {
 import { Toolbar } from './toolbar';
 import { Editor } from '../editor';
 import { Result } from './result';
+import { Explorer } from '../explorer';
 
 export const Wrapper = styled('form')`
   grid-column: 1 / 4;
@@ -94,11 +95,14 @@ const PlaygroundContent = (props: PlaygroundProps) => {
   }, [text]);
 
   return (
-    <Wrapper onSubmit={onSubmit}>
-      <Toolbar endpoint={props.endpoint} />
-      <Editor schema={schema} onChange={setText} />
-      <Result query={query} />
-    </Wrapper>
+    <>
+      <Wrapper onSubmit={onSubmit}>
+        <Toolbar endpoint={props.endpoint} />
+        <Editor schema={schema} onChange={setText} />
+        <Result query={query} />
+      </Wrapper>
+      {schema && <Explorer schema={schema} />}
+    </>
   );
 };
 
