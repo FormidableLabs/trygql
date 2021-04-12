@@ -1,6 +1,6 @@
-import { DocumentNode } from 'graphql';
-import { useMemo } from 'preact/hooks';
-import { gql, useQuery } from '@urql/preact';
+import { DocumentNode, OperationDefinitionNode, Kind } from 'graphql';
+import { useMemo, useEffect } from 'preact/hooks';
+import { gql, useQuery, useMutation } from '@urql/preact';
 import { keyframes, styled, css } from 'goober';
 
 const Wrapper = styled('pre')`
@@ -172,27 +172,60 @@ const JSONView = ({ value }: any) => {
 };
 
 export const Result = (props: ResultProps) => {
-  const [result] = useQuery({
+  const [queryResult, executeQuery] = useQuery({
     query: props.query || fallbackQuery,
-    pause: !props.query
+    pause: true
   });
 
+  const [mutationResult, executeMutation] = useMutation(
+    props.query || fallbackQuery
+  );
+
+  const operationType = useMemo(() => {
+    if (!props.query) return null;
+    const operation = props.query.definitions
+      .find(def => def.kind === Kind.OPERATION_DEFINITION) as OperationDefinitionNode | undefined;
+    return operation ? operation.operation : null;
+  }, [props.query]);
+
+  useEffect(() => {
+    if (props.query && operationType === 'query') {
+      executeQuery();
+    } else if (props.query && operationType === 'mutation') {
+      executeMutation();
+    }
+  }, [props.query, operationType]);
+
   const contents = useMemo(() => {
+    let result;
+    switch (operationType) {
+      case 'query':
+        result = queryResult;
+        break;
+      case 'mutation':
+        result = mutationResult;
+        break;
+      default:
+        result = {};
+    }
+
     return {
       data: result.data || null,
       errors: result.error
-        ? result.error.graphQLErrors
+        ? (result.error.graphQLErrors.length ? result.error.graphQLErrors : [result.error.networkError])
         : [],
     };
-  }, [result]);
+  }, [operationType, queryResult, mutationResult]);
+
+  const fetching = queryResult.fetching || mutationResult.fetching
 
   return (
     <Wrapper>
-      <Content fetching={result.fetching}>
+      <Content fetching={fetching}>
         <JSONView value={contents} />
       </Content>
-      {result.fetching ? (
-        <LoadingScreen fetching={result.fetching} aria-hidden="true">
+      {fetching ? (
+        <LoadingScreen fetching={fetching} aria-hidden="true">
           <Spinner />
         </LoadingScreen>
       ) : null}

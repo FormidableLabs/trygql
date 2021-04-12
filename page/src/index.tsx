@@ -3,7 +3,7 @@ import { useState } from 'preact/hooks';
 import { createGlobalStyles } from 'goober/global';
 import { setup, styled } from 'goober';
 
-import { schemas, schemaDescriptions, SchemaName } from './schemas';
+import { getClientForSchema, schemas, schemaDescriptions, SchemaName } from './schemas';
 import { Pills } from './pills';
 import { Playground } from './playground';
 
@@ -88,7 +88,7 @@ export const App = () => {
 
       <Playground
         key={option}
-        endpoint={`/graphql/${option}`}
+        client={getClientForSchema(option)}
       />
     </Wrapper>
   );

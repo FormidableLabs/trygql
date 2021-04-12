@@ -1,17 +1,7 @@
 import { styled } from 'goober';
 import { useCallback, useMemo, useState } from 'preact/hooks';
 import { DocumentNode, getIntrospectionQuery, buildClientSchema } from 'graphql';
-import { retryExchange } from '@urql/exchange-retry';
-
-import {
-  Provider,
-  createClient,
-  gql,
-  useQuery,
-  dedupExchange,
-  fetchExchange,
-  cacheExchange,
-} from '@urql/preact';
+import { Provider, gql, useQuery, Client } from '@urql/preact';
 
 import { Toolbar } from './toolbar';
 import { Editor } from '../editor';
@@ -67,7 +57,7 @@ export const Wrapper = styled('form')`
 const introspectionQuery = getIntrospectionQuery();
 
 export interface PlaygroundProps {
-  endpoint: string;
+  client: Client;
 }
 
 const PlaygroundContent = (props: PlaygroundProps) => {
@@ -106,36 +96,9 @@ const PlaygroundContent = (props: PlaygroundProps) => {
   );
 };
 
-const clients = new Map();
-
 export const Playground = (props: PlaygroundProps) => {
-  const client = useMemo(() => {
-    const url = `https://trygql.dev${props.endpoint}`;
-    let client = clients.get(url);
-    if (!client) {
-      client = createClient({
-        url,
-        exchanges: [
-          dedupExchange,
-          cacheExchange,
-          retryExchange({
-            initialDelayMs: 200,
-            maxDelayMs: 1000,
-            randomDelay: true,
-            maxNumberAttempts: 3,
-          }),
-          fetchExchange,
-        ],
-      });
-
-      clients.set(url, client);
-    }
-
-    return client;
-  }, [props.endpoint]);
-
   return (
-    <Provider value={client}>
+    <Provider value={props.client}>
       <PlaygroundContent {...props} />
     </Provider>
   );

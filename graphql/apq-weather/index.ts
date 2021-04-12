@@ -41,14 +41,18 @@ const plugin: FastifyPluginCallback = (instance) => {
     namespace: 'persisted-query',
   });
 
-  const persistedQueryProvider = {
+  const persistedQueryProvider: mercurius.PersistedQueryProvider = {
     ...mercurius.persistedQueryDefaults.automatic(),
-    getQueryFromHash: (hash: string) => cache.get(hash),
-    saveQuery: (hash: string, query: string) => cache.set(hash, query),
+    getQueryFromHash: async (hash: string) => {
+      return (await cache.get(hash))!;
+    },
+    saveQuery: async (hash: string, query: string) => {
+      await cache.set(hash, query);
+    },
   };
 
   return mercurius(instance, {
-    ...persistedQueryProvider,
+    persistedQueryProvider,
     context: request => request.ctx,
     prefix: '/graphql',
     path: '/apq-weather',

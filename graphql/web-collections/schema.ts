@@ -280,7 +280,7 @@ export const Mutation = objectType({
         const claims = ctx.verifyClaims();
         if (!claims) throw new UnauthorizedError();
 
-        const meta = await getMeta(url);
+        const meta = await getMeta(`${url}`);
 
         return db.linkEdge.create({
           data: {

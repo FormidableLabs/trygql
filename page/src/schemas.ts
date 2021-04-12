@@ -1,3 +1,19 @@
+import {
+  Exchange,
+  OperationResult,
+  gql,
+  createClient,
+  dedupExchange,
+  fetchExchange,
+  cacheExchange,
+  makeOperation,
+} from '@urql/core';
+
+import { pipe, tap } from 'wonka';
+import { persistedFetchExchange } from '@urql/exchange-persisted-fetch';
+import { retryExchange } from '@urql/exchange-retry';
+import { authExchange } from '@urql/exchange-auth';
+
 export const schemas = {
   'basic-pokedex': 'Basic Pokedex',
   'apq-weather': 'APQ Weather',
@@ -51,3 +67,115 @@ export const schemaDescriptions: Record<SchemaName, string[]> = {
   'uploads-mock': uploads,
   'web-collections': collections,
 } as const;
+
+const resultExchange = ({
+  onResult,
+}: {
+  onResult: (result: OperationResult) => void;
+}): Exchange => ({ forward }) => ops$ => {
+  return pipe(forward(ops$), tap(onResult));
+}
+
+const clients = new Map();
+
+const refreshMutation = gql`
+  mutation Refresh ($refreshToken: String!) {
+    refreshCredentials(refreshToken: $refreshToken) {
+      token
+      refreshToken
+    }
+  }
+`;
+
+interface Tokens {
+ token: string;
+ refreshToken: string;
+}
+
+export const getClientForSchema = (schema: SchemaName) => {
+  let client = clients.get(schema);
+  if (!client) {
+    let tokensRef: { current: Tokens | null } = { current: null };
+
+    client = createClient({
+      url: `https://trygql.dev/graphql/${schema}`,
+      exchanges: [
+        dedupExchange,
+        cacheExchange,
+        schema === 'apq-weather' && persistedFetchExchange({
+          preferGetForPersistedQueries: true,
+        }),
+        schema === 'web-collections' && authExchange<{ current: null | Tokens }>({
+          async getAuth({ authState, mutate }) {
+            if (!authState) {
+              return tokensRef;
+            } else if (authState.current && authState.current.refreshToken) {
+              const result = await mutate(
+                refreshMutation,
+                { refreshToken: authState.current.refreshToken }
+              );
+
+              const refreshCredentials = result.data?.refreshCredentials;
+              if (refreshCredentials) {
+                authState.current.token = refreshCredentials.token;
+                authState.current.refreshToken = refreshCredentials.refreshToken;
+                return authState;
+              }
+            }
+
+            return null;
+          },
+          addAuthToOperation({ authState, operation }) {
+            if (!authState || !authState.current) return operation;
+
+            const fetchOptions =
+              typeof operation.context.fetchOptions === 'function'
+                ? operation.context.fetchOptions()
+                : operation.context.fetchOptions || {};
+
+            return makeOperation(operation.kind, operation, {
+              ...operation.context,
+              fetchOptions: {
+                ...fetchOptions,
+                headers: {
+                  ...fetchOptions.headers,
+                  Authorization: `Bearer ${authState.current.token}`,
+                },
+              },
+            });
+          },
+          didAuthError({ error }) {
+            return error.graphQLErrors.some(e => e.extensions?.code === 'UNAUTHORIZED');
+          },
+        }),
+        schema === 'web-collections' && resultExchange({
+          onResult(result) {
+            const credentials = result.data?.signin || result.data?.register || {};
+            if (
+              credentials.__typename === 'Credentials' &&
+              credentials.token &&
+              credentials.refreshToken
+            ) {
+              tokensRef.current =
+                Object.assign(tokensRef.current || {}, credentials);
+            }
+          },
+        }),
+        retryExchange({
+          initialDelayMs: 200,
+          maxDelayMs: 1000,
+          randomDelay: true,
+          maxNumberAttempts: schema === 'intermittent-colors' ? 8 : 3,
+          retryIf: schema === 'intermittent-colors'
+            ? (error) => error.graphQLErrors.some(x => x.extensions?.code === 'NO_SOUP') || !!error.networkError
+            : (error) => !!error.networkError,
+        }),
+        fetchExchange,
+      ].filter(Boolean) as Exchange[],
+    });
+
+    clients.set(schema, client);
+  }
+
+  return client;
+};

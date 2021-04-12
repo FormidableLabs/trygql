@@ -98,7 +98,7 @@ const FieldArgs = ({ args }: { args: GraphQLArgument[] }) => {
         {args.map((arg, i) => (
           <li>
             <code className={`${tokenStyles} property`}>{arg.name}</code>
-            <code className={`${tokenStyles} punctuation`}>{': '}</code>
+            <code className={`${tokenStyles} punctuation`}>{':'}</code>
             <Type>{arg.type.toString()}</Type>
             {i < args.length - 1 ? <code className={`${tokenStyles} punctuation`}>{','}</code> : null}
           </li>
