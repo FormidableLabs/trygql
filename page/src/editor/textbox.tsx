@@ -70,9 +70,7 @@ interface State {
   text: string;
 }
 
-export interface TextboxHandle extends Edit {
-  getCursor(): Cursor;
-}
+export type TextboxHandle = Edit;
 
 export interface TextboxProps extends
   Omit<JSX.HTMLAttributes<HTMLElement>, 'ref' | 'onChange' | 'onClick'> {
@@ -128,14 +126,7 @@ export const Textbox = memo(forwardRef((props: TextboxProps, ref: preact.Ref<Tex
     indentation: 2,
   });
 
-  useImperativeHandle(
-    ref,
-    () => ({
-      ...edit,
-      getCursor: () => new Cursor(state.text, state.position),
-    }),
-    [state.text, state.position]
-  );
+  useImperativeHandle(ref, () => edit, [edit]);
 
   return (
     <div

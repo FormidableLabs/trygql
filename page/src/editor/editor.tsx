@@ -122,7 +122,7 @@ export const Editor = (props: EditorProps) => {
     const { current: handle } = textbox;
     const { current: schema } = schemaRef;
     if (schema && handle) {
-      const text = handle.getCursor().text;
+      const text = handle.getState().text;
       const token = getTokenAtPosition(text, cursor);
       const info = getHoverInformation(schema, text, cursor, token);
       const hover = info
@@ -151,9 +151,25 @@ export const Editor = (props: EditorProps) => {
   }, []);
 
   const onKeyDown = useCallback((event: KeyboardEvent) => {
+    const { current: handle } = textbox;
+    const { current: schema } = schemaRef;
+
     if (event.key === 'Escape') {
       event.preventDefault();
       dispatch({ type: ActionType.HideOverlays });
+    } else if (event.code === 'Space' && event.ctrlKey && !event.shiftKey) {
+      if (!schema || !handle) return;
+      event.preventDefault();
+      const { text, position } = handle.getState();
+      const cursor = new Cursor(text, position);
+      const token = cursor.getToken();
+      const suggestions = getAutocompleteSuggestions(schema, text, cursor, token);
+      const columnEnd = cursor.character;
+      const columnStart = token.style !== 'punctuation' && token.style !== 'ws'
+        ? columnEnd - token.string.length
+        : columnEnd;
+      const hints = { suggestions, position: { row: cursor.line, columnStart, columnEnd } };
+      dispatch({ type: ActionType.Update, hints });
     } else if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
       dispatch({ type: ActionType.HideOverlays });
     }
