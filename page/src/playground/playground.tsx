@@ -106,22 +106,32 @@ const PlaygroundContent = (props: PlaygroundProps) => {
   );
 };
 
+const clients = new Map();
+
 export const Playground = (props: PlaygroundProps) => {
   const client = useMemo(() => {
-    return createClient({
-      url: `https://trygql.dev${props.endpoint}`,
-      exchanges: [
-        dedupExchange,
-        cacheExchange,
-        retryExchange({
-          initialDelayMs: 200,
-          maxDelayMs: 1000,
-          randomDelay: true,
-          maxNumberAttempts: 3,
-        }),
-        fetchExchange,
-      ],
-    });
+    const url = `https://trygql.dev${props.endpoint}`;
+    let client = clients.get(url);
+    if (!client) {
+      client = createClient({
+        url,
+        exchanges: [
+          dedupExchange,
+          cacheExchange,
+          retryExchange({
+            initialDelayMs: 200,
+            maxDelayMs: 1000,
+            randomDelay: true,
+            maxNumberAttempts: 3,
+          }),
+          fetchExchange,
+        ],
+      });
+
+      clients.set(url, client);
+    }
+
+    return client;
   }, [props.endpoint]);
 
   return (
