@@ -1,5 +1,13 @@
 import { styled, css } from 'goober';
-import { GraphQLObjectType, GraphQLArgument, GraphQLOutputType } from 'graphql';
+
+import {
+  GraphQLObjectType,
+  GraphQLInterfaceType,
+  GraphQLEnumType,
+  GraphQLScalarType,
+  GraphQLArgument,
+  GraphQLOutputType
+} from 'graphql';
 
 const Wrapper = styled('li')`
   position: relative;
@@ -26,7 +34,9 @@ const Label = styled('h3')`
 `;
 
 const FieldList = styled('ul')`
-  margin: 1ex 0 1ex 0;
+  padding: 1ex 0 1ex 1ch;
+  margin: 0;
+  width: 100%;
 `;
 
 const FieldItem = styled('li')`
@@ -44,8 +54,8 @@ const Type = styled('code')`
 
 const TypeList = styled('ul')`
   list-style-type: none;
-  margin: 0 0 0 2ch;
-  padding: 0;
+  padding: 0 0 0 2ch;
+  margin: 0;
 
   & > li {
     margin: 0;
@@ -56,6 +66,8 @@ const TypeList = styled('ul')`
 const Description = styled('p')`
   color: #a0a1a7;
   margin: 1ex 0 0 0;
+  padding: 0;
+  line-height: calc(0.8em + 1ex);
 `;
 
 const tokenStyles = css`
@@ -105,28 +117,45 @@ const FieldOutput = ({ type }: { type: GraphQLOutputType }) => (
 );
 
 export interface ItemProps {
-  type: GraphQLObjectType;
+  type: GraphQLObjectType | GraphQLScalarType | GraphQLEnumType | GraphQLInterfaceType;
 }
 
 export const Item = ({ type }: ItemProps) => {
-  const fieldMap = type.getFields();
+  const fieldMap = 'getFields' in type ? type.getFields() : {};
   const fields = Object.keys(fieldMap).map(key => fieldMap[key]);
+  const values = 'getValues' in type ? type.getValues() : [];
 
   return (
     <Wrapper>
       <Title>{type.name}</Title>
       {type.description ? <Description>{type.description}</Description> : null}
-      <Label>Fields</Label>
-      <FieldList>
-        {fields.map(field => (
-          <FieldItem key={field.name}>
-            <Name>{field.name}</Name>
-            <FieldArgs args={field.args} />
-            <FieldOutput type={field.type} />
-            {field.description ? <Description>{field.description}</Description> : null}
-          </FieldItem>
-        ))}
-      </FieldList>
+      {fields.length ? (
+        <>
+          <Label>Fields</Label>
+          <FieldList>
+            {fields.map(field => (
+              <FieldItem key={field.name}>
+                <Name>{field.name}</Name>
+                <FieldArgs args={field.args} />
+                <FieldOutput type={field.type} />
+                {field.description ? <Description>{field.description}</Description> : null}
+              </FieldItem>
+            ))}
+          </FieldList>
+        </>
+      ) : null}
+      {values.length ? (
+        <>
+          <Label>Values</Label>
+          <FieldList>
+            {values.map(value => (
+              <FieldItem key={value.name}>
+                <Name>{value.name}</Name>
+              </FieldItem>
+            ))}
+          </FieldList>
+        </>
+      ) : null}
     </Wrapper>
   );
 };
