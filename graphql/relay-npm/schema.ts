@@ -245,7 +245,6 @@ export const Query = objectType({
           })
         ),
       },
-      ttl: ms('1h'),
       nodes: (_, args) => searchPackage(args),
     });
   },
