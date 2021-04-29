@@ -87,7 +87,7 @@ export const searchPackage = async (args: {
     .get('-/v1/search', {
       searchParams: {
         text: args.query,
-        size: args.first,
+        size: args.first + 1,
         from,
       },
     })
