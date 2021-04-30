@@ -23,6 +23,7 @@ export const migrate: FastifyPluginCallback<Options> = (
             'push',
             '--preview-feature',
             '--skip-generate',
+            '--accept-data-loss',
             `--schema=${opts.schemaPath}`,
           ],
           {
