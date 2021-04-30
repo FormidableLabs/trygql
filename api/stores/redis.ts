@@ -20,7 +20,7 @@ export class RedisStore implements Store<string> {
     this.log = app.log;
 
     const additionalOptions = {
-      commandTimeout: ms('200ms'),
+      commandTimeout: ms('400ms'),
     } as Redis.RedisOptions;
 
     this.client = new Redis({
