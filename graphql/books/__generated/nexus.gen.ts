@@ -7,7 +7,88 @@ declare global {
   interface NexusGen extends NexusGenTypes {}
 }
 
-export interface NexusGenInputs {}
+export interface NexusGenInputs {
+  NewAuthor: {
+    // input type
+    book: NexusGenInputs['NewBook']; // NewBook!
+    id: string; // ID!
+    name: string; // String!
+    recognized: boolean; // Boolean!
+  };
+  NewAuthorsInput: {
+    // input type
+    authors: Array<NexusGenInputs['NewAuthor'] | null>; // [NewAuthor]!
+  };
+  NewBook: {
+    // input type
+    genre: string; // String!
+    id: string; // ID!
+    published: boolean; // Boolean!
+    rating: number; // Float!
+    review?: NexusGenInputs['NewReview'] | null; // NewReview
+    title: string; // String!
+  };
+  NewBooksInput: {
+    // input type
+    books: Array<NexusGenInputs['NewBook'] | null>; // [NewBook]!
+  };
+  NewEmployee: {
+    // input type
+    id: string; // ID!
+    name: string; // String!
+    origin: string; // String!
+  };
+  NewEmployeesInput: {
+    // input type
+    employees: Array<NexusGenInputs['NewEmployee'] | null>; // [NewEmployee]!
+  };
+  NewPerson: {
+    // input type
+    id: string; // ID!
+    name: string; // String!
+    verified: boolean; // Boolean!
+  };
+  NewReview: {
+    // input type
+    id: string; // ID!
+    name: string; // String!
+    reviewer: NexusGenInputs['NewPerson']; // NewPerson!
+    score: number; // Int!
+  };
+  NewStore: {
+    // input type
+    country: string; // String!
+    id: string; // ID!
+    name: string; // String!
+  };
+  NewStoresInput: {
+    // input type
+    stores: Array<NexusGenInputs['NewStore'] | null>; // [NewStore]!
+  };
+  NewTodo: {
+    // input type
+    complete: boolean; // Boolean!
+    id: string; // ID!
+    text: string; // String!
+  };
+  NewTodosInput: {
+    // input type
+    todos: Array<NexusGenInputs['NewTodo'] | null>; // [NewTodo]!
+  };
+  NewWriter: {
+    // input type
+    amountOfBooks: number; // Float!
+    id: string; // ID!
+    interests: string; // String!
+    name?: string | null; // String
+    number: number; // Int!
+    recognized: boolean; // Boolean!
+  };
+  NewWritersInput: {
+    // input type
+    writers: Array<NexusGenInputs['NewWriter'] | null>; // [NewWriter]!
+  };
+}
 
 export interface NexusGenEnums {}
 
@@ -20,15 +101,64 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenObjects {
+  Author: {
+    // root type
+    book: NexusGenRootTypes['Book']; // Book!
+    id: string; // ID!
+    name: string; // String!
+    recognized: boolean; // Boolean!
+  };
   Book: {
     // root type
     genre: string; // String!
     id: string; // ID!
     published: boolean; // Boolean!
     rating: number; // Float!
+    review?: NexusGenRootTypes['Review'] | null; // Review
     title: string; // String!
   };
+  Employee: {
+    // root type
+    id: string; // ID!
+    name: string; // String!
+    origin: string; // String!
+  };
+  Mutation: {};
+  Person: {
+    // root type
+    id: string; // ID!
+    name: string; // String!
+    verfied: boolean; // Boolean!
+  };
   Query: {};
+  Review: {
+    // root type
+    id: string; // ID!
+    name: string; // String!
+    reviewer: NexusGenRootTypes['Person']; // Person!
+    score: number; // Int!
+  };
+  Store: {
+    // root type
+    country: string; // String!
+    id: string; // ID!
+    name: string; // String!
+  };
+  Todo: {
+    // root type
+    complete: boolean; // Boolean!
+    id: string; // ID!
+    text: string; // String!
+  };
+  Writer: {
+    // root type
+    amountOfBooks: number; // Float!
+    id: string; // ID!
+    interests: string; // String!
+    name?: string | null; // String
+    number: number; // Int!
+    recognized: boolean; // Boolean!
+  };
 }
 
 export interface NexusGenInterfaces {}
@@ -40,40 +170,198 @@ export type NexusGenRootTypes = NexusGenObjects;
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars;
 
 export interface NexusGenFieldTypes {
+  Author: {
+    // field return type
+    book: NexusGenRootTypes['Book']; // Book!
+    id: string; // ID!
+    name: string; // String!
+    recognized: boolean; // Boolean!
+  };
   Book: {
     // field return type
     genre: string; // String!
     id: string; // ID!
     published: boolean; // Boolean!
     rating: number; // Float!
+    review: NexusGenRootTypes['Review'] | null; // Review
     title: string; // String!
+  };
+  Employee: {
+    // field return type
+    id: string; // ID!
+    name: string; // String!
+    origin: string; // String!
+  };
+  Mutation: {
+    // field return type
+    addAuthors: Array<NexusGenRootTypes['Author'] | null>; // [Author]!
+    addBooks: Array<NexusGenRootTypes['Book'] | null>; // [Book]!
+    addEmployees: Array<NexusGenRootTypes['Employee'] | null>; // [Employee]!
+    addStores: Array<NexusGenRootTypes['Store'] | null>; // [Store]!
+    addTodo: NexusGenRootTypes['Todo']; // Todo!
+    addTodos: Array<NexusGenRootTypes['Todo'] | null>; // [Todo]!
+    addWriters: Array<NexusGenRootTypes['Writer'] | null>; // [Writer]!
+    updateTodo: NexusGenRootTypes['Todo']; // Todo!
+  };
+  Person: {
+    // field return type
+    id: string; // ID!
+    name: string; // String!
+    verfied: boolean; // Boolean!
   };
   Query: {
     // field return type
+    authors: Array<NexusGenRootTypes['Author'] | null>; // [Author]!
     books: Array<NexusGenRootTypes['Book'] | null>; // [Book]!
+    employees: Array<NexusGenRootTypes['Employee'] | null>; // [Employee]!
+    stores: Array<NexusGenRootTypes['Store'] | null>; // [Store]!
+    todos: Array<NexusGenRootTypes['Todo'] | null>; // [Todo]!
+    writers: Array<NexusGenRootTypes['Writer'] | null>; // [Writer]!
+  };
+  Review: {
+    // field return type
+    id: string; // ID!
+    name: string; // String!
+    reviewer: NexusGenRootTypes['Person']; // Person!
+    score: number; // Int!
+  };
+  Store: {
+    // field return type
+    country: string; // String!
+    id: string; // ID!
+    name: string; // String!
+  };
+  Todo: {
+    // field return type
+    complete: boolean; // Boolean!
+    id: string; // ID!
+    text: string; // String!
+  };
+  Writer: {
+    // field return type
+    amountOfBooks: number; // Float!
+    id: string; // ID!
+    interests: string; // String!
+    name: string | null; // String
+    number: number; // Int!
+    recognized: boolean; // Boolean!
   };
 }
 
 export interface NexusGenFieldTypeNames {
+  Author: {
+    // field return type name
+    book: 'Book';
+    id: 'ID';
+    name: 'String';
+    recognized: 'Boolean';
+  };
   Book: {
     // field return type name
     genre: 'String';
     id: 'ID';
     published: 'Boolean';
     rating: 'Float';
+    review: 'Review';
     title: 'String';
+  };
+  Employee: {
+    // field return type name
+    id: 'ID';
+    name: 'String';
+    origin: 'String';
+  };
+  Mutation: {
+    // field return type name
+    addAuthors: 'Author';
+    addBooks: 'Book';
+    addEmployees: 'Employee';
+    addStores: 'Store';
+    addTodo: 'Todo';
+    addTodos: 'Todo';
+    addWriters: 'Writer';
+    updateTodo: 'Todo';
+  };
+  Person: {
+    // field return type name
+    id: 'ID';
+    name: 'String';
+    verfied: 'Boolean';
   };
   Query: {
     // field return type name
+    authors: 'Author';
     books: 'Book';
+    employees: 'Employee';
+    stores: 'Store';
+    todos: 'Todo';
+    writers: 'Writer';
+  };
+  Review: {
+    // field return type name
+    id: 'ID';
+    name: 'String';
+    reviewer: 'Person';
+    score: 'Int';
+  };
+  Store: {
+    // field return type name
+    country: 'String';
+    id: 'ID';
+    name: 'String';
+  };
+  Todo: {
+    // field return type name
+    complete: 'Boolean';
+    id: 'ID';
+    text: 'String';
+  };
+  Writer: {
+    // field return type name
+    amountOfBooks: 'Float';
+    id: 'ID';
+    interests: 'String';
+    name: 'String';
+    number: 'Int';
+    recognized: 'Boolean';
   };
 }
 
 export interface NexusGenArgTypes {
-  Query: {
-    books: {
+  Mutation: {
+    addAuthors: {
       // args
-      limit: number | null; // Int
+      newAuthors: NexusGenInputs['NewAuthorsInput']; // NewAuthorsInput!
+    };
+    addBooks: {
+      // args
+      newBooks: NexusGenInputs['NewBooksInput']; // NewBooksInput!
+    };
+    addEmployees: {
+      // args
+      newEmployees: NexusGenInputs['NewEmployeesInput']; // NewEmployeesInput!
+    };
+    addStores: {
+      // args
+      newStores: NexusGenInputs['NewStoresInput']; // NewStoresInput!
+    };
+    addTodo: {
+      // args
+      complete: boolean; // Boolean!
+      text: string; // String!
+    };
+    addTodos: {
+      // args
+      newTodos: NexusGenInputs['NewTodosInput']; // NewTodosInput!
+    };
+    addWriters: {
+      // args
+      newWriters: NexusGenInputs['NewWritersInput']; // NewWritersInput!
+    };
+    updateTodo: {
+      // args
+      complete: boolean; // Boolean!
+      id: string; // ID!
     };
   };
 }
@@ -84,7 +372,7 @@ export interface NexusGenTypeInterfaces {}
 
 export type NexusGenObjectNames = keyof NexusGenObjects;
 
-export type NexusGenInputNames = never;
+export type NexusGenInputNames = keyof NexusGenInputs;
 
 export type NexusGenEnumNames = never;
 

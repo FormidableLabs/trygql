@@ -10,7 +10,9 @@ import {
 
 import data from './data/data.json';
 
-const Query = objectType({
+const books = data.books;
+
+export const Query = objectType({
   name: 'Query',
   definition(t) {
     t.nonNull.list.field('todos', { type: Todo });
@@ -18,7 +20,7 @@ const Query = objectType({
     t.nonNull.list.field('books', {
       type: Book,
       resolve() {
-        return data.books;
+        return books;
       },
     });
     t.nonNull.list.field('stores', { type: Store });
@@ -27,7 +29,7 @@ const Query = objectType({
   },
 });
 
-const Mutation = objectType({
+export const Mutation = objectType({
   name: 'Mutation',
   definition(t) {
     t.nonNull.field('addTodo', {
@@ -83,7 +85,7 @@ const Mutation = objectType({
   },
 });
 
-const Author = objectType({
+export const Author = objectType({
   name: 'Author',
   definition(t) {
     t.nonNull.id('id');
@@ -93,7 +95,7 @@ const Author = objectType({
   },
 });
 
-const Book = objectType({
+export const Book = objectType({
   name: 'Book',
   definition(t) {
     t.nonNull.id('id');
@@ -105,7 +107,7 @@ const Book = objectType({
   },
 });
 
-const Employee = objectType({
+export const Employee = objectType({
   name: 'Employee',
   definition(t) {
     t.nonNull.id('id');
@@ -114,7 +116,7 @@ const Employee = objectType({
   },
 });
 
-const Person = objectType({
+export const Person = objectType({
   name: 'Person',
   definition(t) {
     t.nonNull.id('id');
@@ -123,7 +125,7 @@ const Person = objectType({
   },
 });
 
-const Review = objectType({
+export const Review = objectType({
   name: 'Review',
   definition(t) {
     t.nonNull.id('id');
@@ -133,7 +135,7 @@ const Review = objectType({
   },
 });
 
-const Store = objectType({
+export const Store = objectType({
   name: 'Store',
   definition(t) {
     t.nonNull.id('id');
@@ -141,7 +143,7 @@ const Store = objectType({
     t.nonNull.string('country');
   },
 });
-const Todo = objectType({
+export const Todo = objectType({
   name: 'Todo',
   definition(t) {
     t.nonNull.id('id');
@@ -149,7 +151,7 @@ const Todo = objectType({
     t.nonNull.boolean('complete');
   },
 });
-const Writer = objectType({
+export const Writer = objectType({
   name: 'Writer',
   definition(t) {
     t.nonNull.id('id');
@@ -161,7 +163,7 @@ const Writer = objectType({
   },
 });
 
-const NewAuthor = inputObjectType({
+export const NewAuthor = inputObjectType({
   name: 'NewAuthor',
   definition(t) {
     t.nonNull.id('id');
@@ -170,13 +172,13 @@ const NewAuthor = inputObjectType({
     t.nonNull.field('book', { type: NewBook });
   },
 });
-const NewAuthorsInput = inputObjectType({
+export const NewAuthorsInput = inputObjectType({
   name: 'NewAuthorsInput',
   definition(t) {
     t.nonNull.list.field('authors', { type: NewAuthor });
   },
 });
-const NewBook = inputObjectType({
+export const NewBook = inputObjectType({
   name: 'NewBook',
   definition(t) {
     t.nonNull.id('id');
@@ -187,13 +189,13 @@ const NewBook = inputObjectType({
     t.field('review', { type: NewReview });
   },
 });
-const NewBooksInput = inputObjectType({
+export const NewBooksInput = inputObjectType({
   name: 'NewBooksInput',
   definition(t) {
     t.nonNull.list.field('books', { type: NewBook });
   },
 });
-const NewEmployee = inputObjectType({
+export const NewEmployee = inputObjectType({
   name: 'NewEmployee',
   definition(t) {
     t.nonNull.id('id');
@@ -201,13 +203,13 @@ const NewEmployee = inputObjectType({
     t.nonNull.string('origin');
   },
 });
-const NewEmployeesInput = inputObjectType({
+export const NewEmployeesInput = inputObjectType({
   name: 'NewEmployeesInput',
   definition(t) {
     t.nonNull.list.field('employees', { type: NewEmployee });
   },
 });
-const NewPerson = inputObjectType({
+export const NewPerson = inputObjectType({
   name: 'NewPerson',
   definition(t) {
     t.nonNull.id('id');
@@ -215,7 +217,7 @@ const NewPerson = inputObjectType({
     t.nonNull.boolean('verified');
   },
 });
-const NewReview = inputObjectType({
+export const NewReview = inputObjectType({
   name: 'NewReview',
   definition(t) {
     t.nonNull.id('id');
@@ -224,7 +226,7 @@ const NewReview = inputObjectType({
     t.nonNull.field('reviewer', { type: NewPerson });
   },
 });
-const NewStore = inputObjectType({
+export const NewStore = inputObjectType({
   name: 'NewStore',
   definition(t) {
     t.nonNull.id('id');
@@ -232,13 +234,13 @@ const NewStore = inputObjectType({
     t.nonNull.string('country');
   },
 });
-const NewStoresInput = inputObjectType({
+export const NewStoresInput = inputObjectType({
   name: 'NewStoresInput',
   definition(t) {
     t.nonNull.list.field('stores', { type: NewStore });
   },
 });
-const NewTodo = inputObjectType({
+export const NewTodo = inputObjectType({
   name: 'NewTodo',
   definition(t) {
     t.nonNull.id('id');
@@ -246,13 +248,13 @@ const NewTodo = inputObjectType({
     t.nonNull.boolean('complete');
   },
 });
-const NewTodosInput = inputObjectType({
+export const NewTodosInput = inputObjectType({
   name: 'NewTodosInput',
   definition(t) {
     t.nonNull.list.field('todos', { type: NewTodo });
   },
 });
-const NewWriter = inputObjectType({
+export const NewWriter = inputObjectType({
   name: 'NewWriter',
   definition(t) {
     t.nonNull.id('id');
@@ -263,7 +265,7 @@ const NewWriter = inputObjectType({
     t.nonNull.string('interests');
   },
 });
-const NewWritersInput = inputObjectType({
+export const NewWritersInput = inputObjectType({
   name: 'NewWritersInput',
   definition(t) {
     t.nonNull.list.field('writers', { type: NewWriter });
