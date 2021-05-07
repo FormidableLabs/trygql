@@ -13,6 +13,7 @@ type Color {
 A field whose value is a hex color code: https://en.wikipedia.org/wiki/Web_colors.
 """
 scalar HexColorCode
+  @specifiedBy(url: "https://en.wikipedia.org/wiki/Web_colors")
 
 type Query {
   """

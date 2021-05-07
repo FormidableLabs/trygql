@@ -14,6 +14,7 @@ import relayNpm from '@trygql/relay-npm';
 import apqWeather from '@trygql/apq-weather';
 import uploadsMock from '@trygql/uploads-mock';
 import webCollections from '@trygql/web-collections';
+import books from '@trygql/books';
 
 const indexPath = path.join(process.cwd(), 'page/dist/index.html');
 const indexFile = fs.promises.readFile(indexPath);
@@ -34,6 +35,7 @@ app.register(relayNpm);
 app.register(apqWeather);
 app.register(uploadsMock);
 app.register(webCollections);
+app.register(books);
 
 app.get('/health', (_req, res) => {
   res.code(200).send({ statusCode: 200, status: 'ok' });
