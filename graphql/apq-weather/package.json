@@ -4,11 +4,11 @@
   "private": true,
   "source": "api/index.ts",
   "dependencies": {
-    "fastify": "^3.14.1",
+    "fastify": "^3.15.1",
     "graphql": "^15.5.0",
-    "graphql-scalars": "^1.9.0",
+    "graphql-scalars": "^1.9.3",
     "keyv": "^4.0.3",
-    "mercurius": "^7.3.3",
+    "mercurius": "^7.6.0",
     "nexus": "^1.0.0"
   },
   "devDependencies": {
