@@ -76,8 +76,7 @@ export interface ToolbarProps {
 export const Toolbar = (props: ToolbarProps) => (
   <Wrapper>
     <Location>
-      <Domain>trygql.dev</Domain>
-      {props.endpoint}
+      <Domain>{props.endpoint}</Domain>
     </Location>
     <Submit aria-label="Send Query" type="submit">
       {'▶ '}

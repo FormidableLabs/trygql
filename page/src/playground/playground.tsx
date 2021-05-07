@@ -57,6 +57,7 @@ export const Wrapper = styled('form')`
 const introspectionQuery = getIntrospectionQuery();
 
 export interface PlaygroundProps {
+  endpoint: string;
   client: Client;
 }
 

@@ -98,7 +98,7 @@ export const getClientForSchema = (schema: SchemaName) => {
     let tokensRef: { current: Tokens | null } = { current: null };
 
     client = createClient({
-      url: `https://trygql.dev/graphql/${schema}`,
+      url: `https://trygql.formidable.dev/graphql/${schema}`,
       exchanges: [
         dedupExchange,
         cacheExchange,

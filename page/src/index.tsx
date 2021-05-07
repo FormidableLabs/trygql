@@ -88,6 +88,7 @@ export const App = () => {
 
       <Playground
         key={option}
+        endpoint={option}
         client={getClientForSchema(option)}
       />
     </Wrapper>
