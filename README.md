@@ -34,3 +34,7 @@ schema allows queries using `POST` and `GET` methods.
 | Web Collections | A full app schema, which allows users to register & signin and save links to blog posts, with a small leaderboard. This schema isn't collaborative but good for testing writing full app demos with authentication logic. | [Endpoint](https://trygql.dev/graphql/web-collections) [Schema](./graphql/web-collections/__generated/schema.gen.graphql) |
 
 **Go to [trygql.formidable.dev](https://trygql.formidable.dev/) to explore or query these schemas.**
+
+## Maintenance Status
+
+**Stable:** Formidable is not planning to develop any new features for this project. We are still responding to bug reports and security concerns. We are still welcoming PRs for this project, but PRs that include new features should be small and easy to integrate and should not include breaking changes.
