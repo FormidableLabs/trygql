@@ -1,12 +1,9 @@
-<div align="center">
-  <h1 align="center">
-   <a href="https://trygql.formidable.dev/">
-     trygql
-   </a>
-  </h1>
-  <p align="center"><strong>Purpose-built Demo APIs for GraphQL.</strong></p>
-  <br />
-</div>
+<a href="https://formidable.com/open-source/" target="_blank">
+  <img alt="trygql — Formidable, We build the modern web" src="./trygql-Hero.png" />
+</a>
+<strong>Purpose-built Demo APIs for GraphQL.</strong>
+
+---
 
 `trygql` is a public collection of GraphQL schemas, providing different common scenarios for
 testing GraphQL APIs and demonstrating features for GraphQL clients.
