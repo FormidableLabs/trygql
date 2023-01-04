@@ -1,5 +1,5 @@
 <a href="https://formidable.com/open-source/" target="_blank">
-  <img alt="trygql — Formidable, We build the modern web" src="./trygql-Hero.png" />
+  <img alt="trygql — Formidable, We build the modern web" src="https://raw.githubusercontent.com/FormidableLabs/trygql/master/trygql-Hero.png" />
 </a>
 <strong>Purpose-built Demo APIs for GraphQL.</strong>
 
