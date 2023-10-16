@@ -1,31 +1,46 @@
+# fly.toml app configuration file generated for trygql on 2023-10-16T09:37:30-05:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
 app = "trygql"
+primary_region = "cdg"
+kill_signal = "SIGINT"
+kill_timeout = "5s"
+
+[experimental]
 
 [env]
   NODE_ENV = "production"
 
-[[services]]
-  internal_port = 8080
-  protocol = "tcp"
+[processes]
+  app = ""
 
+[[services]]
+  protocol = "tcp"
+  internal_port = 8080
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 3
+  processes = ["app"]
+
+  [[services.ports]]
+    port = 80
+    handlers = ["http"]
+
+  [[services.ports]]
+    port = 443
+    handlers = ["tls", "http"]
   [services.concurrency]
+    type = "connections"
     hard_limit = 100
     soft_limit = 75
 
-  [[services.ports]]
-    handlers = ["http"]
-    port = "80"
-
-  [[services.ports]]
-    handlers = ["tls", "http"]
-    port = "443"
-
   [[services.http_checks]]
-    interval = 10000
+    interval = "10s"
+    timeout = "2s"
     grace_period = "5s"
     method = "get"
     path = "/health"
     protocol = "http"
-    timeout = 2000
-
-[experimental]
-  private_network=true
+    tls_skip_verify = false
